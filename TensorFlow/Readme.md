@@ -1,4 +1,4 @@
-# [TensorFlow](https://github.com/LucasFDutra/Tensor-Flow/blob/master/TensorFlow/Apostila%20de%20TensorFlow/Apostila%20de%20TensorFlow.ipynb)
+# [TensorFlow](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/TensorFlow/TensorFlow/Apostila%20de%20TensorFlow/Apostila%20de%20TensorFlow.ipynb)
 
 Instalação do TensorFlow
 
@@ -22,7 +22,7 @@ E assim como na apostila de python, foi utilizado o jupyter notebook para criar 
 
 ---
 
-# [TensorFlow com Keras](https://github.com/LucasFDutra/Tensor-Flow/blob/master/TensorFlow%20com%20Keras/Apostila%20de%20TensorFlow%20com%20Keras.ipynb)
+# [TensorFlow com Keras](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/TensorFlow/TensorFlow%20com%20Keras/Apostila%20de%20TensorFlow%20com%20Keras.ipynb)
 
 Instalação do keras (precisa que o tensorflow esteja instalado)
 
