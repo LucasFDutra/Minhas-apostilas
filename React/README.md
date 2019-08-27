@@ -76,9 +76,9 @@ ReactDOM.render(<App />, rootElement);
 ```
 
 - Saída:
-  ![](https://github.com/LucasFDutra/Estudos/blob/master/Apostila%20de%20Web/Imagens%20React/Figura_001.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_001.png?raw=true)
 
-Veja o código completo [aqui](https://github.com/LucasFDutra/Estudos/tree/master/Apostila%20de%20Web/React/ex001)
+Veja o código completo [aqui](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/React/C%C3%B3digos/ex001)
 
 # **4. HOOKS**
 
@@ -122,7 +122,7 @@ Veja que props não recebe `Lucas`, mas sim um objeto. Por isso precisamos coloc
 
 Agora vamos para a segunda parte, a parte interativa. Digamos que quero criar um botão que aumente um dado valor ao ser apertado e o atualiza na tela a cada incremento. Tal ideia deve ficar como mostrado abaixo:
 
-![](https://github.com/LucasFDutra/Estudos/blob/master/Apostila%20de%20Web/Imagens%20React/Figura_002.gif?raw=true)
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_002.gif?raw=true)
 
 Para isso podemos pensar em fazer o seguinte:
 
@@ -203,16 +203,16 @@ function App() {
 
 > OBS.: a função click poderia ter sido feito utilizando arrow function, seria melhor (veja mais sobre isso na apostila de JavaScript), mas por hora irei utilizar a function normal.
 
-Veja o código completo [aqui](https://github.com/LucasFDutra/Estudos/tree/master/Apostila%20de%20Web/React/ex002)
+Veja o código completo [aqui](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/React/C%C3%B3digos/ex002)
 
 ## 4.1 EXEMPLO
 
 O exemplo será composto por um jogo, em que o computador tentará adivinhar um número. Para que ele consiga adivinhar o número iremos colocar 3 botões na tela e falaremos para ele se o valor é maior ou menos ou se acertou.
 
-Veja abaixo o gif mostrando o jogo, e se quiser pode ver o código completo [aqui](https://github.com/LucasFDutra/Estudos/tree/master/Apostila%20de%20Web/React/ex003)
+Veja abaixo o gif mostrando o jogo, e se quiser pode ver o código completo [aqui](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/React/C%C3%B3digos/ex003)
 
-![](https://github.com/LucasFDutra/Estudos/blob/master/Apostila%20de%20Web/Imagens%20React/Figura_003.gif?raw=true)
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_003.gif?raw=true)
 
 # **5. PROXIMOS PASSOS**
 
-Veja projetos mais recentes utilizando hooks e tente reproduzir o que está sendo feito. Eu mesmo tenho um [aqui](https://github.com/LucasFDutra/Minhas-Series) que foi desenvolvido com base no projeto que está [aqui](https://github.com/LucasFDutra/Estudos/tree/master/Apostila%20de%20Web/React/ex004/minhas-series) que foi desenvolvido juntamento com o canal devPleno durante o Hands-on de 2019. Porém, de preferência para projetos que alguém vai ensinando junto (youtube). Mas já deixo a dica de que pelo menos a parte visual é bom ir olhando o [bootstrap](https://getbootstrap.com/) e no [reactstrap](https://reactstrap.github.io/), pois é mais tranquilo utilizar eles para fazer as interfaces.
+Veja projetos mais recentes utilizando hooks e tente reproduzir o que está sendo feito. Eu mesmo tenho um [aqui](https://github.com/LucasFDutra/Minhas-Series) que foi desenvolvido com base no projeto que está [aqui](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/React/C%C3%B3digos/ex004/minhas-series) que foi desenvolvido juntamento com o canal devPleno durante o Hands-on de 2019. Porém, de preferência para projetos que alguém vai ensinando junto (youtube). Mas já deixo a dica de que pelo menos a parte visual é bom ir olhando o [bootstrap](https://getbootstrap.com/) e no [reactstrap](https://reactstrap.github.io/), pois é mais tranquilo utilizar eles para fazer as interfaces.
