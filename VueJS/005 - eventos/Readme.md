@@ -104,4 +104,4 @@ Alguns exemplos de enventos:
 <input @keyup.enter="metodo">
 ```
 
-[Proximo Passo](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/tree/master/VueJS/006%20-%20classes%20e%20estilo)
+[Proximo Passo](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/VueJS/006%20-%20classes%20e%20estilo)

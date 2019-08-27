@@ -33,6 +33,6 @@ Agora se colocarmos isso dentro de uma lista html `ul` ou `ol` teremos então qu
   })
   ```
 
-Veja o código completo [aqui](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/tree/master/VueJS/004%20-%20List%20Rendering/ex001)
+Veja o código completo [aqui](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/VueJS/004%20-%20List%20Rendering/ex001)
 
-[Proximo Passo](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/tree/master/VueJS/005%20-%20eventos)
+[Proximo Passo](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/VueJS/005%20-%20eventos)

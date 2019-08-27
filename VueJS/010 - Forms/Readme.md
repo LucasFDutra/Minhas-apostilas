@@ -8,4 +8,4 @@ Para isso iremos criar outro componente, chamado product-review.
 
 o objetivo aqui é colocar todas as informações de comentários em um array.
 
-[Proximo Passo](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/tree/master/VueJS/011%20-%20Tabs)
+[Proximo Passo](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/VueJS/011%20-%20Tabs)

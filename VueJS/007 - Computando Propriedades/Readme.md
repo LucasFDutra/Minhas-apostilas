@@ -38,4 +38,4 @@ Veja que antes tinhamos `<h1>{{product}}</h1>` e agora temos `<h1>{{title}}</h1>
 
 > OBS.: Farei mais algumas modificações na aplicação, então veja o video que indiquei.
 
-[Proximo Passo](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/tree/master/VueJS/008%20-%20Componentes)
+[Proximo Passo](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/VueJS/008%20-%20Componentes)

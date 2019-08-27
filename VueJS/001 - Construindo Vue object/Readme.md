@@ -51,4 +51,4 @@ var app = new Vue({
 })
 ```
 
-[Proximo Passo](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/tree/master/VueJS/002%20-%20v-bind)
+[Proximo Passo](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/VueJS/002%20-%20v-bind)

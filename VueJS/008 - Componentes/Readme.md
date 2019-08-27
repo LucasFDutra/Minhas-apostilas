@@ -123,4 +123,4 @@ Veja que eu criei dois produtos, um para usuários primium que sairá de graça,
   })
   ```
 
-[Proximo Passo](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/tree/master/VueJS/009%20-%20Comunicating%20Events)
+[Proximo Passo](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/VueJS/009%20-%20Comunicating%20Events)

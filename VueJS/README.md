@@ -6,4 +6,4 @@ Por isso sempre abra os links que estão nos readmes e se quiser aprender de ver
 
 [Documentação](https://vuejs.org/v2/guide/)
 
-Mas se quiser continuar seguindo os meus tutoriais e vendo meus códigos inicie por [aqui](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/tree/master/VueJS/001%20-%20Construindo%20Vue%20object)
+Mas se quiser continuar seguindo os meus tutoriais e vendo meus códigos, inicie por [aqui](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/VueJS/001%20-%20Construindo%20Vue%20object)

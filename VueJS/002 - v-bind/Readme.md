@@ -2,8 +2,8 @@
 
 - [Veja](https://www.vuemastery.com/courses/intro-to-vue-js/attribute-binding)
 
-- [Exemplo 1](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/tree/master/VueJS/002%20-%20v-bind/ex001): O vue coloca uma imagem para a gente
-- [Exemplo 2](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/tree/master/VueJS/002%20-%20v-bind/ex002): O vue adiciona um link a imagem
+- [Exemplo 1](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/VueJS/002%20-%20v-bind/ex001): O vue coloca uma imagem para a gente
+- [Exemplo 2](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/VueJS/002%20-%20v-bind/ex002): O vue adiciona um link a imagem
 
 Podemos controlar dinâmicamente os atributos de um elemento html através do vue.
 
@@ -37,4 +37,4 @@ Assim no código JS podemos controlar a imagem que queremos da seguinte forma:
 
 Ou seja, se tivermos qualquer outro atributo e colocarmos `v-bind` na frente ele pode ser controlado com vue.
 
-[Proximo Passo](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/tree/master/VueJS/003%20-%20condicional)
+[Proximo Passo](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/VueJS/003%20-%20condicional)

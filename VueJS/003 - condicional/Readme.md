@@ -48,4 +48,4 @@ Agora veja o código js para essa aplicação
   })
   ```
 
-[Proximo Passo](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/tree/master/VueJS/004%20-%20List%20Rendering)
+[Proximo Passo](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/VueJS/004%20-%20List%20Rendering)
