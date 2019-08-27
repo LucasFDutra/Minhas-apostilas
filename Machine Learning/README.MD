@@ -84,7 +84,7 @@ Para instalar o Jupyter Notebook
 
 Após ter lido essa breve introdução siga a ordem:
 
-- [Pré-processamento](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/Machine%20Learning/001%20-%20Pr%C3%A9-Processamento/Pr%C3%A9-processamento.ipyn)
+- [Pré-processamento](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/Machine%20Learning/001%20-%20Pr%C3%A9-Processamento/Pr%C3%A9-processamento.ipynb)
 - [Naive Bayes](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/Machine%20Learning/002%20-%20Naive%20Bayes/Naive%20bayes.ipynb)
 - [Árvore de decisão e random forest](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/Machine%20Learning/003%20-%20%20Arvore%20de%20Decis%C3%A3o%20e%20Random%20Forest/%C3%81rvore%20de%20decis%C3%A3o%20e%20random%20forest.ipynb)
 - [K-nearest neighbors](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/Machine%20Learning/004%20-%20K-Nearest%20Neighbors/K-nearest%20neighbors.ipynb)
