@@ -1,0 +1,38 @@
+body{
+    font-family: normal 14px Arial;
+    color: white;
+    background: rgb(44, 44, 216)
+}
+
+#title-box{
+    margin-left: auto;
+    text-align: left;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.356);
+}
+
+#img-box{
+    margin: auto;
+    text-align: left;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.356);
+}
+
+#menu-box{
+    list-style-type: none;
+    margin: auto;
+    overflow: hidden;
+    padding: 10px;
+    text-align: left;
+}
+
+li{
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+}
+
+#div-geral{
+    text-align: center
+}
