@@ -216,13 +216,13 @@ Para exibir algo na tela utiliza-se o comando `println`, ou `printf`. A diferen�
 
 No swing vamos criar a janela mostrada na figura abaixo.
 
-![](https://github.com/LucasFDutra/Minha-Apostila-De-Linguagem-Java/blob/master/Imagens/Figura_01.gif?raw=true)
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/Java/Imagens/Figura_01.gif?raw=true)
 
 O objetivo desse programa é fazer a soma entre os valores que estão dentro das caixas de texto e exibir o resultado após apertar o botão.
 
 Para pegarmos o que está escrito dentro das caixas de texto vamos utilizar o comando `getText()`, e para exibir no label vamos utilizar `setText`.
 
-Todo o código vai poder ser visto no [Programa 01](https://github.com/LucasFDutra/Minha-Apostila-De-Linguagem-Java/tree/master/Programas/Programa%2001).
+Todo o código vai poder ser visto no [Programa 01](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/Java/Programas/Programa%2001).
 
 # **4. CONDICIONAIS**
 
@@ -339,11 +339,11 @@ Para comparar se duas strings são iguais não basta apenas utilizar o operar `=
 
 No swing vamos criar a janela mostrada na figura abaixo.
 
-![](https://github.com/LucasFDutra/Minha-Apostila-De-Linguagem-Java/blob/master/Imagens/Figura_02.gif?raw=true)
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/Java/Imagens/Figura_02.gif?raw=true)
 
 O objetivo desse programa é fazer a comparação entre o conteúdo das `textField` e mostar se são iguais ou não.
 
-Todo o código vai poder ser visto no [Programa 02](https://github.com/LucasFDutra/Minha-Apostila-De-Linguagem-Java/tree/master/Programas/Programa%2002).
+Todo o código vai poder ser visto no [Programa 02](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/Java/Programas/Programa%2002).
 
 # **5. ESTRUTURAS DE REPETIÇÃO**
 
@@ -775,7 +775,7 @@ static tipo nome(parametros){
 
 # **9. POO**
 
-Toda a base teorica para POO está na apostila de POO, que também foi escrita por mim. Então todo o conteúdo que colocarei aqui nessa apostila está baseado na teoría da apostila de POO, então abra ela ai também e acompanhe as duas juntas. A mesma está nesse [link](https://github.com/LucasFDutra/Minha-Apostila-De-POO).
+Toda a base teorica para POO está na apostila de POO, que também foi escrita por mim. Então todo o conteúdo que colocarei aqui nessa apostila está baseado na teoría da apostila de POO, então abra ela ai também e acompanhe as duas juntas. A mesma está nesse [link](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/POO).
 
 ## 9.1 CLASSES
 
