@@ -214,8 +214,9 @@ Aqui definiremos o corpo da nossa página. Dentro dessa tag podemos colocar basi
 </html>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_01.png?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_01.png?raw=true)
 
 # 5. TITULOS
 
@@ -233,8 +234,9 @@ Para definir titulos utiliza-se a tag `<h_numero_do_titulo>` sendo que o número
 </body>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_02.png?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_02.png?raw=true)
 
 # 6. PARÁGRAFOS
 
@@ -257,8 +259,9 @@ A tag de criação de parágrafo é: `<p>`
 </body>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_03.png?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_03.png?raw=true)
 
 # 7. HIPERLINK
 
@@ -282,8 +285,9 @@ Para adicionar um link utilize a tag `<a>`.
 </body>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_04.png?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_04.png?raw=true)
 
 ## 7.1 HIPERLINK COM TITULOS
 
@@ -307,8 +311,9 @@ Para adicionar um link utilize a tag `<a>`.
 </body>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_05.png?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_05.png?raw=true)
 
 # 8. IMAGENS
 
@@ -332,8 +337,9 @@ Para adicionar uma imagem utilize a tag `<img src="">`
 </body>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_06.gif?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_06.gif?raw=true)
 
 ## 8.1 IMAGEM COMO HIPERLINK
 
@@ -359,8 +365,9 @@ Para utilizar uma imagem como um hiperlink basta inserir a imagem entre a tag `<
 </body>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_07.gif?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_07.gif?raw=true)
 
 ## 8.2 IMAGEM FLUTUANDO
 
@@ -382,8 +389,9 @@ Para utilizar uma imagem como um hiperlink basta inserir a imagem entre a tag `<
 </body>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_08.png?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_08.png?raw=true)
 
 ## 8.3 MAPEAR IMAGEM
 
@@ -414,8 +422,9 @@ Podemos dividir os pixels de uma imagem e fazer com que cada parte dela seja um 
 </body>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_09.gif?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_09.gif?raw=true)
 
 # 9. BOTÕES
 
@@ -437,8 +446,9 @@ Para adicionar um botão a tela utlize a tag `<button>`
 </body>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_10.png?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_10.png?raw=true)
 
 # 10. LISTAS
 
@@ -487,8 +497,9 @@ Podemos criar listas ordenadas (tópico 1, tópico 2,...) ou listas desordenadas
 </body>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_11.png?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_11.png?raw=true)
 
 ## 10.1 LISTA HOIZONTAL
 
@@ -534,8 +545,9 @@ Para criar uma lista horizontal é necessário utilizar estilos em css, então d
 </body>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_12.png?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_12.png?raw=true)
 
 # 11. FORMATAÇÃO DE TEXTO
 
@@ -553,8 +565,9 @@ Para criar uma lista horizontal é necessário utilizar estilos em css, então d
 </body>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_13.png?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_13.png?raw=true)
 
 ## 11.2 TEXTO EM ITÁLICO
 
@@ -570,8 +583,9 @@ Para criar uma lista horizontal é necessário utilizar estilos em css, então d
 </body>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_14.png?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_14.png?raw=true)
 
 ## 11.3 TEXTO SUBLINHADO
 
@@ -585,8 +599,9 @@ Para criar uma lista horizontal é necessário utilizar estilos em css, então d
 </body>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_15.png?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_15.png?raw=true)
 
 ## 11.4 TEXTO SUBSCRITO
 
@@ -600,8 +615,9 @@ Para criar uma lista horizontal é necessário utilizar estilos em css, então d
 </body>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_16.png?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_16.png?raw=true)
 
 ## 11.5 TEXTO SOBRESCRITO
 
@@ -615,8 +631,9 @@ Para criar uma lista horizontal é necessário utilizar estilos em css, então d
 </body>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_17.png?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_17.png?raw=true)
 
 ## 11.6 TEXTO COM FONTE MAIOR DO QUE O PADRÃO
 
@@ -630,8 +647,9 @@ Para criar uma lista horizontal é necessário utilizar estilos em css, então d
 </body>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_18.png?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_18.png?raw=true)
 
 ## 11.7 TEXTO COM FONTE MENOR DO QUE O PADRÃO
 
@@ -645,8 +663,9 @@ Para criar uma lista horizontal é necessário utilizar estilos em css, então d
 </body>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_19.png?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_19.png?raw=true)
 
 ## 11.8 PULAR UMA LINHA
 
@@ -669,8 +688,9 @@ Para criar uma lista horizontal é necessário utilizar estilos em css, então d
 </body>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_20.png?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_20.png?raw=true)
 
 ## 11.9 CRIAR LINHA HORIZONTAL
 
@@ -684,8 +704,9 @@ Para criar uma lista horizontal é necessário utilizar estilos em css, então d
 </body>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_21.png?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_21.png?raw=true)
 
 ## 11.10 TEXTO COM MARCA
 
@@ -706,8 +727,9 @@ Podemos marcar desde uma única palavra dentro de uma frase, até mesmo uma fras
 </body>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_22.png?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_22.png?raw=true)
 
 ## 11.11 RISCAR UM TEXTO
 
@@ -728,8 +750,9 @@ Podemos riscar uma palavra, ou até mesmo um texto todo, basta essa região esta
 </body>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_23.png?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_23.png?raw=true)
 
 ## 11.12 ABREVIAR TEXTO
 
@@ -751,8 +774,9 @@ Se quiser abreviar um texto para uma sigla, porém quando passar o mouse em cima
 </body>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_24.gif?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_24.gif?raw=true)
 
 # 12. TABELAS
 
@@ -800,7 +824,8 @@ Para a criação de tabelas utiliza-se a tag `<table>`. Sendo que:
 </body>
 ```
 
-- Saída <br>
+- Saída
+
   <body>
       <table>
         <tr> <!-- cabeçalho -->
@@ -891,8 +916,9 @@ O código CSS pode ser utilizado de três formas:
 </body>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_25.png?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_25.png?raw=true)
 
 ## 13.2 INTERNAL
 
@@ -926,8 +952,9 @@ O código CSS pode ser utilizado de três formas:
 </body>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_26.png?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_26.png?raw=true)
 
 ## 13.3 EXTERNAL
 
@@ -970,8 +997,9 @@ p{font-family: cursive;}
 </body>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_27.png?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_27.png?raw=true)
 
 # 14. A TAG DIV
 
@@ -991,8 +1019,9 @@ Em tudo quanto é página a tag div será encontrada. Ela serve para criar bloco
 </body>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_28.png?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_28.png?raw=true)
 
 # 15. CLASSES
 
@@ -1024,8 +1053,9 @@ Quando vimos estilos, nota-se que se tivessemos um estilo para parágrafo, teria
 </body>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_29.png?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_29.png?raw=true)
 
 > OBS.: A mesma ideia pode ser aplicada ao atributo `id`. Porém, uma classe pode ser aplicada para vários elementos, já o id não, ele sempre único.
 
@@ -1051,8 +1081,9 @@ Aqui podemos colocar janelas no site. Isso é possível com o uso da tag `<ifram
 </body>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_30.png?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_30.png?raw=true)
 
 ## 16.1 UTILIZAR IFRAME COMO ALVO DE UM LINK
 
@@ -1076,5 +1107,6 @@ Se quisermos podemos colocar uma página da web dentro do nosso frame. Para isso
 </body>
 ```
 
-- Saída <br>
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/HTML/Imagens/Figura_31.gif?raw=true)
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/HTML/Imagens/Figura_31.gif?raw=true)
