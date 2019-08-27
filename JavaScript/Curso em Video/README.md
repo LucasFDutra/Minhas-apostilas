@@ -115,11 +115,11 @@ Claro que o melhor é que esses códigos estejam em arquivos separados, mas para
 - Saída:
   O comando JS faz aparecer o alerta
 
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_01.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_01.png?raw=true)
 
 Após clicar em "OK", o body aparece configurado confome o CSS
 
-![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_02.png?raw=true)
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_02.png?raw=true)
 
 # **2. VARIÁVEIS**
 
@@ -144,7 +144,7 @@ var teste = false
 
 > OBS.: Para reduzir o tamanho do código, irei colocar apenas a parte referente ao JavaScript (ou seja, entre a tag script). Porém todo o código estará no link que deixarei a seguir.
 
-- Exemplo 1: [Código Completo](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/JavaScript/Curso%20em%20Video/C%C3%B3digos/aula05/ex002.html)
+- Exemplo 1: [Código Completo](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/JavaScript/Curso%20em%20Video/C%C3%B3digos/aula05/ex002.html)
 
   ```JavaScript
   <script>
@@ -155,11 +155,11 @@ var teste = false
 
 - Saída 1:
 
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_03.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_03.png?raw=true)
 
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_04.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_04.png?raw=true)
 
-- Exemplo 2: [Código Completo](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/JavaScript/Curso%20em%20Video/C%C3%B3digos/aula05/ex003.html)
+- Exemplo 2: [Código Completo](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/JavaScript/Curso%20em%20Video/C%C3%B3digos/aula05/ex003.html)
 
   ```JavaScript
   <script>
@@ -176,11 +176,11 @@ var teste = false
 
 - Saída 2:
 
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_05.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_05.png?raw=true)
 
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_06.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_06.png?raw=true)
 
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_07.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_07.png?raw=true)
 
 > OBS.: Foi necessário converter os números digitados para inteiros, pois o retorno de window.prompt é uma string.
 
@@ -224,7 +224,7 @@ numero.toLocaleString('pt-br', {style: 'currency', currency: 'USD'}) // US$ 3,14
 
 Vamos mostrar coisas escritas na tela do browser. Para isso vamos utilizar o comando `document.write`.
 
-- Exemplo: [Código Completo](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/JavaScript/Curso%20em%20Video/C%C3%B3digos/aula05/ex004.html)
+- Exemplo: [Código Completo](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/JavaScript/Curso%20em%20Video/C%C3%B3digos/aula05/ex004.html)
 
   ```JavaScript
   <script>
@@ -236,9 +236,9 @@ Vamos mostrar coisas escritas na tela do browser. Para isso vamos utilizar o com
 
 - Saída:
 
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_08.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_08.png?raw=true)
 
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_09.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_09.png?raw=true)
 
 # **4. DOM**
 
@@ -279,7 +279,7 @@ E isso é importante pois sabendo qual o nome de cada componente e o que eles s�
 
 Veja no exemplo do gif abaixo que a sentença é feita da seguinte forma `window.document.write` ou seja, será escrito no documento que está dentro da janela.
 
-![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_10.gif?raw=true)
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_10.gif?raw=true)
 
 > OBS.: Utilize o visual code com a extensão Watch in Chrome para que a página seja modificada conforme digita os códigos.
 
@@ -319,7 +319,7 @@ Utiliza o comando `getElementsByTagName()`. Ou seja, o elemento será selecionad
 
 - Saída:
 
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_11.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_11.png?raw=true)
 
 > OBS.: A última linha é a linha de saída
 
@@ -333,19 +333,19 @@ Se derrepente eu quiser mudar o que acontece com o elemento P1 é só eu fazer `
 
 - Saída:
 
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_12.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_12.png?raw=true)
 
 Veja que agora podemos brincar com isso. Se atribuirmos variáveis para as partes da nossa window podemos modificar os textos, utilizá-los, modificar o css.
 
 Veja alguns exemplos com o gif abaixo
 
-![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_13.gif?raw=true)
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_13.gif?raw=true)
 
 ### 4.2.2 Por ID
 
 Tudo que foi feito utilizando as tags pode ser feito com o uso do ID com `getElementByID()`
 
-![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_14.gif?raw=true)
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_14.gif?raw=true)
 
 ### 4.2.3 Por Nome
 
@@ -359,23 +359,23 @@ Tudo que foi feito utilizando as tags pode ser feito com o uso do Class com `get
 
 Agora temos uma diferença, que é utilizando o `querySelector()` ou `querySelectorAll()`.
 
-![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_15.gif?raw=true)
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_15.gif?raw=true)
 
 ## 4.3 EVENTOS DOM
 
 Existem vários eventos, e nesse [link](https://developer.mozilla.org/en-US/docs/Web/Events) você pode ver a lista completa. Porém aqui irei mostrar alguns utilizando um exemplo.
 
-Veja o gif abaixo, cujo código completo está [aqui](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/JavaScript/Curso%20em%20Video/C%C3%B3digos/aula10/ex006.html).
+Veja o gif abaixo, cujo código completo está [aqui](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/JavaScript/Curso%20em%20Video/C%C3%B3digos/aula10/ex006.html).
 
-![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_16.gif?raw=true)
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_16.gif?raw=true)
 
 Outro método de fazer isso, com o código mais limpo (é o que vai ficar na versão final) é essa mostrada no gif abaixo.
 
-![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_17.gif?raw=true)
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_17.gif?raw=true)
 
-Veja o exemplo abaixo cujo código está [aqui](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/JavaScript/Curso%20em%20Video/C%C3%B3digos/aula10/ex007.html)
+Veja o exemplo abaixo cujo código está [aqui](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/JavaScript/Curso%20em%20Video/C%C3%B3digos/aula10/ex007.html)
 
-![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_18.gif?raw=true)
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_18.gif?raw=true)
 
 # **5. CONDICIONAIS**
 
@@ -466,7 +466,7 @@ else{
 
 Vejamos um exemplo com o brower, em que iremos pedir dois valores e iremos verificar as condições igual ao exemplo acima.
 
-- Exemplo 2: [Código Completo](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/JavaScript/Curso%20em%20Video/C%C3%B3digos/aula11/ex008.html)
+- Exemplo 2: [Código Completo](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/JavaScript/Curso%20em%20Video/C%C3%B3digos/aula11/ex008.html)
 
   ```JavaScript
   <body>
@@ -506,7 +506,7 @@ Vejamos um exemplo com o brower, em que iremos pedir dois valores e iremos verif
 
 - Saída
 
-![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_19.png?raw=true)
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_19.png?raw=true)
 
 # **6. ADICIONANDO ARQUIVOS CSS E JS SEPARADOS DO HTML**
 
@@ -518,17 +518,17 @@ Indico que veja os vídeos do curso em video, pois tem muito conteúdo bom e foi
 - [Video 2](https://www.youtube.com/watch?v=UXSWgnbSHxs&list=PLHz_AreHm4dlsK3Nr9GVvXCbpQyHQl1o1&index=21)
 - [Video 3](https://www.youtube.com/watch?v=f5es-PpaUI8&list=PLHz_AreHm4dlsK3Nr9GVvXCbpQyHQl1o1&index=22)
 
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_20.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_20.png?raw=true)
 
 Esse é o protótipo de um pequeno site que verifica se está de dia, tarde ou noite de acordo com o horario do computador.
 
-Veja a execução no gif abaixo e o site completo [aqui](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/tree/master/C%C3%B3digos%20JS/aula12/ex009)
+Veja a execução no gif abaixo e o site completo [aqui](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/JavaScript/Curso%20em%20Video/C%C3%B3digos/aula12/ex009)
 
-![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_21.gif?raw=true)
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_21.gif?raw=true)
 
-Veja também esse outro exemplo, que é mostrado no gif abaixo, em que de acordo com uma idade e sexo uma imagem é mostrada. O código completo está [aqui](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/tree/master/C%C3%B3digos%20JS/aula12/ex010)
+Veja também esse outro exemplo, que é mostrado no gif abaixo, em que de acordo com uma idade e sexo uma imagem é mostrada. O código completo está [aqui](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/JavaScript/Curso%20em%20Video/C%C3%B3digos/aula12/ex010)
 
-![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_22.gif?raw=true)
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_22.gif?raw=true)
 
 # **7. ESTRUTURAS DE REPETIÇÕES**
 
@@ -623,9 +623,9 @@ O comando `break` serve para interromper um loop caso alguma condição especial
   0, 1, 2, 3, 4, 5,
   ```
 
-Veja o exemplo do gif abaixo que mostra a tabuada de um número. O exemplo é bem simples, inclusive nem utilizei contenções para os erros, mas trabalhei um pouco a parte de CSS, então vale a pena dar uma olhada no [Código Completo](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/tree/master/C%C3%B3digos%20JS/aula14).
+Veja o exemplo do gif abaixo que mostra a tabuada de um número. O exemplo é bem simples, inclusive nem utilizei contenções para os erros, mas trabalhei um pouco a parte de CSS, então vale a pena dar uma olhada no [Código Completo](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/JavaScript/Curso%20em%20Video/C%C3%B3digos/aula14).
 
-![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_23.gif?raw=true)
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/JavaScript/Curso%20em%20Video/Imagens/Figura_23.gif?raw=true)
 
 # **8. Arrays**
 
@@ -1740,7 +1740,7 @@ Quando temos uma determinada classe em que algum atributo é do tipo de outra cl
   Lucas
   ```
 
-> OBS.: Os três códigos estão em um mesmo arquivo. Se quiser ver o código completo abra [aqui](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/JavaScript/Curso%20em%20Video/C%C3%B3digos/aula16/ex013.js).
+> OBS.: Os três códigos estão em um mesmo arquivo. Se quiser ver o código completo abra [aqui](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/JavaScript/Curso%20em%20Video/C%C3%B3digos/aula16/ex013.js).
 
 ## 11.6 HERANÇA
 

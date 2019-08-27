@@ -17,8 +17,8 @@ Segue abaixo alguns links que posso indicar para auxiliarem em seus estudos. Mas
 
 Em mihas anotações referentes ao curso em video tem no material uma parte de manipulação de dom, e outra de poo (não aborda no curso em video, mas eu estudei por fora). Porém, não escolhi não trazer esses temas para cá, isso se deve ao fato de que POO não é muito utilizada em JavaScript (não diretamente) e a manipulação de dom eu acho mais interessante utilizar algum framework ou então o react. Recomendo muito o react.
 
-- [Minhas notas do curso em video](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/tree/master/JavaScript/Curso%20em%20Video);
-- [Meu material sobre react](https://github.com/LucasFDutra/Estudos-De-React).
+- [Minhas notas do curso em video](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/JavaScript/Curso%20em%20Video);
+- [Meu material sobre react]().
 
 Então quando acabar esse material, você pode seguir seus estudos em duas direções, ou o frontend (recomendo o react na web e react-native no mobile) ou então o backend (recomendo o nodeJS).
 
