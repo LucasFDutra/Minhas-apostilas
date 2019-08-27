@@ -1,0 +1,26 @@
+body{
+    font: normal 12pt Arial;
+    background: url('fundo.jpg');
+}
+div{
+    background-image: url('abacus.png');
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px black;
+    width: 390px;
+    height: auto;
+    margin-top: 100px;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+input#n1{
+    border-radius: 4px;
+}
+input#buttonC{
+    border-radius: 4px;
+}
+select#selec{
+    border-radius: 5px;
+    width: 120px;
+}

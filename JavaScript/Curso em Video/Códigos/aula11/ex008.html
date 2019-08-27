@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            background: rgb(95, 95, 160);
+            font: normal 20pt Arial;
+            color: white;
+        }
+        div#res{
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Verificando números</h1>
+    <input type="number" id = "n1">
+    <input type="number" id = "n2">
+    <input type="button" value="Análise" onclick="clicar()">
+    <div id="res">Resposta</div>
+    <script>
+        function clicar(){
+            var n1 = window.document.querySelector('input#n1')
+            var n2 = window.document.querySelector('input#n2')
+            var res = window.document.querySelector('div#res')
+
+            var a = Number.parseFloat(n1.value)
+            var b = Number.parseFloat(n2.value)
+
+            if (a == b){
+                res.innerHTML = "'a' é igual à 'b'"
+            }
+            else if (a > b){
+                res.innerHTML = "'a' é maior do que 'b'"
+            }
+            else if(a==2 || a==3){
+                res.innerHTML = "'a' é igual a 2 ou igual a 3"
+            }
+            else if(a==2 && b==3){
+                res.innerHTML = "'a' é igual a 2 e 'b' é igual a 3"
+            }
+            else{
+                res.innerHTML = "'a' é diferente de 'b'"
+            }
+        }
+    </script>
+</body>
+</html>

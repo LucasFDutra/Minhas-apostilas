@@ -1,0 +1,11 @@
+function escreverNome() {
+  console.log("dentro do setTimeout");
+}
+
+setTimeout(escreverNome, 1000);
+
+function escreverNome() {
+  console.log("dentro do setInterval");
+}
+
+setInterval(escreverNome, 1000);

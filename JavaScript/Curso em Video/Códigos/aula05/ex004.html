@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            font: normal 20pt Arial;
+            background-color: rgb(150, 150, 216);
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var nome = window.prompt('digite seu nome: ') // pede o nome
+        document.write(`olá ${nome}</br>`) // mostra o nome e pula uma linha com </br>
+        document.write(`<b>como vai você?</b>`) // pergunta como está em negrito com <b>
+        var numero = 3.14
+        numero.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
+    </script>
+</body>
+</html>

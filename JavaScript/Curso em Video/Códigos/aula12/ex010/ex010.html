@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Verificando Idade</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <header>
+        <h1>Verificando Idade</h1>
+    </header>
+    <section>
+        <div id="text">
+            <p>Ano de nascimento:
+                <input type="number" name="txtano" id="txtano" min="0">
+            </p>
+            <p>Sexo:
+                <input type="radio" name="radsex" id="mas" onclick="verificar()">
+                <label for="mas">Masculino</label>
+                <input type="radio" name="radsex" id="fem" onclick="verificar()">
+                <label for="fem">Feminino</label>
+            </p>
+        </div>
+        <div id="div_resultado">
+            <p id="resultado">preencha os dados acima!</p>
+            <img id="imagem">
+        </div>
+    </section>
+    <footer>
+        <p>Lucas Dutra</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+body{
+    background: rgb(23, 23, 175);
+    font: normal 15pt Arial;
+}
+header{
+    color: white;
+    text-align: center;
+}
+section{
+    background: white;
+    width: 450px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.664);
+    padding: 15px;
+    margin: auto;
+    font: normal 12pt Arial;
+}
+div#text{
+    text-align: left;
+    padding: 8px;
+}
+div#div_resultado{
+    text-align: center;
+    padding: 8px;
+}
+input#txtano{
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.541);
+    border-radius: 5px;
+    text-align: center;
+    width: 70px;
+    font: normal 12pt Arial;
+}
+footer{
+    color: white;
+    text-align: center;
+}
