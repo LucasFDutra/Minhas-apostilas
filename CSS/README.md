@@ -83,7 +83,7 @@ O código CSS pode ser utilizado de três formas:
 
 - Saída:
 
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/CSS/Imagens/Figura_01.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/CSS/Imagens/Figura_01.png?raw=true)
 
 ## 2.2 INTERNAL
 
@@ -120,7 +120,7 @@ O código CSS pode ser utilizado de três formas:
 
 - Saída:
 
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/CSS/Imagens/Figura_02.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/CSS/Imagens/Figura_02.png?raw=true)
 
 ## 2.3 EXTERNAL
 
@@ -171,7 +171,7 @@ O código CSS pode ser utilizado de três formas:
 
 - Saída:
 
-  ![](https://github.com/LucasFDutra/Meu-Material-Basico-De-Web/blob/master/CSS/Imagens/Figura_03.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/CSS/Imagens/Figura_03.png?raw=true)
 
 > OBS: Todos os exemplos agora serão modificações que farei nesses dois arquivos, então não ficarei mais colocando os nomes deles.
 
