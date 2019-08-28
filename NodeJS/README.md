@@ -374,3 +374,5 @@ Esse banco de dados será deletado, por isso deixei senha à mostra aqui, porém
   # credentials
   credentials.json
   ```
+
+> OBS.: Essa mesma tecnica é utilizada para colocar apiKey, afinal essas keys também não são coisas que você quer por ai soltas.
