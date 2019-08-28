@@ -234,42 +234,57 @@ Baixe a versão gratuita do banco de dados chamada mongoDB atlas, que pode ser e
 
 Clique em `try free` e crie uma conta
 
-![](https://github.com/LucasFDutra/tindev-semana-OmniStack/blob/master/Readme_imagens/Figura_07.png?raw=true)
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_01.png?raw=true)
 
 Você vai cair nessa tela aqui
-![](https://github.com/LucasFDutra/tindev-semana-OmniStack/blob/master/Readme_imagens/Figura_08.png?raw=true)
+
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_02.png?raw=true)
 
 Role tudo para baixo e clique em create cluster (note que temos 512mb gratuitos para utilizarmos)
-![](https://github.com/LucasFDutra/tindev-semana-OmniStack/blob/master/Readme_imagens/Figura_09.png?raw=true)
+
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_03.png?raw=true)
 
 Depois vai cair nessa tela abaixo e isso pode demorar um tempo
-![](https://github.com/LucasFDutra/tindev-semana-OmniStack/blob/master/Readme_imagens/Figura_10.png?raw=true)
+
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_04.png?raw=true)
 
 Depois de criado vá em Database Access para criar um usuário e senha
-![](https://github.com/LucasFDutra/tindev-semana-OmniStack/blob/master/Readme_imagens/Figura_11.png?raw=true)
+
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_05.png?raw=true)
 
 Vá em add new user
-![](https://github.com/LucasFDutra/tindev-semana-OmniStack/blob/master/Readme_imagens/Figura_12.png?raw=true)
+
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_06.png?raw=true)
 
 Crie o usuário, e deixe marcada a opção Read and write to any database e adicione o usuário
-![](https://github.com/LucasFDutra/tindev-semana-OmniStack/blob/master/Readme_imagens/Figura_13.png?raw=true)
+
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_07.png?raw=true)
 
 Vá em network access
-![](https://github.com/LucasFDutra/tindev-semana-OmniStack/blob/master/Readme_imagens/Figura_14.png?raw=true)
+
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_08.png?raw=true)
 
 Crie um novo acesso em add ip address e depois permita que esse banco de dados seja acessado de qualquer lugar clicando em Allow access from anywhere
-![](https://github.com/LucasFDutra/tindev-semana-OmniStack/blob/master/Readme_imagens/Figura_15.png?raw=true)
+
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_09.png?raw=true)
 
 Vá em clusters e clique em connect
-![](https://github.com/LucasFDutra/tindev-semana-OmniStack/blob/master/Readme_imagens/Figura_16.png?raw=true)
+
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_10.png?raw=true)
 
 Selecione a opção connect to your application
-![](https://github.com/LucasFDutra/tindev-semana-OmniStack/blob/master/Readme_imagens/Figura_17.png?raw=true)
+
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_11.png?raw=true)
 
 Agora deixe a tela seguinte com a configuração mostrada abaixo e clique em copy
-![](https://github.com/LucasFDutra/tindev-semana-OmniStack/blob/master/Readme_imagens/Figura_18.png?raw=true)
 
-Agora dentro da pasta backend adicione o mongoose com o comando `yarn add mongoose`
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_12.png?raw=true)
+
+Agora dentro da pasta backend adicione o mongoose com o comando
+
+```sh
+sudo npm i mongoose
+```
 
 O mongoose vai permitir que nos comuniquemos com o banco de dados utilizando apenas sintax javascrip. Isso faz com que não precisemos utilizar aqueles comando `INSERT, INTO..` que os bancos de dados precisam
 
@@ -290,10 +305,11 @@ A url de conexão é aquela que pegamos do mongoDB ao clicar em copy. Assim noss
 ```JavaScript
 const express = require("express");
 const mongoose = require("mongoose");
-const routes = require("./routes");
 
-const server = express();
+// Iniciando o APP
+const app = express();
 
+// Iniciando o DB
 mongoose.connect(
   "mongodb+srv://lucasdatabase:lucasdatabase@cluster0-mtkkw.mongodb.net/test?retryWrites=true&w=majority",
   {
@@ -301,10 +317,12 @@ mongoose.connect(
   }
 );
 
-server.use(express.json());
-server.use(routes);
+// Primeira rota
+app.get("/", (req, res) => {
+  res.send("Hello World");
+});
 
-server.listen(3333); // o servidor está ouvindo a porta 3333
+app.listen(3001);
 ```
 
 Uma observação é que provavelmente você terá recebido esse url com `<username>` e `<password>` é só trocar pelo username e o password que você definiu no passo de criação da base de dados (lembre de retirar o sinal de <> também, veja meu exemplo).
@@ -314,3 +332,45 @@ Uma observação é que provavelmente você terá recebido esse url com `<userna
 > OBS.: O comando `useNewUrlParser` é para identificar para o mongoose que estaremos utilizando o novo formato de url (evita um warning).
 
 Pronto, nossa conexão com o banco de dados está feita
+
+## 7.1 SEGURANÇA
+
+Esse banco de dados será deletado, por isso deixei senha à mostra aqui, porém você não quer que o seu fique dessa forma, sendo assim o melhor jeito é colocar esse link de acesso em um arquivo .json, e puxar a informação dele, e colocar esse arquivo dentro do .gitignore para assim a url de acesso não ficar à mostra para o mundo
+
+- Arquivo credentials.json
+
+  ```JavaScript
+  {
+      "mongoUrl": "mongodb+srv://lucasdatabase:lucasdatabase@cluster0-mtkkw.mongodb.net/test?retryWrites=true&w=majority"
+  }
+  ```
+
+- Arquivo server.js
+
+  ```JavaScript
+  const express = require("express");
+  const mongoose = require("mongoose");
+  const mongoUrl = require("./credentials.json");
+
+  // Iniciando o APP
+  const app = express();
+
+  // Iniciando o DB
+  mongoose.connect(mongoUrl.mongoUrl, {
+  useNewUrlParser: true
+  });
+
+  // Primeira rota
+  app.get("/", (req, res) => {
+  res.send("Hello World");
+  });
+
+  app.listen(3001);
+  ```
+
+- Arquivo .gitignore
+
+  ```sh
+  # credentials
+  credentials.json
+  ```
