@@ -9,6 +9,8 @@ Autor: Lucas Felipe Dutra
 - [Curso da rocketseat](https://skylab.rocketseat.com.br)
 - [Material de JavaScript](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/JavaScript)
 
+Todo o material que aqui estará será feito durante a execução do exemplo que se encontra na pasta `node-api` aqui dentro desse repositório.
+
 # **1. INTRODUÇÃO**
 
 O nodeJS é uma plataforma que utiliza a engine V8 do google chrome, assim permitindo que utilizemos o JavaScript no backend.
@@ -406,3 +408,184 @@ Coloque o username e o password conforme havia configurado antes, e em `Autentic
 Veja que a base de dados de teste está presente
 
 ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_19.png?raw=true)
+
+# **8. MODEL**
+
+O model representa uma tabela no banco de dados.
+
+Crie dentro da pasta do projeto uma pasta chamada `src` e dentro da mesma crie uma pasta chamada `models`.
+
+> OBS: Claro que os nomes são opcionais, mas eles fazem sentido no mundo da programação, então meio que por convenção coloque esses nomes.
+
+Agora, vamos criar dentro dessa pasta um arquivo .js que será nosso arquivo model. Coloque o nome dele de acordo com a url que você quer usar para chegar nele. Se a aplicação fosse para utilizar cadastros de desenvolvedore, você poderia utilizar `Dev.js`, mas se fosse uma loja e quisessemos que esse url levasse aos produtos, iriamos colocar `Product.js`
+
+> OBS: Para seguir com o exemplo que estou estudando irei criar um arquivo chamado `Product.js`. Mas para utilizar de exemplo aqui eu sempre chamarei de `NomeDoModel`
+
+Dentro de `Product.js` deve-se importar duas coisas do mongoose, o `Schema` e o `model`, para isso digite a seguinte linha:
+
+```JavaScript
+const { Schema, model } = require('mongoose')
+```
+
+Agora vamos criar a estrutura do nosso banco de dados, ou seja o esquema dele. Que é trazido da seguite forma:
+
+- Arquivo `NomeDoModel.js`
+
+  ```Java
+  const NomeDoSchema = new Schema(
+    // registros que nossa base de dados irá receber
+    {
+      campo_1: {
+        type: tipo_de_dados, // String, Integer, Array
+        required: true_or_false // caso true -> obrigatorio de existir, caso false -> Opcional
+      },
+      campo_2: {
+        type: tipo_de_dados,
+        required: true_or_false
+      }
+    },
+    // timestamps
+    {
+      timestamps: true
+    }
+  );
+
+  module.exports = model('NomeDoModelo', NomeDoSchema); // exportar o esquema
+  ```
+
+O `timestamps` serve para gerar automaticamente duas colunas para nós, uma chamada createdAt e outra chamada updatedAt em cada registro da base de dados.
+
+- createdAt: Armazena a data de criação de cada registro
+- updatedAt: Armazena a data da ultima alteração do registro
+
+Considerando o meu exemplo, o código fica:
+
+- Arquivo `Project.js`
+
+  ```JavaScript
+  const { Schema, model } = require("mongoose");
+
+  const ProductSchema = new Schema(
+    {
+      title: {
+        type: String,
+        required: true
+      },
+      description: {
+        type: String,
+        required: true
+      },
+      url: {
+        type: String,
+        required: true
+      }
+    },
+    {
+      timestamps: true
+    }
+  );
+
+  module.exports = model("Product", ProductSchema);
+  ```
+
+Agora vá para dentro do arquivo server.js e faça a requisição do modulo. Para isso, coloque o comando abaixo da linha de conexão com o banco de dados (é impressindível que isso esteja depois da conexão).
+
+```JavaScript
+// Puxando os modulos
+require('./src/models/NomeDoModel')
+```
+
+No meu exemplo fica assim:
+
+```JavaScript
+// Iniciando o DB
+mongoose.connect(mongoUrl.mongoUrl, {
+  useNewUrlParser: true
+});
+
+// Puxando os modulos
+require('./src/models/Product')
+```
+
+### 8.1 VÁRIOS MODELS
+
+Caso você tenha muitos modelos, não fica legal ficar dando `require` em todos eles, vai ficar umas 20 linhas só de require. Para melhorar isso utilize uma biblioteca chamada `require-dir` que faz a rquisição de tudo que está dentro de um diretório.
+
+Instale a biblioteca:
+
+```sh
+sudo npm install require-dir
+```
+
+Importe ela para sua aplicação dentro de onde vai fazer essas requisições (no nosso caso dentro de server.js).
+
+```JavaScript
+const requireDir = require("require-dir");
+
+// iniciando app
+// iniciando banco
+// requerindo modulos
+requireDir('./src/models');
+```
+
+Agora para adicionar algo basta definir um `"objeto"` para o modelo
+
+```JavaScript
+const NomeDoModel = mongoose.model("NomeDoModel");
+```
+
+E dentro da nossa rota podemos mandar colocar algo dentro do banco utilizando o comando
+
+```JavaScript
+NomeDoModel.create({
+  // passe o objeto de acordo com o schema criado
+})
+```
+
+Seguindo o meu exemplo, podemos fazer da seguinte maneira:
+
+```JavaScript
+// Iniciando o APP
+// Iniciando o DB
+// Puxando os modulos
+
+// Iniciando modelo
+const Product = mongoose.model("Product");
+
+// Primeira rota
+app.get("/", (req, res) => {
+  Product.create({
+    title: "React Native",
+    description: "Build native apps with React",
+    url: "http://github.com/facebook/react-native"
+  });
+
+  return res.send("Hello World"); //ta aqui atoa
+});
+```
+
+Se você for no mongoDB compass você verá que foi criada uma tabela com esses dados (recarregue o mongoDB compass, as vezes ele não atulizou).
+
+# **9. COMUNICANDO COM BANCO DE DADOS**
+
+Para melhorar a forma de como são feitas as requisições ao banco de dados, vamos criar duas coisas. As rotas, e os controladores.
+
+As rotas tem por responsabilidade definir para onde o código vai de acordo com a url que temos.
+
+Os controladores serão aqueles que executarão as tarefas no banco de dados, ou seja, inserção, exclusão, troca.
+
+## 9.1 CONTROLLER
+
+Crie dentro da pasta `src` uma pasta chamada `controllers` e crie um arquivo para ser um controlador de modelo.
+
+Como assim um controlador de modelo? Bem, se você tem um modelo chamado `modelA` e outro chamado `modelB` então crie dois controladores, um para cada modelo, ou seja `ModelAController` e `ModelBController`.
+
+Basicamente faça `NomeDoModuloController.js`
+
+O controller será um objeto a ser exportado, por isso ele será escrito da seguinte forma:
+
+```JavaScript
+module.exports = {
+    // métodos
+}
+```
