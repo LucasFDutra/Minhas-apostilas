@@ -376,3 +376,33 @@ Esse banco de dados será deletado, por isso deixei senha à mostra aqui, porém
   ```
 
 > OBS.: Essa mesma tecnica é utilizada para colocar apiKey, afinal essas keys também não são coisas que você quer por ai soltas.
+
+## 7.2 MONGODB COMPASS
+
+Se quiser verificar o que está acontecendo no seu banco de dados, de uma forma mais fácil do que ficar acessando o site do mongoDB, utilize o mongoDB compass, que é uma interface que irá trazer as informações do seu banco. Para baixar o mongodb compass community clique [aqui](https://www.mongodb.com/products/compass). Agora é só clicar em `try now`
+
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_13.png?raw=true)
+
+Clique em tools escolha a melhor versão para você e clique em download
+
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_14.png?raw=true)
+
+Agora abra o mongoDB compass community e depois vá no mongoDB Atlas (onde configurou seu banco de dados) e vá em cluster e clic em connect novamente e depois escolha a opção connect with mongoDB compass
+
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_15.png?raw=true)
+
+Ai você clica em copy
+
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_16.png?raw=true)
+
+Volte para o mongoDB compass e ele automaticamente identificará que existe uma url copiada e perguntará se quer importar ela para dentro da aplicação. Clique em sim
+
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_17.png?raw=true)
+
+Coloque o username e o password conforme havia configurado antes, e em `Autentication Database` coloque `admin`. E clique em connect
+
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_18.png?raw=true)
+
+Veja que a base de dados de teste está presente
+
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_19.png?raw=true)
