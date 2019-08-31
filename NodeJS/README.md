@@ -1037,6 +1037,8 @@ Adicione o nodemon como devDependencies e adicione o script em package.json
 
 # **11. INSOMNIA**
 
+O insomnia vai nos ajudar a testar as rotas da nossa api. Apesar de já conseguirmos ver a saída no nosso browser, não é o melhor jeito possível, pois ali conseguimos ver basicamente só as rotas get. Não podemos testar rotas post (inserir algo no banco de dados. A gente chega lá).
+
 ## 11.1 INSTALAÇÃO
 
 Digite em seu terminal;
@@ -1048,3 +1050,58 @@ wget --quiet -O - https://insomnia.rest/keys/debian-public.key.asc | sudo apt-ke
 
 sudo apt-get install insomnia
 ```
+
+## 11.2 UTILIZAÇÃO
+
+
+- Dentro do Insomnia vá em `Insomnia -> create new workspace` de um nome pra ela.
+
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_20.png?raw=true)
+
+- De um nome para esse workspace
+
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_21.png?raw=true)
+
+- Agora do lado esquerdo veja que apareceu um botão com um +, clique nele e clique em `new request`.
+
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_22.png?raw=true)
+
+- Clique em `GET` para ver os tipos de rotas que podemos escolher.
+
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_24.png?raw=true)
+
+- Para saber qual tipo de rota você deve escolher veja de qual tipo dela no arquivo `routes.js`
+
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_25.png?raw=true)
+
+> Veja que nesse caso do exemplo, temos uma rota do tipo `get`, logo iremos utilizar o `GET` no insomnia
+
+- Agora depois de definido o nome, e o tipo, clique em `Create`
+
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_26.png?raw=true)
+
+- Agora copie a url da rota a ser observada conforme a figura abaixo e clique em `Send`:
+
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_27.png?raw=true)
+
+- Agora se tudo tiver dado certo, você verá a seguinte resposta:
+
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_28.png?raw=true)
+
+## 11.3 OTIMIZANDO A UTILIZAÇÃO
+
+Como você bem deve imaginar, nos não iremos monitorar apenas essa rota, iremos ver várias, dependendo do projeto podem ser dezenas. Mas em todas elas o modo criar o monitoramento é igual, e em todas elas precisaremos digitar a mesma url variando apenas a ultima rota. Ou seja, `http://localhost:3001/api` é sempre uma constante na aplicação. Sem falar caso nós mudarmos a nossa url (se deixar de ser localhost por exemplo) fica meio complicado de sairmos mudando em todos os arquivos, então é mais interessante que esteja salvo em algum lugar que essa parte é constante e depois nos mudamos somente nesse lugar (exatamente o mesmo principio do porque utilizar variáveis em alguma linguagem de programação, você atribui um valor a ela, e depois somente a chama, e caso queira mudar o valor dela, você muda em um só lugar e a mudança já vai para o restante). Então para facilitar nossa vida, vamos avisar o insomnia que isso é sempre contante.
+
+- Vá em `No Environment -> Manage Environment`
+
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_29.png?raw=true)
+
+- Coloque o mesmo que eu e clique em `Done`
+
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_30.png?raw=true)
+
+- Agora vá mude o endereço de url conforme a imagem abaixo (digite base e espere um pouco que vai aparecer base_url isso indica que deu certo, mas mande um send novamente para ver se está tudo ok).
+
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_31.png?raw=true)
+
+> OBS: O insomnia não discarta a necessidade de você manter o servidor rodando em algum terminal (npm run dev).
