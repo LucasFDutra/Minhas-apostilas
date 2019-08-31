@@ -1351,7 +1351,7 @@ Como precisamos passar um id valido para o nosso método show, vamos utilizar a 
 ## 12.3 UPDATE
 Analogamente ao restante, irei fazer o controller primeiro, depois o routes e depois o insomnia. O server não requer mais mudanças.
 
-### **12..1 Controller**
+### **12.3.1 Controller**
 Aqui estaremos construindo uma mescla do create e do read, afinal precisamos encontrar um registro especifico e depois inserir algo nele.
 
 Então a estrutura dessa modificação fica a seguinte:
@@ -1370,7 +1370,7 @@ Mas agora o que seria aquele `{new: true}`, bom, isso indica para nossa função
 
 Uma observação a se fazer é que quando formos atualizar um determinado registro, não precisamos atualizar ele todo, podemos mandar somente um atributo e ele substituirá somente esse atributo.
 
-### **12..2 Routes**
+### **12.3.2 Routes**
 
 Agora no routes, vamos utilizar o método `put` e assim como o `post` ele precisa passar o id pelo endereço. Então ficamos com:
 
@@ -1395,7 +1395,7 @@ Agora podemos ver o arquivo completo:
   module.exports = routes;
   ```
 
-### **12..3 Insomnia**
+### **12.3.3 Insomnia**
 
 - Copie um id valido, assim como fizemos na request `Show`, pois precisamos de um para fazer o update
 
@@ -1413,7 +1413,7 @@ Agora podemos ver o arquivo completo:
 ## 12.4 DELETE
 Analogamente ao restante, irei fazer o controller primeiro, depois o routes e depois o insomnia. O server não requer mais mudanças.
 
-### **12..1 Controller**
+### **12.4.1 Controller**
 
 Esse aqui chamaremos de `destroy`, e diferentemente dos outros que sempre estavamos retornando o produto, aqui não faz sentido fazermos isso, afinal não é para ter produto no final das contas.
 
@@ -1469,7 +1469,7 @@ O arquivo completo fica:
   };
   ```
 
-### **12..2 Routes**
+### **12.4.2 Routes**
 
 Veja que tudo que precisamos é do id do registro, então assim como antes a nossa rota irá mandar o id pelo url e isso será feito através de um método chamado `delete`
 
@@ -1495,7 +1495,7 @@ routes.delete("/products/:id", ProductController.destroy) //destri coisas
   module.exports = routes;
   ```
 
-### **12..3 Insomnia**
+### **12.4.3 Insomnia**
 
 - Copie um id valido
 
