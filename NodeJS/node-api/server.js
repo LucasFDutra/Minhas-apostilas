@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const mongoUrl = require("./credentials.json");
-const requireDir = require("require-dir");
+const routes = require("./src/routes");
 
 // Iniciando o APP
 const app = express();
@@ -11,10 +11,7 @@ mongoose.connect(mongoUrl.mongoUrl, {
   useNewUrlParser: true
 });
 
-// Puxando os modulos
-requireDir("./src/models");
-
 // Rotas
-app.use("/api", require("./src/routes"));
+app.use("/api", routes);
 
 app.listen(3001);

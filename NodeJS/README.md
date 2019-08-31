@@ -86,6 +86,15 @@ npm init -y
 
 Esse comando criou um arquivo chamado `package.json`. Esse arquivo por enquanto está apenas com as informações do projeto, como por exemplo nome, versão, descrição, e outras coisas. Mas será nele que iremos colocar quais serão as nossas dependências e suas versões (as bibliotecas utilizadas).
 
+No meu caso, criei uma aplicação de exemplo chamada `node-api`
+
+- A árvore de diretórios nesse momento fica:
+  ```sh
+  └── package.json
+  ```
+
+> Se gostou dessa representação de árvores de diretórios, abra seu terminal e instale o `tree` com `sudo apt install tree` depois vá para o diretório em que quer exibir a árvore e execute o comando `tree` e veja o resultado. No caso eu copiei e colei ele aqui entre o bloco gerado por ``` que a liguagem markdown me fornece.
+
 ## 3.1 INSTALANDO DEPENDÊNCIAS
 
 As dependências são basicamente bibliotecas. E para instalá-las na sua aplicação, abra o terminal na pasta da aplciação e digite.
@@ -110,7 +119,17 @@ Se for no arquivo `package.json` você verá que foi adicionada uma nova proprie
 
 > OBS.: Ao instalar um modulo, uma pasta chamada `node_modules` será criada, nela estarão o express e as dependências que ele precisa para funcionar.
 
-Agora crie um arquivo `.js` que será o arquivo principal da aplicação, no meu caso será `server.js`. Dentro dele vamos colocar as seguintes linhas de código:
+Agora crie um arquivo `.js` que será o arquivo principal da aplicação, no meu caso será `server.js`.
+
+- A árvore de diretórios nesse momento fica:
+
+  ```sh
+  ├── node_modules
+  ├── package.json
+  └── server.js
+  ```
+
+E dentro dele vamos colocar as seguintes linhas de código:
 
 ```JavaScript
 const express = require("express")
@@ -337,9 +356,19 @@ Pronto, nossa conexão com o banco de dados está feita
 
 ## 7.1 SEGURANÇA
 
-Esse banco de dados será deletado, por isso deixei senha à mostra aqui, porém você não quer que o seu fique dessa forma, sendo assim o melhor jeito é colocar esse link de acesso em um arquivo .json, e puxar a informação dele, e colocar esse arquivo dentro do .gitignore para assim a url de acesso não ficar à mostra para o mundo
+Esse banco de dados será deletado, por isso deixei senha à mostra aqui, porém você não quer que o seu fique dessa forma, sendo assim o melhor jeito é colocar esse link de acesso em um arquivo `.json` (no caso criei um arquivo chamado `credentials.json`), e puxar a informação dele, e colocar esse arquivo dentro do `.gitignore` para assim a url de acesso não ficar à mostra para o mundo.
 
-- Arquivo credentials.json
+- A árvore de diretórios nesse momento fica:
+
+  ```sh
+  ├── credentials.json
+  ├── node_modules
+  ├── .gitignore
+  ├── package.json
+  └── server.js
+  ```
+
+- Arquivo `credentials.json`
 
   ```JavaScript
   {
@@ -347,7 +376,7 @@ Esse banco de dados será deletado, por isso deixei senha à mostra aqui, porém
   }
   ```
 
-- Arquivo server.js
+- Arquivo `server.js`
 
   ```JavaScript
   const express = require("express");
@@ -370,7 +399,7 @@ Esse banco de dados será deletado, por isso deixei senha à mostra aqui, porém
   app.listen(3001);
   ```
 
-- Arquivo .gitignore
+- Arquivo `.gitignore`
 
   ```sh
   # credentials
@@ -418,6 +447,18 @@ Crie dentro da pasta do projeto uma pasta chamada `src` e dentro da mesma crie u
 > OBS: Claro que os nomes são opcionais, mas eles fazem sentido no mundo da programação, então meio que por convenção coloque esses nomes.
 
 Agora, vamos criar dentro dessa pasta um arquivo .js que será nosso arquivo model. Coloque o nome dele de acordo com a url que você quer usar para chegar nele. Se a aplicação fosse para utilizar cadastros de desenvolvedore, você poderia utilizar `Dev.js`, mas se fosse uma loja e quisessemos que esse url levasse aos produtos, iriamos colocar `Product.js`
+
+- A árvore de diretórios nesse momento fica:
+
+  ```sh
+  ├── credentials.json
+  ├── node_modules
+  ├── package.json
+  ├── server.js
+  └── src
+      └── models
+          └── Products.js
+  ```
 
 > OBS: Para seguir com o exemplo que estou estudando irei criar um arquivo chamado `Product.js`. Mas para utilizar de exemplo aqui eu sempre chamarei de `NomeDoModel`
 
@@ -547,9 +588,9 @@ Seguindo o meu exemplo, podemos fazer da seguinte maneira:
 ```JavaScript
 // Iniciando o APP
 // Iniciando o DB
-// Puxando os modulos
+// Puxando os models
 
-// Iniciando modelo
+// Iniciando model
 const Product = mongoose.model("Product");
 
 // Primeira rota
@@ -572,20 +613,438 @@ Para melhorar a forma de como são feitas as requisições ao banco de dados, va
 
 As rotas tem por responsabilidade definir para onde o código vai de acordo com a url que temos.
 
-Os controladores serão aqueles que executarão as tarefas no banco de dados, ou seja, inserção, exclusão, troca.
+Os controladores serão aqueles que executarão as tarefas no banco de dados, ou seja, inserção, exclusão, troca, etc.
 
 ## 9.1 CONTROLLER
 
-Crie dentro da pasta `src` uma pasta chamada `controllers` e crie um arquivo para ser um controlador de modelo.
+Crie dentro da pasta `src` uma pasta chamada `controllers` e crie um arquivo para ser um controlador.
 
-Como assim um controlador de modelo? Bem, se você tem um modelo chamado `modelA` e outro chamado `modelB` então crie dois controladores, um para cada modelo, ou seja `ModelAController` e `ModelBController`.
+Um controlador pode controlar qualquer coisa, por exemplo, o seu model precisará de um controlador, afinal o controlador de um model irá fazer as requisições no banco de dados. Porém, se sua aplicação executar uma determinada tarefa que exija um processamento do backend, esse processamento será feito em um outro model.
 
-Basicamente faça `NomeDoModuloController.js`
+Essa segmentação de controllers auxilia na distribuição de responsabilidades, e mantém o código mais organizado, sendo assim seu código ficará mais simples de ser entendido e de receber manutenção (e isso é muito importante).
 
-O controller será um objeto a ser exportado, por isso ele será escrito da seguinte forma:
+Como por hora temos apenas um model, então crie um arquivo chamado `NomeDoModelController.js`, seguindo o exemplo terei um arquivo chamado `ProductController.js`.
+
+- A árvore de diretórios nesse momento fica:
+  ```sh
+  ├── credentials.json
+  ├── node_modules
+  ├── package.json
+  ├── server.js
+  └── src
+      ├── controllers
+      │   └── ProductController.js
+      └── models
+          └── Products.js
+  ```
+
+A estrutura de um controller é composta basicamente de um objeto, que será exportado, abaixo temos o esqueleto básico de um controller:
 
 ```JavaScript
+const NomeDoModel = require('../models/NomeDoModel')
+
 module.exports = {
     // métodos
+  }
 }
+```
+
+Outro jeito de fazer um controller, seria com a estrutura abaixo
+
+```JavaScript
+const mongoose = require('mongoose');
+const NomeDoModel = mongoose.model('NomeDoModel')
+
+module.exports = {
+    // métodos
+  }
+}
+```
+
+A diferença entre os dois é que no primeiro caso você não importa o mongoose diretamente, pois você importa o NomeDoModel, e lá já temos o mongoose, porém se você tentar utilizar o mongoose para alguma coisa nessa abordagem, não vai funcionar (utilizar o mongoose dentreo do arquivo controller). Já a segunda nos pegamos o modelo através da busca por modelos que o mongoose faz. Lembre-se de que quando criamos o modelo nos fizemos:
+
+```JavaScript
+module.exports = model("NomeDoModel", NomeDoModelSchema);
+```
+
+Ou seja, aqui nós jogamos o NomeDoModel para o nosso programa como sendo um model. Logo o mongoose consegue pegar ele quando damos o comando.
+
+```JavaScript
+const NomeDoModel = mongoose.model('NomeDoModel')
+```
+
+Ou seja, a escolha de como fazer isso vai de aplicação para aplicação, mas no final das contas não importa muito, afinal você pode fazer, sem nenhum problema o seguinte:
+
+```JavaScript
+const mongoose = require('mongoose');
+const NomeDoModel = require('../models/NomeDoModel')
+
+module.exports = {
+    // métodos
+  }
+}
+```
+
+O que na minha opnião faz mais sentido, e é o que vou utilizar caso precise utilizar o mongoose dentro do arquivo de controle.
+
+Mais para frente vou trazer alguns métodos possíveis para aplicarmos ao nosso modelo, ou seja, inserção, remoção... Mas agora já trarei um método para poder mostrar que está tudo funcionando.
+
+Vou utilizar o método `find` que basicamente trará para nós o que está dentro do banco de dados, o que convenhamos é muito útil, e na verdade é o inicio de toda aplicação que utiliza banco de dados. No caso eu mostrarei como fica o arquivo `ProductController.js`
+
+- Arquivo `ProductController.js`
+
+  ```JavaScript
+  const Product = require("../models/Product");
+
+  module.exports = {
+    async index(req, res) {
+      const products = await Product.find();
+
+      return res.json(products);
+    }
+  };
+  ```
+
+Caso não saiba o que é o `async/await`, veja o meu material de javaScript, mas dando um resumo o `async` indica que a função é assincrona (isso acontece porque o método find é assincrono, e se ele está dentro da função então é claro que ela também será assincrona) e o método `await` faz com que esperemos o retorno do método `find` para ai sim seguir com o código, que nesse caso retorna `products` (que é o que está dentro da nossa base de dados) em formato `json`.
+
+> OBS: ainda não tente abrir nada no seu navegador, pois sem ajustar o arquivo `server.js` e sem criar o arquivos de rotas não vai acontecer nada.
+
+## 9.2 ROUTES
+
+Dentro da pasta src crie um arquivo chamado `routes.js`.
+
+Para te ajudar, até agora a nossa estrutura de arquivos é a seguinte:
+
+```sh
+├── credentials.json
+├── node_modules
+├── package.json
+├── package-lock.json
+├── server.js
+└── src
+    ├── controllers
+    │   └── ProductController.js
+    ├── models
+    │   └── Product.js
+    └── routes.js
+```
+
+A estrutura de um arquivo de rotas é bem simples.
+
+```JavaScript
+const express = require("express");
+const routes = express.Router();
+
+const NomeDoModelController = require("./controllers/NomeDoModelController");
+
+// primeira rota
+routes.get("/local", NomeDoModelController.index);
+// outras rotas que quiser
+
+module.exports = routes;
+```
+
+Aqui o que estamos fazendo é que ao acessarmos o endereço `/local` estaremos executando o método `index` criado no `NomeDoModelController.js`. Ou seja, estaremos recebendo como retorno o json da nossa tabela do banco de dados.
+
+Indo para o exemplo, o arquivo `routes.js` ficará:
+
+- Arquivo `routes.js`
+
+  ```JavaScript
+  const express = require("express");
+  const routes = express.Router();
+
+  const ProductController = require("./controllers/ProductController");
+
+  // Minha rota
+  routes.get("/products", ProductController.index);
+
+  module.exports = routes;
+  ```
+
+## 9.3 SERVER.JS
+
+Agora vamos reorganizar o arquivo `server.js` que nesse momento está da seguinte forma:
+
+- Arquivo `server.js`
+
+  ```JavaScript
+  const express = require("express");
+  const mongoose = require("mongoose");
+  const mongoUrl = require("./credentials.json");
+  const requireDir = require("require-dir");
+
+  // Iniciando o APP
+  const app = express();
+
+  // Iniciando o DB
+  mongoose.connect(mongoUrl.mongoUrl, {
+    useNewUrlParser: true
+  });
+  // Puxando os models
+  requireDir("./src/models")
+
+  // Iniciando model
+  const Product = mongoose.model("Product");
+
+  // Primeira rota
+  app.get("/", (req, res) => {
+    Product.create({
+      title: "React Native",
+      description: "Build native apps with React",
+      url: "http://github.com/facebook/react-native"
+    });
+
+    return res.send("Hello World"); //ta aqui atoa
+  });
+  ```
+
+Como não queremos mais executar requisições ao banco de dados dentro desse arquivo, podemos retirar o `app.get`, também não precisamos mais puxar e nem iniciar os models. Mas em contra partida precisamos agora inserir nossas rotas. Para isso faremos o seguinte
+
+```JavaScript
+const routes = require("./src/routes");
+// Iniciando o APP
+// Iniciando o DB
+// Rotas
+app.use("/algumaCoisa", routes);
+```
+
+Antes de mostrar o como fica o arquivo `server.js` do exemplo, eu quero explicar a linha `app.use("/algumaCoisa", routes);`.
+
+Dentro do `use` nos vamos passar dois parâmetros, que seriam a url e para onde que essa url irá nos mandar.
+
+Ou seja, quando digitarmos no nosso navegador a url `http://localhost:3001/algumaCoisa` iremos cair dentro das nossas rotas. Mas primeiro quero que você entenda que se eu tivesse passado
+
+```JavaScript
+app.use("/teste", routes);
+```
+
+iriamos ter que digitar `http://localhost:3001/teste`
+
+E caso eu tivesse passado:
+
+```JavaScript
+app.use("/", routes);
+```
+
+ou
+
+```JavaScript
+app.use(routes);
+```
+
+iriamos ter que digitar `http://localhost:3001/`
+
+Sim, passando o `/` ou não passando nada teremos o mesmo efeito.
+
+Agora vamos pensar olhando para as nossas rotas. Afinal podemos pensar como se esse `/algumaCoisa` fosse uma pasta, e que dentro dela temos vários arquivos, e esses arquivos são nossas rotas. Ou seja, vamos supor que temos as seguintes rotas:
+
+```JavaScript
+routes.get("/rotaA", ProductController.metodoA);
+routes.get("/rotaB", ProductController.metodoB);
+routes.get("/rotaC", ProductController.metodoC);
+```
+
+Para acessarmos cada uma dessas rotas teriamos que fazer respectivamente:
+
+- Para `/algumaCoisa`
+
+  ```
+  http://localhost:3001/algumaCoisa/rotaA
+  http://localhost:3001/algumaCoisa/rotaB
+  http://localhost:3001/algumaCoisa/rotaC
+  ```
+
+- Para `/` ou nada
+
+  ```
+  http://localhost:3001/rotaA
+  http://localhost:3001/rotaB
+  http://localhost:3001/rotaC
+  ```
+
+Assim o arquivo `server.js` do exemplo fica com a seguinte cara:
+
+- Arquivo `server.js`
+
+  ```JavaScript
+  const express = require("express");
+  const mongoose = require("mongoose");
+  const mongoUrl = require("./credentials.json");
+  const routes = require("./src/routes");
+
+  // Iniciando o APP
+  const app = express();
+
+  // Iniciando o DB
+  mongoose.connect(mongoUrl.mongoUrl, {
+    useNewUrlParser: true
+  });
+
+  // Rotas
+  app.use("/api", routes);
+
+  app.listen(3001);
+  ```
+
+Agora sim. Se você der o comando no terminal (dentro da pasta da aplicação) e abrir o seu navegador no seguinte url: `http://localhost:3001/api/products` e se você fez exatamente como eu quando fiz dentro do arquivo `server.js` nesse passo [aqui](#81-vários-models):
+
+```JavaScript
+  app.get("/", (req, res) => {
+    Product.create({
+      title: "React Native",
+      description: "Build native apps with React",
+      url: "http://github.com/facebook/react-native"
+    });
+
+    return res.send("Hello World"); //ta aqui atoa
+  });
+```
+
+Você verá:
+
+```JavaScript
+[
+  {
+    _id: "5d688604192c832a6eb6be51",
+    title: "React Native",
+    description: "Build native apps with React",
+    url: "http://github.com/facebook/react-native",
+    createdAt: "2019-08-30T02:12:20.405Z",
+    updatedAt: "2019-08-30T02:12:20.405Z",
+    __v: 0
+  }
+]
+```
+
+> DICA: Se quiser visualizar arquivos json no seu navegador de uma forma mais agradável, eu recomendo instalar essa extensão para chrome [aqui](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc) e a mesma para firefox mozilla [aqui](https://addons.mozilla.org/pt-BR/firefox/addon/jsonview/)
+
+# **10. REPASSANDO**
+
+Caso tenha ficado confuso ou perdido vou repassar aqui rapidamente como as coisas tem que ficar.
+
+- A estrutura de arquivos:
+
+  ```sh
+  ├── credentials.json
+  ├── node_modules
+  ├── package.json
+  ├── package-lock.json
+  ├── server.js
+  └── src
+      ├── controllers
+      │   └── ProductController.js
+      ├── models
+      │   └── Product.js
+      └── routes.js
+  ```
+
+- Instale as dependências:
+  ```sh
+  sudo npm install express
+  sudo npm install require-dir
+  sudo npm install -D nodemon
+  ```
+
+Adicione o nodemon como devDependencies e adicione o script em package.json
+
+- Arquivo `package.json`
+
+  ```JavaScript
+  {
+    "name": "node-api",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "dev": "nodemon server.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "express": "^4.17.1",
+      "require-dir": "^1.2.0"
+    },
+    "devDependencies": {
+      "nodemon": "^1.19.1"
+    }
+  }
+  ```
+
+- Arquivo `server.js`
+
+  ```JavaScript
+  const express = require("express");
+  const mongoose = require("mongoose");
+  const mongoUrl = require("./credentials.json");
+  const routes = require("./src/routes");
+
+  // Iniciando o APP
+  const app = express();
+
+  // Iniciando o DB
+  mongoose.connect(mongoUrl.mongoUrl, {
+    useNewUrlParser: true
+  });
+
+  // Rotas
+  app.use("/api", routes);
+
+  app.listen(3001);
+  ```
+
+- Arquvio `routes.js`
+
+  ```JavaScript
+  const express = require("express");
+  const routes = express.Router();
+
+  const ProductController = require("./controllers/ProductController");
+
+  // Minha rota
+  routes.get("/products", ProductController.index);
+
+  module.exports = routes;
+  ```
+
+- Arquivo `ProductController.js`
+
+  ```JavaScript
+  const Product = require("../models/Product");
+
+  module.exports = {
+    async index(req, res) {
+      const products = await Product.find();
+
+      return res.json(products);
+    }
+  };
+  ```
+
+- Abra o terminal em `node-api` e digite o comando
+
+  ```sh
+  npm run dev
+  ```
+
+- Abra o navegador e entre em
+
+  ```
+  http://localhost:3001/api/products
+  ```
+
+# **11. INSOMNIA**
+
+## 11.1 INSTALAÇÃO
+
+Digite em seu terminal;
+
+```sh
+echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" | sudo tee -a /etc/apt/sources.list.d/insomnia.list
+
+wget --quiet -O - https://insomnia.rest/keys/debian-public.key.asc | sudo apt-key add -
+
+sudo apt-get install insomnia
 ```
