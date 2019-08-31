@@ -1109,11 +1109,29 @@ Como você bem deve imaginar, nos não iremos monitorar apenas essa rota, iremos
 
 > OBS: O insomnia não discarta a necessidade de você manter o servidor rodando em algum terminal (npm run dev).
 
-# **12. CRIAÇÃO DE NOVOS REGISTROS**
+# **12. CRUD**
+
+Crude é um acronimo para
+
+- C: Create (Criação de novos registros)
+- R: Read (Ler, recuperar ou visualizar registros)
+- U: Update (Atualização de registros)
+- D: Delete (Deleta um registro)
+
+Cada um desses itens, possui um método atrelado a eles no arquivo de rotas (métodos pré-definidos pelo mongoose) e também criaremos métodos para eles no nosso controller. Abaixo podemos ver uma tabela que mostra qual método corresponde a qual.
+
+|     | routes | Controller |
+| --- | ------ | ---------- |
+| C   | post   | store      |
+| R   | get    | show       |
+| U   | put    | update     |
+| D   | delete | destroy    |
+
+## 12.1 CREATE
 
 Para criar novas coisas, nos iremos utilizar do método `post`, e para isso remos fazer algumas modificações em nossos arquivos.
 
-## 12.1 CONTROLLER
+### **12.1.1 Controller**
 
 Primeiro vamos ver a modificação do nosso controlador.
 
@@ -1149,7 +1167,7 @@ Assim o controlador fica da seguinte forma:
   };
   ```
 
-## 12.2 ROUTES
+### **12.1.2 Routes**
 
 Agora vamos fazer uma modificação no arquivo de rotas.
 
@@ -1176,7 +1194,7 @@ Se você prestou bastatne atenção, você deve ter notado que a rota é igual a
   module.exports = routes;
   ```
 
-## 12.3 SERVER
+### **12.1.3 Server**
 
 Já o arquivo server.js ganha uma pequema modificação. Ganhado essa linha:
 
@@ -1217,7 +1235,7 @@ app.listen(3001);
 
 > OBS: `app.use(express.json());` tem que vir antes de `app.use("/api", routes);`
 
-## 12.4 INSOMNIA
+### **12.1.4 Insomnia**
 
 - Crie uma nova requeste
 
@@ -1238,4 +1256,260 @@ app.listen(3001);
 - Vá no mongoDB compass e procure pelo seu banco de dados, e você vera salvos dois registros, o primeiro que utilizamos nos testes e o segundo que mandamos agora pelo insomnia
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_36.png?raw=true)
+
+
+## 12.2 READ
+
+Apesar de já termos falado do método `get`, vamos agora colocar isso para funcionar dentro do nosso controller para que ele nos retorne somente um registro, diferente do que fizemos com o index, que nos retorna uma lista com tudo que temos no nosso banco de dados.
+
+E seguindo a mesma seguencia de raciocínio empregada anteriormente, vamos começar pelo controller, depois pelo routes. 
+
+O arquivo `server.js` não precisa de modificação.
+
+### **12.2.1 Controller**
+
+No arquivo de controle adicionaremos mais um método, que se parece bastante com o método `index`, porém agora iremos buscar o registro pelo seu ID, afinal de contas queremos encontrar apenas um registro. Mas ai precisamos passar esse ID para a nossa função, afinal ela precisa saber quem está procurando. E o jeito de fazer isso é com `req.params.id`, ou seja, dentro da requisição, temos parâmetros, e dentro dos parâmetros temos o id.
+
+```JavaScript
+  async show(req, res) {
+    const product = await Product.findById(req.params.id);
+
+    return res.json(product);
+  }
+```
+
+O código completo está abaixo:
+
+- Arquivo `ProductController.js`
+
+  ```JavaScript
+  const Product = require("../models/Product");
+
+  module.exports = {
+    async index(req, res) {
+      const products = await Product.find();
+
+      return res.json(products);
+    },
+
+    async store(req, res) {
+      const product = await Product.create(req.body);
+      return res.json(product);
+    },
+
+    async show(req, res) {
+      const product = await Product.findById(req.params.id);
+
+      return res.json(product);
+    }
+  };
+  ```
+
+### **12.2.2 Routes**
+
+Agora precisamos passar essas informações para o nosso controlador, e faremos isso através da url. Ou seja, a nossa url conterá o parametro id a ser passado para o controlador.
+
+```JavaScript
+routes.get("/products/:id", ProductController.show); //ver coisas
+```
+
+Esse `:id` que temos é justamente a passagem do id pela rota, e isso é feito devido ao express.
+
+- Arquivo `routes.js`
+
+  ```JavaScript
+  const express = require("express");
+  const routes = express.Router();
+
+  const ProductController = require("./controllers/ProductController");
+
+  // Minhas rotas
+  routes.get("/products", ProductController.index); //pegar coisas
+  routes.post("/products", ProductController.store); //adicionar coisas
+  routes.get("/products/:id", ProductController.show); //ver coisas
+
+  module.exports = routes;
+  ```
+
+### **12.2.3 Insomnia**
+
+Como precisamos passar um id valido para o nosso método show, vamos utilizar a request com o nome de `Index` para poder pegar um id valido.
+
+- Depois de ter clicado em send nessa request você terá a lista de todos os registros do banco. E então copie o id de um deles
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_37.png?raw=true)
+
+- Agora crie uma nova request do tipo get (chamarei de show) e adicione a url `base_url/products/id` sendo qeu esse id deve ser substituido pelo id que você copiou anteriormente
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_38.png?raw=true)
+
+- Clicando em send você verá o registro referente à aquele id
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_39.png?raw=true)
+
+
+## 12.3 UPDATE
+Analogamente ao restante, irei fazer o controller primeiro, depois o routes e depois o insomnia. O server não requer mais mudanças.
+
+### **12..1 Controller**
+Aqui estaremos construindo uma mescla do create e do read, afinal precisamos encontrar um registro especifico e depois inserir algo nele.
+
+Então a estrutura dessa modificação fica a seguinte:
+
+```JavaScript
+async update(req, res) {
+  const product = await Product.findByIdAndUpdate(req.params.id, req.body, {new: true});
+
+  return res.json(product);
+}
+```
+
+Basicamente o que estamos fazendo é encontrar um determinado registro com o `params.id` e depois fazer uma modificação que veio no `body` da nossa aplicação. E para fazer isso nos utilizamos a função chamada `find by id and update` (esse nome não tem como ser mais intuitivo do que isso). 
+
+Mas agora o que seria aquele `{new: true}`, bom, isso indica para nossa função que é para retornar algo para a constante `product` somente depois de atualizar, pq se não o retorno acontece antes de atualizar, assim o `product` recebe a versão antiga. Mas no banco de dados tudo foi atualizado.
+
+Uma observação a se fazer é que quando formos atualizar um determinado registro, não precisamos atualizar ele todo, podemos mandar somente um atributo e ele substituirá somente esse atributo.
+
+### **12..2 Routes**
+
+Agora no routes, vamos utilizar o método `put` e assim como o `post` ele precisa passar o id pelo endereço. Então ficamos com:
+
+```JavaScript
+routes.put("/products/:id", ProductController.update); //atualiza coisas
+```
+
+Agora podemos ver o arquivo completo:
+
+- Arquivo `routes.js`
+  ```JavaScript
+  const express = require("express");
+  const routes = express.Router();
+
+  const ProductController = require("./controllers/ProductController");
+
+  // Minhas rotas
+  routes.get("/products", ProductController.index); //pegar coisas
+  routes.post("/products", ProductController.store); //adicionar coisas
+  routes.get("/products/:id", ProductController.show); //ver coisas
+  routes.put("/products/:id", ProductController.update); //atualiza coisas
+  module.exports = routes;
+  ```
+
+### **12..3 Insomnia**
+
+- Copie um id valido, assim como fizemos na request `Show`, pois precisamos de um para fazer o update
+
+- Crie uma nova request e de um nome à ela colocando-a como sendo do tipo `put` e coloque-a para receber um `json`.
+
+- Configure o url para ficar do mesmo jeito que na request `Show` (`base_url/products/id`) e então escreve um json informando qual atributo trocar e como ele deve ficar. Na imagem abaixo eu troco somente o titulo do meu registro que antes era `React Native` para `React-Native`.
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_40.png?raw=true)
+
+- Veja no mongoDB compass (recarregue o compass, mude de tabela para lista, uma hora ele vai)
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_41.png?raw=true)
+
+  
+## 12.4 DELETE
+Analogamente ao restante, irei fazer o controller primeiro, depois o routes e depois o insomnia. O server não requer mais mudanças.
+
+### **12..1 Controller**
+
+Esse aqui chamaremos de `destroy`, e diferentemente dos outros que sempre estavamos retornando o produto, aqui não faz sentido fazermos isso, afinal não é para ter produto no final das contas.
+
+E assim como no update, precisamos encontrar o registro para depois deletá-lo, então utilizaremos mais uma função com nome intuitivo: `findByIdAndRemove`
+
+A estrutura fica a seguinte:
+
+```JavaScript
+async destroy(req, res){
+  await Product.findByIdAndRemove(req.params.id);
+
+  return res.send(); // retorna somente se foi bem ou mal sucedido
+}
+```
+
+O arquivo completo fica:
+
+- Arquivo `ProductController.js`
+  ```JavaScript
+  const Product = require("../models/Product");
+
+  module.exports = {
+    async index(req, res) {
+      const products = await Product.find();
+
+      return res.json(products);
+    },
+
+    async store(req, res) {
+      const product = await Product.create(req.body);
+      return res.json(product);
+    },
+
+    async show(req, res) {
+      const product = await Product.findById(req.params.id);
+
+      return res.json(product);
+    },
+
+    async update(req, res) {
+      const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
+        new: true
+      });
+
+      return res.json(product);
+    },
+
+    async destroy(req, res) {
+      await Product.findByIdAndRemove(req.params.id);
+
+      return res.send(); // retorna somente se foi bem ou mal sucedido
+    }
+  };
+  ```
+
+### **12..2 Routes**
+
+Veja que tudo que precisamos é do id do registro, então assim como antes a nossa rota irá mandar o id pelo url e isso será feito através de um método chamado `delete`
+
+```JavaScript
+routes.delete("/products/:id", ProductController.destroy) //destri coisas
+```
+
+- Arquivo `routes.js`
+
+  ```JavaScript
+  const express = require("express");
+  const routes = express.Router();
+
+  const ProductController = require("./controllers/ProductController");
+
+  // Minhas rotas
+  routes.get("/products", ProductController.index); //pegar coisas
+  routes.post("/products", ProductController.store); //adicionar coisas
+  routes.get("/products/:id", ProductController.show); //ver coisas
+  routes.put("/products/:id", ProductController.update); //atualiza coisas
+  routes.delete("/products/:id", ProductController.destroy); //destri coisas
+
+  module.exports = routes;
+  ```
+
+### **12..3 Insomnia**
+
+- Copie um id valido
+
+- Crie uma nova request, chamarei ela de `Delete`
+
+- Configure a url da forma que no `Show` (`base_url/products/id`) e pressione send e receba apenas uma mensagem indicando sucesso (a mensagem é o 200 OK que está evidenciado na imagem, ele indica sucesso).
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_42.png?raw=true)
+
+- Agora indo ao mongoDB compass veremos que o registro sumiu
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_43.png?raw=true)
+
+- Outro jeito de ver isso, é ir na request Index do insomnia e dar um send novamente, assim a listagem de itens do banco de dados não retornará o registro apagado
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_44.png?raw=true)
 
