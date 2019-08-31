@@ -3,7 +3,8 @@ const routes = express.Router();
 
 const ProductController = require("./controllers/ProductController");
 
-// Minha rota
-routes.get("/products", ProductController.index);
+// Minhas rotas
+routes.get("/products", ProductController.index); //pegar coisas
+routes.post("/products", ProductController.store); //adicionar coisas
 
 module.exports = routes;

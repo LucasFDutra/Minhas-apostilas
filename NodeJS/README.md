@@ -253,59 +253,59 @@ Sendo assim abra ai um terminal e deixe só para ele.
 
 Baixe a versão gratuita do banco de dados chamada mongoDB atlas, que pode ser encontrado [aqui](https://www.mongodb.com/cloud/atlas)
 
-Clique em `try free` e crie uma conta
+- Clique em `try free` e crie uma conta
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_01.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_01.png?raw=true)
 
-Você vai cair nessa tela aqui
+- Você vai cair nessa tela aqui
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_02.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_02.png?raw=true)
 
-Role tudo para baixo e clique em create cluster (note que temos 512mb gratuitos para utilizarmos)
+- Role tudo para baixo e clique em create cluster (note que temos 512mb gratuitos para utilizarmos)
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_03.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_03.png?raw=true)
 
-Depois vai cair nessa tela abaixo e isso pode demorar um tempo
+- Depois vai cair nessa tela abaixo e isso pode demorar um tempo
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_04.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_04.png?raw=true)
 
-Depois de criado vá em Database Access para criar um usuário e senha
+- Depois de criado vá em Database Access para criar um usuário e senha
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_05.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_05.png?raw=true)
 
-Vá em add new user
+- Vá em add new user
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_06.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_06.png?raw=true)
 
-Crie o usuário, e deixe marcada a opção Read and write to any database e adicione o usuário
+- Crie o usuário, e deixe marcada a opção Read and write to any database e adicione o usuário
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_07.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_07.png?raw=true)
 
-Vá em network access
+- Vá em network access
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_08.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_08.png?raw=true)
 
-Crie um novo acesso em add ip address e depois permita que esse banco de dados seja acessado de qualquer lugar clicando em Allow access from anywhere
+- Crie um novo acesso em add ip address e depois permita que esse banco de dados seja acessado de qualquer lugar clicando em Allow access from anywhere
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_09.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_09.png?raw=true)
 
-Vá em clusters e clique em connect
+- Vá em clusters e clique em connect
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_10.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_10.png?raw=true)
 
-Selecione a opção connect to your application
+- Selecione a opção connect to your application
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_11.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_11.png?raw=true)
 
-Agora deixe a tela seguinte com a configuração mostrada abaixo e clique em copy
+- Agora deixe a tela seguinte com a configuração mostrada abaixo e clique em copy
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_12.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_12.png?raw=true)
 
-Agora dentro da pasta backend adicione o mongoose com o comando
+- Agora dentro da pasta backend adicione o mongoose com o comando
 
-```sh
-sudo npm i mongoose
-```
+  ```sh
+  sudo npm i mongoose
+  ```
 
 O mongoose vai permitir que nos comuniquemos com o banco de dados utilizando apenas sintax javascrip. Isso faz com que não precisemos utilizar aqueles comando `INSERT, INTO..` que os bancos de dados precisam
 
@@ -410,33 +410,35 @@ Esse banco de dados será deletado, por isso deixei senha à mostra aqui, porém
 
 ## 7.2 MONGODB COMPASS
 
-Se quiser verificar o que está acontecendo no seu banco de dados, de uma forma mais fácil do que ficar acessando o site do mongoDB, utilize o mongoDB compass, que é uma interface que irá trazer as informações do seu banco. Para baixar o mongodb compass community clique [aqui](https://www.mongodb.com/products/compass). Agora é só clicar em `try now`
+Se quiser verificar o que está acontecendo no seu banco de dados, de uma forma mais fácil do que ficar acessando o site do mongoDB, utilize o mongoDB compass, que é uma interface que irá trazer as informações do seu banco. Para baixar o mongodb compass community clique [aqui](https://www.mongodb.com/products/compass).
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_13.png?raw=true)
+- Agora é só clicar em `try now`
 
-Clique em tools escolha a melhor versão para você e clique em download
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_13.png?raw=true)
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_14.png?raw=true)
+- Clique em tools escolha a melhor versão para você e clique em download
 
-Agora abra o mongoDB compass community e depois vá no mongoDB Atlas (onde configurou seu banco de dados) e vá em cluster e clic em connect novamente e depois escolha a opção connect with mongoDB compass
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_14.png?raw=true)
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_15.png?raw=true)
+- Agora abra o mongoDB compass community e depois vá no mongoDB Atlas (onde configurou seu banco de dados) e vá em cluster e clic em connect novamente e depois escolha a opção connect with mongoDB compass
 
-Ai você clica em copy
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_15.png?raw=true)
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_16.png?raw=true)
+- Ai você clica em copy
 
-Volte para o mongoDB compass e ele automaticamente identificará que existe uma url copiada e perguntará se quer importar ela para dentro da aplicação. Clique em sim
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_16.png?raw=true)
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_17.png?raw=true)
+- Volte para o mongoDB compass e ele automaticamente identificará que existe uma url copiada e perguntará se quer importar ela para dentro da aplicação. Clique em sim
 
-Coloque o username e o password conforme havia configurado antes, e em `Autentication Database` coloque `admin`. E clique em connect
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_17.png?raw=true)
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_18.png?raw=true)
+- Coloque o username e o password conforme havia configurado antes, e em `Autentication Database` coloque `admin`. E clique em connect
 
-Veja que a base de dados de teste está presente
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_18.png?raw=true)
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_19.png?raw=true)
+- Veja que a base de dados de teste está presente
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_19.png?raw=true)
 
 # **8. MODEL**
 
@@ -1039,6 +1041,8 @@ Adicione o nodemon como devDependencies e adicione o script em package.json
 
 O insomnia vai nos ajudar a testar as rotas da nossa api. Apesar de já conseguirmos ver a saída no nosso browser, não é o melhor jeito possível, pois ali conseguimos ver basicamente só as rotas get. Não podemos testar rotas post (inserir algo no banco de dados. A gente chega lá).
 
+> OBS: Nessa seção não vou apresentar tudo que farei com o insomnia logo de cara, até porque nossa aplicação não tem muita coisa no momento. Então vou apenas mostar ele e mostrar o básico de sua utlização, ai nas seções mais seguintes conforme eu for utilizando ele trarei mais conteúdos sobre o mesmo.
+
 ## 11.1 INSTALAÇÃO
 
 Digite em seu terminal;
@@ -1053,40 +1057,39 @@ sudo apt-get install insomnia
 
 ## 11.2 UTILIZAÇÃO
 
-
 - Dentro do Insomnia vá em `Insomnia -> create new workspace` de um nome pra ela.
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_20.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_20.png?raw=true)
 
 - De um nome para esse workspace
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_21.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_21.png?raw=true)
 
 - Agora do lado esquerdo veja que apareceu um botão com um +, clique nele e clique em `new request`.
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_22.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_22.png?raw=true)
 
 - Clique em `GET` para ver os tipos de rotas que podemos escolher.
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_24.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_24.png?raw=true)
 
 - Para saber qual tipo de rota você deve escolher veja de qual tipo dela no arquivo `routes.js`
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_25.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_25.png?raw=true)
 
 > Veja que nesse caso do exemplo, temos uma rota do tipo `get`, logo iremos utilizar o `GET` no insomnia
 
 - Agora depois de definido o nome, e o tipo, clique em `Create`
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_26.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_26.png?raw=true)
 
 - Agora copie a url da rota a ser observada conforme a figura abaixo e clique em `Send`:
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_27.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_27.png?raw=true)
 
 - Agora se tudo tiver dado certo, você verá a seguinte resposta:
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_28.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_28.png?raw=true)
 
 ## 11.3 OTIMIZANDO A UTILIZAÇÃO
 
@@ -1094,14 +1097,145 @@ Como você bem deve imaginar, nos não iremos monitorar apenas essa rota, iremos
 
 - Vá em `No Environment -> Manage Environment`
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_29.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_29.png?raw=true)
 
 - Coloque o mesmo que eu e clique em `Done`
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_30.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_30.png?raw=true)
 
 - Agora vá mude o endereço de url conforme a imagem abaixo (digite base e espere um pouco que vai aparecer base_url isso indica que deu certo, mas mande um send novamente para ver se está tudo ok).
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_31.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_31.png?raw=true)
 
 > OBS: O insomnia não discarta a necessidade de você manter o servidor rodando em algum terminal (npm run dev).
+
+# **12. CRIAÇÃO DE NOVOS REGISTROS**
+
+Para criar novas coisas, nos iremos utilizar do método `post`, e para isso remos fazer algumas modificações em nossos arquivos.
+
+## 12.1 CONTROLLER
+
+Primeiro vamos ver a modificação do nosso controlador.
+
+Nele iremos adicionar mais um método, que será chamado de `store` (você pode dar o nome que quiser, mas esse faz sentido). O método store tem a seguinte estrutura:
+
+```JavaScript
+async store(req, res) {
+  const product = await Product.create(req.body); //Product é por conta do exemplo
+  return res.json(product);
+}
+```
+
+Traduzindo o que está escrito aqui: O método store vai receber uma requisição e retornará uma resposta. Sendo que essa requisição vai ter dentro de body (req.body) uma estrutura que será criada no nosso banco de dados em cima do model chamado `Product`, e isso que foi salvo será colocado no banco de dados, mas também será salvo na constante `product` que depois é retornada como um json.
+
+Assim o controlador fica da seguinte forma:
+
+- Arquivo `ProductController.js`
+
+  ```JavaScript
+  const Product = require("../models/Product");
+
+  module.exports = {
+    async index(req, res) {
+      const products = await Product.find();
+
+      return res.json(products);
+    },
+
+    async store(req, res) {
+      const product = await Product.create(req.body);
+      return res.json(product);
+    }
+  };
+  ```
+
+## 12.2 ROUTES
+
+Agora vamos fazer uma modificação no arquivo de rotas.
+
+Nesse arquivo vamos colocar a seguinte rota:
+
+```JavaScript
+routes.post("/products", ProductController.store); //adicionar coisas
+```
+
+Se você prestou bastatne atenção, você deve ter notado que a rota é igual a rota get (/product), e pode estar pensando que vai haver confusão. Mas eu te digo que não, pois um esta com o método get e outro com o método post. A unica coisa que acontece aqui é que estamos dizendo para a aplicação que nessa url é possivel executar as duas coisas.
+
+- Arquivo `routes.js`
+
+  ```JavaScript
+  const express = require("express");
+  const routes = express.Router();
+
+  const ProductController = require("./controllers/ProductController");
+
+  // Minhas rotas
+  routes.get("/products", ProductController.index); //pegar coisas
+  routes.post("/products", ProductController.store); //adicionar coisas
+
+  module.exports = routes;
+  ```
+
+## 12.3 SERVER
+
+Já o arquivo server.js ganha uma pequema modificação. Ganhado essa linha:
+
+```JavaScript
+app.use(express.json());
+```
+
+Que permite que mandemos para nossa aplicação expressões com o fomato `json`, e é exatamente o que faremos no insomnia (eu disse que ele seria util, e que o navegador não poderia fazer isso muito fácilmente)
+
+mas primeiro, vamos dar uma olhada em como fica o arquivo `server.js`
+
+- Arquivo `server.js`
+
+```JavaScript
+const express = require("express");
+const mongoose = require("mongoose");
+const mongoUrl = require("./credentials.json");
+const routes = require("./src/routes");
+
+// Iniciando o APP
+const app = express();
+
+// app.use(express.json());
+
+// Iniciando o DB
+mongoose.connect(mongoUrl.mongoUrl, {
+  useNewUrlParser: true
+});
+
+// Criação
+app.use(express.json());
+
+// Rotas
+app.use("/api", routes);
+
+app.listen(3001);
+```
+
+> OBS: `app.use(express.json());` tem que vir antes de `app.use("/api", routes);`
+
+## 12.4 INSOMNIA
+
+- Crie uma nova requeste
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_32.png?raw=true)
+
+- De um nome para ela e deixe ela com a mesma configuração da imagem abaixo (post com o body em formato json)
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_33.png?raw=true)
+
+- Ajuste a url e escreva o json respeitando o nosso model
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_34.png?raw=true)
+
+- Agora veja o resultado clicando em `Send`
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_35.png?raw=true)
+
+- Vá no mongoDB compass e procure pelo seu banco de dados, e você vera salvos dois registros, o primeiro que utilizamos nos testes e o segundo que mandamos agora pelo insomnia
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_36.png?raw=true)
+
