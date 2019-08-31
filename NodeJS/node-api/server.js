@@ -14,7 +14,7 @@ mongoose.connect(mongoUrl.mongoUrl, {
 // Puxando os modulos
 requireDir("./src/models");
 
-// Iniciando rota
-app.use("/api", require("./src/models/routes"));
+// Rotas
+app.use("/api", require("./src/routes"));
 
 app.listen(3001);
