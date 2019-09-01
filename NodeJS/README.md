@@ -25,7 +25,7 @@ Autor: Lucas Felipe Dutra
     - [7.1 SEGURANÇA](#71-segurança)
     - [7.2 MONGODB COMPASS](#72-mongodb-compass)
 - [**8. MODEL**](#8-model)
-        - [8.1 VÁRIOS MODELS](#81-vários-models)
+    - [8.1 VÁRIOS MODELS](#81-vários-models)
 - [**9. COMUNICANDO COM BANCO DE DADOS**](#9-comunicando-com-banco-de-dados)
     - [9.1 CONTROLLER](#91-controller)
     - [9.2 ROUTES](#92-routes)
@@ -198,7 +198,7 @@ const app = express();
 app.listen(3001);
 ```
 
-O comando listen, faz com que a aplicação fique ouvindo a porta 3001 do nosso pc, então se abrirmos o browser nesse porta nos conseguiremos ver os retornos da nossa api. Abaixo vamos fazer exatamente isso.
+O comando listen, faz com que a aplicação fique ouvindo a porta 3001 do nosso pc, então se abrirmos o browser nesse porta nós conseguiremos ver os retornos da nossa api. Abaixo vamos fazer exatamente isso.
 
 Rode esse código digitando no teminal `node server.js` ele ficará esperando algo acontecer, dai abra seu browser e digite o endereço `http://localhost:3001/`
 
@@ -458,7 +458,7 @@ Esse banco de dados será deletado, por isso deixei a senha e username à mostra
 
 ## 7.2 MONGODB COMPASS
 
-Se quiser verificar o que está acontecendo no seu banco de dados, de uma forma mais fácil do que ficar acessando o site do mongoDB, utilize o mongoDB compass, que é uma interface que irá trazer as informações do seu banco. Para baixar o mongodb compass community clique [aqui](https://www.mongodb.com/products/compass).
+Se quiser verificar o que está acontecendo no seu banco de dados, de uma forma mais fácil do que ficar acessando o site do mongoDB, utilize o `mongoDB compass`, que é uma interface que irá trazer as informações do seu banco. Para baixar o `mongodb compass community` clique [aqui](https://www.mongodb.com/products/compass).
 
 - Agora é só clicar em `try now`
 
@@ -653,7 +653,7 @@ app.get("/", (req, res) => {
 });
 ```
 
-Se você for no mongoDB compass você verá que foi criada uma tabela com esses dados (recarregue o mongoDB compass, as vezes ele não atulizou).
+Se você for no `mongoDB compass` você verá que foi criada uma tabela com esses dados (recarregue o `mongoDB compass`, as vezes ele não atulizou).
 
 # **9. COMUNICANDO COM BANCO DE DADOS**
 
@@ -661,15 +661,17 @@ Para melhorar a forma de como são feitas as requisições ao banco de dados, va
 
 As rotas tem por responsabilidade definir para onde o código vai de acordo com a url que temos.
 
-Os controladores serão aqueles que executarão as tarefas no banco de dados, ou seja, inserção, exclusão, troca, etc.
+Os controladores serão aqueles que executarão as tarefas no banco de dados, ou seja, listagem, inserção, remoção, leitura, update e etc.
 
 ## 9.1 CONTROLLER
 
 Crie dentro da pasta `src` uma pasta chamada `controllers` e crie um arquivo para ser um controlador.
 
-Um controlador pode controlar qualquer coisa, por exemplo, o seu model precisará de um controlador, afinal o controlador de um model irá fazer as requisições no banco de dados. Porém, se sua aplicação executar uma determinada tarefa que exija um processamento do backend, esse processamento será feito em um outro model.
+Um controlador pode controlar qualquer coisa, por exemplo: o seu model. Ele precisará de um controlador, afinal, o controlador de um model irá fazer as requisições e receberá as respostas do banco de dados. Outra função para os controladores é executar uma determinada tarefa, que não seja diretamente ligada ao seu modelo, mas que exija um processamento do backend. Sendo assim é viável criar um outro controller para executar essa função.
 
-Essa segmentação de controllers auxilia na distribuição de responsabilidades, e mantém o código mais organizado, sendo assim seu código ficará mais simples de ser entendido e de receber manutenção (e isso é muito importante).
+Em resumo, cada controller deve ter uma função, seja ela movimentar o banco de dados de acordo com um modelo (inserir, remover, atualizar, listar) ou processar uma informação. 
+
+Essa segmentação de controllers auxilia na distribuição de responsabilidades, e mantém o código mais organizado. Assim seu código ficará mais simples de ser entendido e de receber manutenção (e isso é muito importante).
 
 Como por hora temos apenas um model, então crie um arquivo chamado `NomeDoModelController.js`, seguindo o exemplo terei um arquivo chamado `ProductController.js`.
 
@@ -686,10 +688,10 @@ Como por hora temos apenas um model, então crie um arquivo chamado `NomeDoModel
           └── Products.js
   ```
 
-A estrutura de um controller é composta basicamente de um objeto, que será exportado, abaixo temos o esqueleto básico de um controller:
+A estrutura de um controller é composta basicamente de um objeto, que será exportado. Abaixo temos o esqueleto básico de um controller:
 
 ```JavaScript
-const NomeDoModel = require('../models/NomeDoModel')
+const NomeDoModel = require('../models/NomeDoModel');
 
 module.exports = {
     // métodos
@@ -697,11 +699,11 @@ module.exports = {
 }
 ```
 
-Outro jeito de fazer um controller, seria com a estrutura abaixo
+Outro jeito de fazer um controller, seria com a estrutura abaixo:
 
 ```JavaScript
 const mongoose = require('mongoose');
-const NomeDoModel = mongoose.model('NomeDoModel')
+const NomeDoModel = mongoose.model('NomeDoModel');
 
 module.exports = {
     // métodos
@@ -709,13 +711,13 @@ module.exports = {
 }
 ```
 
-A diferença entre os dois é que no primeiro caso você não importa o mongoose diretamente, pois você importa o NomeDoModel, e lá já temos o mongoose, porém se você tentar utilizar o mongoose para alguma coisa nessa abordagem, não vai funcionar (utilizar o mongoose dentreo do arquivo controller). Já a segunda nos pegamos o modelo através da busca por modelos que o mongoose faz. Lembre-se de que quando criamos o modelo nos fizemos:
+A diferença entre os dois é que no primeiro caso você não importa o mongoose diretamente, pois você importa o NomeDoModel, e lá já temos o mongoose, porém se você tentar utilizá-lo para alguma coisa nessa abordagem, não vai funcionar (utilizar o mongoose dentro do arquivo controller). Já a segunda, nós pegamos o modelo através da busca por modelos que o mongoose faz, e se lembre de que quando criamos o modelo, nós fizemos:
 
 ```JavaScript
 module.exports = model("NomeDoModel", NomeDoModelSchema);
 ```
 
-Ou seja, aqui nós jogamos o NomeDoModel para o nosso programa como sendo um model. Logo o mongoose consegue pegar ele quando damos o comando.
+Ou seja, aqui nós jogamos o `NomeDoModel` para o nosso programa como sendo um model. Logo o mongoose consegue pegar ele quando damos o comando.
 
 ```JavaScript
 const NomeDoModel = mongoose.model('NomeDoModel')
@@ -735,9 +737,9 @@ module.exports = {
 
 O que na minha opnião faz mais sentido, e é o que vou utilizar caso precise utilizar o mongoose dentro do arquivo de controle.
 
-Mais para frente vou trazer alguns métodos possíveis para aplicarmos ao nosso modelo, ou seja, inserção, remoção... Mas agora já trarei um método para poder mostrar que está tudo funcionando.
+Para testar nossa implementação, vou inserir no controller o método index, que é ligado ao método find. O mesmo terá por função retornar uma lista com tudo que temos no nosso banco de dados.
 
-Vou utilizar o método `find` que basicamente trará para nós o que está dentro do banco de dados, o que convenhamos é muito útil, e na verdade é o inicio de toda aplicação que utiliza banco de dados. No caso eu mostrarei como fica o arquivo `ProductController.js`
+> OBS.: É normal uma api possuir o método index, então isso aqui não é apenas um teste, e sim parte do processo até onde quero chegar no final desse material.
 
 - Arquivo `ProductController.js`
 
@@ -753,29 +755,29 @@ Vou utilizar o método `find` que basicamente trará para nós o que está dentr
   };
   ```
 
-Caso não saiba o que é o `async/await`, veja o meu material de javaScript, mas dando um resumo o `async` indica que a função é assincrona (isso acontece porque o método find é assincrono, e se ele está dentro da função então é claro que ela também será assincrona) e o método `await` faz com que esperemos o retorno do método `find` para ai sim seguir com o código, que nesse caso retorna `products` (que é o que está dentro da nossa base de dados) em formato `json`.
+Caso não saiba o que é o `async/await`, veja o material de [javaScript](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/JavaScript). Mas dando um resumo, o `async` indica que a função é assincrona (isso acontece porque o método find é assincrono, e se ele está dentro da função então é claro que ela também será assincrona) e o método `await` faz com que esperemos o retorno do método `find` para ai sim seguir com o código, que nesse caso retorna `products` (que é o que está dentro da nossa base de dados) em formato `json`.
 
 > OBS.: ainda não tente abrir nada no seu navegador, pois sem ajustar o arquivo `server.js` e sem criar o arquivos de rotas não vai acontecer nada.
 
 ## 9.2 ROUTES
 
-Dentro da pasta src crie um arquivo chamado `routes.js`.
+Dentro da pasta `src` crie um arquivo chamado `routes.js`.
 
-Para te ajudar, até agora a nossa estrutura de arquivos é a seguinte:
+- A árvore de diretórios nesse momento fica:
 
-```sh
-├── credentials.json
-├── node_modules
-├── package.json
-├── package-lock.json
-├── server.js
-└── src
-    ├── controllers
-    │   └── ProductController.js
-    ├── models
-    │   └── Product.js
-    └── routes.js
-```
+  ```sh
+  ├── credentials.json
+  ├── node_modules
+  ├── package.json
+  ├── package-lock.json
+  ├── server.js
+  └── src
+      ├── controllers
+      │   └── ProductController.js
+      ├── models
+      │   └── Product.js
+      └── routes.js
+  ```
 
 A estrutura de um arquivo de rotas é bem simples.
 
@@ -792,7 +794,7 @@ routes.get("/local", NomeDoModelController.index);
 module.exports = routes;
 ```
 
-Aqui o que estamos fazendo é que ao acessarmos o endereço `/local` estaremos executando o método `index` criado no `NomeDoModelController.js`. Ou seja, estaremos recebendo como retorno o json da nossa tabela do banco de dados.
+Ao acessarmos o endereço `"/local"` estaremos executando o método `index` criado no `NomeDoModelController.js`. Ou seja, estaremos recebendo como retorno o json da nossa tabela do banco de dados.
 
 Indo para o exemplo, o arquivo `routes.js` ficará:
 
@@ -805,7 +807,7 @@ Indo para o exemplo, o arquivo `routes.js` ficará:
   const ProductController = require("./controllers/ProductController");
 
   // Minha rota
-  routes.get("/products", ProductController.index);
+  routes.get("/products", ProductController.index); //pegar coisas
 
   module.exports = routes;
   ```
@@ -847,7 +849,7 @@ Agora vamos reorganizar o arquivo `server.js` que nesse momento está da seguint
   });
   ```
 
-Como não queremos mais executar requisições ao banco de dados dentro desse arquivo, podemos retirar o `app.get`, também não precisamos mais puxar e nem iniciar os models. Mas em contra partida precisamos agora inserir nossas rotas. Para isso faremos o seguinte
+Como não queremos mais executar requisições ao banco de dados de dentro desse arquivo, podemos retirar o `app.get`, também não precisamos mais puxar e nem iniciar os models. Mas em contra partida precisamos agora inserir nossas rotas. Para isso faremos o seguinte:
 
 ```JavaScript
 const routes = require("./src/routes");
@@ -859,7 +861,7 @@ app.use("/algumaCoisa", routes);
 
 Antes de mostrar o como fica o arquivo `server.js` do exemplo, eu quero explicar a linha `app.use("/algumaCoisa", routes);`.
 
-Dentro do `use` nos vamos passar dois parâmetros, que seriam a url e para onde que essa url irá nos mandar.
+Dentro do `use` nós vamos passar dois parâmetros, que seriam a url e para onde que essa url irá nos mandar.
 
 Ou seja, quando digitarmos no nosso navegador a url `http://localhost:3001/algumaCoisa` iremos cair dentro das nossas rotas. Mas primeiro quero que você entenda que se eu tivesse passado
 
@@ -883,9 +885,9 @@ app.use(routes);
 
 iriamos ter que digitar `http://localhost:3001/`
 
-Sim, passando o `/` ou não passando nada teremos o mesmo efeito.
+Sim, passando o `"/"` ou não passando nada teremos o mesmo efeito.
 
-Agora vamos pensar olhando para as nossas rotas. Afinal podemos pensar como se esse `/algumaCoisa` fosse uma pasta, e que dentro dela temos vários arquivos, e esses arquivos são nossas rotas. Ou seja, vamos supor que temos as seguintes rotas:
+Agora vamos pensar olhando para as nossas rotas. Afinal podemos pensar como se esse `"/algumaCoisa"` fosse uma pasta, e que dentro dela temos vários arquivos, e esses arquivos são nossas rotas. Ou seja, vamos supor que temos as seguintes rotas:
 
 ```JavaScript
 routes.get("/rotaA", ProductController.metodoA);
@@ -895,7 +897,7 @@ routes.get("/rotaC", ProductController.metodoC);
 
 Para acessarmos cada uma dessas rotas teriamos que fazer respectivamente:
 
-- Para `/algumaCoisa`
+- Para `"/algumaCoisa"`
 
   ```
   http://localhost:3001/algumaCoisa/rotaA
@@ -903,7 +905,7 @@ Para acessarmos cada uma dessas rotas teriamos que fazer respectivamente:
   http://localhost:3001/algumaCoisa/rotaC
   ```
 
-- Para `/` ou nada
+- Para `"/"` ou nada
 
   ```
   http://localhost:3001/rotaA
@@ -935,21 +937,7 @@ Assim o arquivo `server.js` do exemplo fica com a seguinte cara:
   app.listen(3001);
   ```
 
-Agora sim. Se você der o comando no terminal (dentro da pasta da aplicação) e abrir o seu navegador no seguinte url: `http://localhost:3001/api/products` e se você fez exatamente como eu quando fiz dentro do arquivo `server.js` nesse passo [aqui](#81-vários-models):
-
-```JavaScript
-  app.get("/", (req, res) => {
-    Product.create({
-      title: "React Native",
-      description: "Build native apps with React",
-      url: "http://github.com/facebook/react-native"
-    });
-
-    return res.send("Hello World"); //ta aqui atoa
-  });
-```
-
-Você verá:
+Agora sim. Se você der o comando no terminal, e abrir o seu navegador na seguinte url: `http://localhost:3001/api/products`, e se você tinha o arquivo `server.js` exatamente igual ao meu, quando estavamos nesse passo [aqui](#81-vários-models) (ou seja, se você adicionou aquele registro ao seu banco de dados) e agora o modificou. Você verá:
 
 ```JavaScript
 [
@@ -965,11 +953,13 @@ Você verá:
 ]
 ```
 
-> DICA: Se quiser visualizar arquivos json no seu navegador de uma forma mais agradável, eu recomendo instalar essa extensão para chrome [aqui](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc) e a mesma para firefox mozilla [aqui](https://addons.mozilla.org/pt-BR/firefox/addon/jsonview/)
+> DICA: Se quiser visualizar arquivos json no seu navegador de uma forma mais agradável, eu recomendo instalar a extensão JsonView no seu browser.
+>  - [Para chrome](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc)
+>  - [Para firefox](https://addons.mozilla.org/pt-BR/firefox/addon/jsonview/)
 
 # **10. REPASSANDO**
 
-Caso tenha ficado confuso ou perdido vou repassar aqui rapidamente como as coisas tem que ficar.
+Caso tenha ficado confuso ou perdido até aqui, vou repassar aqui rapidamente como as coisas tem que ficar.
 
 - A estrutura de arquivos:
 
@@ -990,11 +980,10 @@ Caso tenha ficado confuso ou perdido vou repassar aqui rapidamente como as coisa
 - Instale as dependências:
   ```sh
   sudo npm install express
-  sudo npm install require-dir
   sudo npm install -D nodemon
+  sudo npm install mongoose
+  sudo npm install require-dir
   ```
-
-Adicione o nodemon como devDependencies e adicione o script em package.json
 
 - Arquivo `package.json`
 
@@ -1052,7 +1041,7 @@ Adicione o nodemon como devDependencies e adicione o script em package.json
   const ProductController = require("./controllers/ProductController");
 
   // Minha rota
-  routes.get("/products", ProductController.index);
+  routes.get("/products", ProductController.index); //pegar coisas
 
   module.exports = routes;
   ```
@@ -1071,7 +1060,7 @@ Adicione o nodemon como devDependencies e adicione o script em package.json
   };
   ```
 
-- Abra o terminal em `node-api` e digite o comando
+- Abra o terminal em `node-api` e digite o comando:
 
   ```sh
   npm run dev
@@ -1085,25 +1074,27 @@ Adicione o nodemon como devDependencies e adicione o script em package.json
 
 # **11. INSOMNIA**
 
-O insomnia vai nos ajudar a testar as rotas da nossa api. Apesar de já conseguirmos ver a saída no nosso browser, não é o melhor jeito possível, pois ali conseguimos ver basicamente só as rotas get. Não podemos testar rotas post (inserir algo no banco de dados. A gente chega lá).
+O insomnia vai nos ajudar a testar as rotas da nossa api. Apesar de já conseguirmos ver a saída no nosso browser, esse não é o melhor jeito possível, pois ali conseguimos ver basicamente só as rotas get. Não podemos testar rotas post (inserir algo no banco de dados... A gente chega lá).
 
-> OBS.: Nessa seção não vou apresentar tudo que farei com o insomnia logo de cara, até porque nossa aplicação não tem muita coisa no momento. Então vou apenas mostar ele e mostrar o básico de sua utlização, ai nas seções mais seguintes conforme eu for utilizando ele trarei mais conteúdos sobre o mesmo.
+> OBS.: Nessa seção não vou apresentar tudo que farei com o insomnia logo de cara, até porque nossa aplicação não tem muita coisa no momento. Então vou apenas mostar ele e mostrar o básico de sua utlização, ai nas seções posteriores, conforme eu for utilizando ele, trarei mais conteúdos sobre o mesmo.
 
 ## 11.1 INSTALAÇÃO
 
-Digite em seu terminal;
+Para obter o insomnia você pode ir pelo terminal (instruções abaixo) ou ir pelo site deles e baixar o pacote de instalação. O site deles se encontra [aqui](https://insomnia.rest/).
 
-```sh
-echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" | sudo tee -a /etc/apt/sources.list.d/insomnia.list
+- Se escolheu ir pelo terminal, então digite:
 
-wget --quiet -O - https://insomnia.rest/keys/debian-public.key.asc | sudo apt-key add -
+  ```sh
+  echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" | sudo tee -a /etc/apt/sources.list.d/insomnia.list
 
-sudo apt-get install insomnia
-```
+  wget --quiet -O - https://insomnia.rest/keys/debian-public.key.asc | sudo apt-key add -
+
+  sudo apt-get install insomnia
+  ```
 
 ## 11.2 UTILIZAÇÃO
 
-- Dentro do Insomnia vá em `Insomnia -> create new workspace` de um nome pra ela.
+- Dentro do Insomnia vá em `Insomnia -> create new workspace`.
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_20.png?raw=true)
 
@@ -1111,7 +1102,7 @@ sudo apt-get install insomnia
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_21.png?raw=true)
 
-- Agora do lado esquerdo veja que apareceu um botão com um +, clique nele e clique em `new request`.
+- Agora do lado esquerdo veja que apareceu um botão com um `+`, clique nele e clique em `new request`.
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_22.png?raw=true)
 
@@ -1119,17 +1110,17 @@ sudo apt-get install insomnia
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_24.png?raw=true)
 
-- Para saber qual tipo de rota você deve escolher veja de qual tipo dela no arquivo `routes.js`
+- É possível saber a qual tipo pertence a rota que quer monitorar vendo essa informação dentro do arquivo `routes.js`.
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_25.png?raw=true)
 
-> Veja que nesse caso do exemplo, temos uma rota do tipo `get`, logo iremos utilizar o `GET` no insomnia
+> Veja que no caso do exemplo, temos uma rota do tipo `get`, logo iremos utilizar o `GET` no insomnia
 
 - Agora depois de definido o nome, e o tipo, clique em `Create`
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_26.png?raw=true)
 
-- Agora copie a url da rota a ser observada conforme a figura abaixo e clique em `Send`:
+- Copie a url da rota a ser observada para dentro do campo de url (veja a figura abaixo) e clique em `Send`:
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_27.png?raw=true)
 
@@ -1139,7 +1130,7 @@ sudo apt-get install insomnia
 
 ## 11.3 OTIMIZANDO A UTILIZAÇÃO
 
-Como você bem deve imaginar, nos não iremos monitorar apenas essa rota, iremos ver várias, dependendo do projeto podem ser dezenas. Mas em todas elas o modo criar o monitoramento é igual, e em todas elas precisaremos digitar a mesma url variando apenas a ultima rota. Ou seja, `http://localhost:3001/api` é sempre uma constante na aplicação. Sem falar caso nós mudarmos a nossa url (se deixar de ser localhost por exemplo) fica meio complicado de sairmos mudando em todos os arquivos, então é mais interessante que esteja salvo em algum lugar que essa parte é constante e depois nos mudamos somente nesse lugar (exatamente o mesmo principio do porque utilizar variáveis em alguma linguagem de programação, você atribui um valor a ela, e depois somente a chama, e caso queira mudar o valor dela, você muda em um só lugar e a mudança já vai para o restante). Então para facilitar nossa vida, vamos avisar o insomnia que isso é sempre contante.
+Como você bem deve imaginar, nós não iremos monitorar apenas essa rota, iremos ver várias, dependendo do projeto podem ser dezenas. Mas em todas elas o modo criar o monitoramento é igual, e em todas elas precisaremos digitar a mesma url, variando apenas a ultima parte. Ou seja, `http://localhost:3001/api` é sempre uma constante na aplicação. Sem falar que, caso nós mudarmos a nossa url (se deixar de ser localhost por exemplo) fica meio complicado de sairmos mudando em todos os arquivos, então é mais interessante que esteja salvo em algum lugar que essa parte é constante e depois nós mudamos somente nesse lugar (exatamente o mesmo principio do porque utilizar variáveis em alguma linguagem de programação, você atribui um valor a ela, e depois somente a chama, e caso queira mudar o valor dela, você muda em um só lugar e a mudança já vai para o restante). Então para facilitar nossa vida, vamos avisar o insomnia que isso é sempre constante.
 
 - Vá em `No Environment -> Manage Environment`
 
@@ -1149,20 +1140,20 @@ Como você bem deve imaginar, nos não iremos monitorar apenas essa rota, iremos
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_30.png?raw=true)
 
-- Agora vá mude o endereço de url conforme a imagem abaixo (digite base e espere um pouco que vai aparecer base_url isso indica que deu certo, mas mande um send novamente para ver se está tudo ok).
+- Mude o endereço de url conforme a imagem abaixo (digite `base` e espere um pouco que vai aparecer `base_url`, isso indica que deu certo, mas mande um `send` novamente para ver se está tudo ok).
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_31.png?raw=true)
 
-> OBS.: O insomnia não discarta a necessidade de você manter o servidor rodando em algum terminal (npm run dev).
-
+> OBS.: O insomnia não discarta a necessidade de você manter o servidor rodando em algum terminal (`npm run dev`).
+ 
 # **12. CRUD**
 
 Crude é um acronimo para
 
-- C: Create (Criação de novos registros)
+- C: Create (Criar novos registros)
 - R: Read (Ler, recuperar ou visualizar registros)
-- U: Update (Atualização de registros)
-- D: Delete (Deleta um registro)
+- U: Update (Atualizar registros)
+- D: Delete (Deletar registro)
 
 Cada um desses itens, possui um método atrelado a eles no arquivo de rotas (métodos pré-definidos pelo mongoose) e também criaremos métodos para eles no nosso controller. Abaixo podemos ver uma tabela que mostra qual método corresponde a qual.
 
@@ -1175,13 +1166,13 @@ Cada um desses itens, possui um método atrelado a eles no arquivo de rotas (mé
 
 ## 12.1 CREATE
 
-Para criar novas coisas, nos iremos utilizar do método `post`, e para isso remos fazer algumas modificações em nossos arquivos.
+Para criar novas coisas, nós iremos utilizar do método `post`, e para isso iremos fazer algumas modificações em nossos arquivos.
 
 ### **12.1.1 Controller**
 
 Primeiro vamos ver a modificação do nosso controlador.
 
-Nele iremos adicionar mais um método, que será chamado de `store` (você pode dar o nome que quiser, mas esse faz sentido). O método store tem a seguinte estrutura:
+Nele iremos adicionar mais um método, que será chamado de `store` (você pode dar o nome que quiser, mas esse faz sentido). O método `store` tem a seguinte estrutura:
 
 ```JavaScript
 async store(req, res) {
@@ -1190,7 +1181,7 @@ async store(req, res) {
 }
 ```
 
-Traduzindo o que está escrito aqui: O método store vai receber uma requisição e retornará uma resposta. Sendo que essa requisição vai ter dentro de body (req.body) uma estrutura que será criada no nosso banco de dados em cima do model chamado `Product`, e isso que foi salvo será colocado no banco de dados, mas também será salvo na constante `product` que depois é retornada como um json.
+Traduzindo o que está escrito aqui: O método `store` vai receber uma requisição e retornará uma resposta. Sendo que essa requisição vai ter dentro de body (`req.body`) uma estrutura que será criada no nosso banco de dados com base no modelo chamado `Product`. E essa informação será colocado no banco de dados, mas também será salva na constante `product` que depois é retornada como um `json`.
 
 Assim o controlador fica da seguinte forma:
 
@@ -1223,7 +1214,7 @@ Nesse arquivo vamos colocar a seguinte rota:
 routes.post("/products", ProductController.store); //adicionar coisas
 ```
 
-Se você prestou bastatne atenção, você deve ter notado que a rota é igual a rota get (/product), e pode estar pensando que vai haver confusão. Mas eu te digo que não, pois um esta com o método get e outro com o método post. A unica coisa que acontece aqui é que estamos dizendo para a aplicação que nessa url é possivel executar as duas coisas.
+Se você prestou bastatne atenção, você deve ter notado que a rota ficou igual a rota `get` (`"/product"`), e pode estar pensando que vai haver confusão. Mas eu te digo que não, pois um esta com o método `get` e outro com o método `post`. A unica coisa que acontece aqui é que estamos dizendo para a aplicação que nessa url é possivel executar as duas coisas.
 
 - Arquivo `routes.js`
 
@@ -1242,56 +1233,56 @@ Se você prestou bastatne atenção, você deve ter notado que a rota é igual a
 
 ### **12.1.3 Server**
 
-Já o arquivo server.js ganha uma pequema modificação. Ganhado essa linha:
+Já o arquivo `server.js` ganha uma pequema modificação. Ganhado essa linha:
 
 ```JavaScript
 app.use(express.json());
 ```
 
-Que permite que mandemos para nossa aplicação expressões com o fomato `json`, e é exatamente o que faremos no insomnia (eu disse que ele seria util, e que o navegador não poderia fazer isso muito fácilmente)
+Que permite que mandemos para nossa aplicação expressões com o fomato `json`, e é exatamente o que faremos no insomnia (eu disse que ele seria útil, e que o navegador não poderia fazer isso muito fácilmente).
 
 mas primeiro, vamos dar uma olhada em como fica o arquivo `server.js`
 
 - Arquivo `server.js`
 
-```JavaScript
-const express = require("express");
-const mongoose = require("mongoose");
-const mongoUrl = require("./credentials.json");
-const routes = require("./src/routes");
+  ```JavaScript
+  const express = require("express");
+  const mongoose = require("mongoose");
+  const mongoUrl = require("./credentials.json");
+  const routes = require("./src/routes");
 
-// Iniciando o APP
-const app = express();
+  // Iniciando o APP
+  const app = express();
 
-// app.use(express.json());
+  // app.use(express.json());
 
-// Iniciando o DB
-mongoose.connect(mongoUrl.mongoUrl, {
-  useNewUrlParser: true
-});
+  // Iniciando o DB
+  mongoose.connect(mongoUrl.mongoUrl, {
+    useNewUrlParser: true
+  });
 
-// Criação
-app.use(express.json());
+  // Criação
+  app.use(express.json());
 
-// Rotas
-app.use("/api", routes);
+  // Rotas
+  app.use("/api", routes);
 
-app.listen(3001);
-```
+  app.listen(3001);
+  ```
 
 > OBS.: `app.use(express.json());` tem que vir antes de `app.use("/api", routes);`
 
 ### **12.1.4 Insomnia**
 
-- Crie uma nova requeste
+- Crie uma nova ` requeste`
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_32.png?raw=true)
 
-- De um nome para ela e deixe ela com a mesma configuração da imagem abaixo (post com o body em formato json)
+- De um nome para ela e deixe ela com a mesma configuração da imagem abaixo (`post` com o `body` em formato `json`)
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_33.png?raw=true)
 
-- Ajuste a url e escreva o json respeitando o nosso model
+- Ajuste a url e escreva o `json` respeitando o nosso `model`
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_34.png?raw=true)
 
@@ -1299,17 +1290,17 @@ app.listen(3001);
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_35.png?raw=true)
 
-- Vá no mongoDB compass e procure pelo seu banco de dados, e você vera salvos dois registros, o primeiro que utilizamos nos testes e o segundo que mandamos agora pelo insomnia
+- Vá no `mongoDB compass` e procure pelo seu banco de dados, e você verá dois registros, o primeiro que utilizamos nos testes e o segundo que mandamos agora pelo insomnia.
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_36.png?raw=true)
 
 ## 12.2 READ
 
-Apesar de já termos falado do método `get`, vamos agora colocar isso para funcionar dentro do nosso controller para que ele nos retorne somente um registro, diferente do que fizemos com o index, que nos retorna uma lista com tudo que temos no nosso banco de dados.
+Apesar de já termos falado do método `get`, vamos agora colocar isso para funcionar dentro do nosso controller de forma que ele nos retorne somente um registro, diferente do que fizemos com o `index`, que nos retorna uma lista com tudo que temos no nosso banco de dados.
 
-E seguindo a mesma seguencia de raciocínio empregada anteriormente, vamos começar pelo controller, depois pelo routes.
+E seguindo a mesma seguência de raciocínio empregada anteriormente, vamos começar pelo controller, depois pelo routes.
 
-O arquivo `server.js` não precisa de modificação.
+> OBS.: O arquivo `server.js` não precisará de modificação em mais nenhuma etapa de crud.
 
 ### **12.2.1 Controller**
 
@@ -1358,7 +1349,7 @@ Agora precisamos passar essas informações para o nosso controlador, e faremos 
 routes.get("/products/:id", ProductController.show); //ver coisas
 ```
 
-Esse `:id` que temos é justamente a passagem do id pela rota, e isso é feito devido ao express.
+Esse `:id` que temos, é justamente a passagem do id pela rota, e isso é feito devido ao express.
 
 - Arquivo `routes.js`
 
@@ -1378,27 +1369,27 @@ Esse `:id` que temos é justamente a passagem do id pela rota, e isso é feito d
 
 ### **12.2.3 Insomnia**
 
-Como precisamos passar um id valido para o nosso método show, vamos utilizar a request com o nome de `Index` para poder pegar um id valido.
+Como precisamos passar um `id` válido para o nosso método `show`, vamos utilizar a request com o nome de `Index` para poder pegar um `id` válido.
 
-- Depois de ter clicado em send nessa request você terá a lista de todos os registros do banco. E então copie o id de um deles
+- Depois de ter clicado em `send` nessa request você terá a lista de todos os registros do banco. E então copie o `id` de um deles.
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_37.png?raw=true)
 
-- Agora crie uma nova request do tipo get (chamarei de show) e adicione a url `base_url/products/id` sendo qeu esse id deve ser substituido pelo id que você copiou anteriormente
+- Agora crie uma nova request do tipo `get` (chamarei de `Show`) e adicione a url `base_url/products/id` sendo que esse `id` deve ser substituido pelo `id` que você copiou anteriormente.
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_38.png?raw=true)
 
-- Clicando em send você verá o registro referente à aquele id
+- Clicando em `send` você verá o registro referente à aquele `id`
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_39.png?raw=true)
 
 ## 12.3 UPDATE
 
-Analogamente ao restante, irei fazer o controller primeiro, depois o routes e depois o insomnia. O server não requer mais mudanças.
+Assim como fiz anteriormente, irei fazer o controller primeiro, depois o routes e depois o insomnia. 
 
 ### **12.3.1 Controller**
 
-Aqui estaremos construindo uma mescla do create e do read, afinal precisamos encontrar um registro especifico e depois inserir algo nele.
+Aqui estaremos construindo uma mescla do `create` e do `read`, afinal precisamos encontrar um registro específico e depois inserir algo nele.
 
 Então a estrutura dessa modificação fica a seguinte:
 
@@ -1410,15 +1401,15 @@ async update(req, res) {
 }
 ```
 
-Basicamente o que estamos fazendo é encontrar um determinado registro com o `params.id` e depois fazer uma modificação que veio no `body` da nossa aplicação. E para fazer isso nos utilizamos a função chamada `find by id and update` (esse nome não tem como ser mais intuitivo do que isso).
+Basicamente o que estamos fazendo é encontrar um determinado registro com o `params.id` e depois aplicar uma modificação de acordo com o que veio no `body` da nossa aplicação. E para fazer isso nós utilizamos a função chamada `find by id and update` (um nome bem sugestivo por sinal).
 
-Mas agora o que seria aquele `{new: true}`, bom, isso indica para nossa função que é para retornar algo para a constante `product` somente depois de atualizar, pq se não o retorno acontece antes de atualizar, assim o `product` recebe a versão antiga. Mas no banco de dados tudo foi atualizado.
+O parâmetro `{new: true}` indica para nossa função que é para retornar algo para a constante `product` somente depois de atualizar. Pois normalmente a função retorna o registro antes de modificá-lo.
 
-Uma observação a se fazer é que quando formos atualizar um determinado registro, não precisamos atualizar ele todo, podemos mandar somente um atributo e ele substituirá somente esse atributo.
+> OBS.: Quando formos atualizar um determinado registro, não precisamos atualizar ele todo, podemos mandar mundar somente um atributo e ele substituirá somente esse atributo.
 
 ### **12.3.2 Routes**
 
-Agora no routes, vamos utilizar o método `put` e assim como o `post` ele precisa passar o id pelo endereço. Então ficamos com:
+Agora no routes, vamos utilizar o método `put` e assim como o `post` ele precisa passar o `id` pelo endereço. Então ficamos com:
 
 ```JavaScript
 routes.put("/products/:id", ProductController.update); //atualiza coisas
@@ -1438,31 +1429,31 @@ Agora podemos ver o arquivo completo:
   routes.get("/products", ProductController.index); //pegar coisas
   routes.post("/products", ProductController.store); //adicionar coisas
   routes.get("/products/:id", ProductController.show); //ver coisas
-  routes.put("/products/:id", ProductController.update); //atualiza coisas
+  routes.put("/products/:id", ProductController.update); //atualizar coisas
   module.exports = routes;
   ```
 
 ### **12.3.3 Insomnia**
 
-- Copie um id valido, assim como fizemos na request `Show`, pois precisamos de um para fazer o update
+- Copie um `id` válido, assim como fizemos na request `Show`, pois precisamos de um para fazer o `update`
 
 - Crie uma nova request e de um nome à ela colocando-a como sendo do tipo `put` e coloque-a para receber um `json`.
 
-- Configure o url para ficar do mesmo jeito que na request `Show` (`base_url/products/id`) e então escreve um json informando qual atributo trocar e como ele deve ficar. Na imagem abaixo eu troco somente o titulo do meu registro que antes era `React Native` para `React-Native`.
+- Configure o url para ficar do mesmo jeito que na request `Show` (`base_url/products/id`) e então escreve um json informando qual atributo trocar e como ele deve ficar. Na imagem abaixo eu troco somente o atributo `title` do meu registro que antes era `React Native` para `React-Native`.
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_40.png?raw=true)
 
-- Veja no mongoDB compass (recarregue o compass, mude de tabela para lista, uma hora ele vai)
+- Veja no `mongoDB compass` (recarregue o `compass`, mude de tabela para lista, uma hora ele vai)
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_41.png?raw=true)
 
 ## 12.4 DELETE
 
-Analogamente ao restante, irei fazer o controller primeiro, depois o routes e depois o insomnia. O server não requer mais mudanças.
+Primeiro farei o controller, depois o routes e depois o insomnia.
 
 ### **12.4.1 Controller**
 
-Esse aqui chamaremos de `destroy`, e diferentemente dos outros que sempre estavamos retornando o produto, aqui não faz sentido fazermos isso, afinal não é para ter produto no final das contas.
+Esse método aqui chamaremos de `destroy`, e diferentemente dos outros que sempre estavamos retornando o produto, aqui não faz sentido fazermos isso, afinal não é para ter produto no final das contas.
 
 E assim como no update, precisamos encontrar o registro para depois deletá-lo, então utilizaremos mais uma função com nome intuitivo: `findByIdAndRemove`
 
@@ -1519,7 +1510,7 @@ O arquivo completo fica:
 
 ### **12.4.2 Routes**
 
-Veja que tudo que precisamos é do id do registro, então assim como antes a nossa rota irá mandar o id pelo url e isso será feito através de um método chamado `delete`
+Veja que tudo que precisamos é do `id` do registro, então assim como antes, a nossa rota irá mandar o `id` pelo url e isso será feito através de um método chamado `delete`
 
 ```JavaScript
 routes.delete("/products/:id", ProductController.destroy) //destri coisas
@@ -1537,41 +1528,41 @@ routes.delete("/products/:id", ProductController.destroy) //destri coisas
   routes.get("/products", ProductController.index); //pegar coisas
   routes.post("/products", ProductController.store); //adicionar coisas
   routes.get("/products/:id", ProductController.show); //ver coisas
-  routes.put("/products/:id", ProductController.update); //atualiza coisas
-  routes.delete("/products/:id", ProductController.destroy); //destri coisas
+  routes.put("/products/:id", ProductController.update); //atualizar coisas
+  routes.delete("/products/:id", ProductController.destroy); //destruir coisas
 
   module.exports = routes;
   ```
 
 ### **12.4.3 Insomnia**
 
-- Copie um id valido
+- Copie um id válido
 
 - Crie uma nova request, chamarei ela de `Delete`
 
-- Configure a url da forma que no `Show` (`base_url/products/id`) e pressione send e receba apenas uma mensagem indicando sucesso (a mensagem é o 200 OK que está evidenciado na imagem, ele indica sucesso).
+- Configure a url da mesma forma que no `Show` (`base_url/products/id`) e pressione `send` e você verá o indicativo de sucesso (o indicador é o `200 OK` que está evidenciado na imagem, ele indica sucesso).
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_42.png?raw=true)
 
-- Agora indo ao mongoDB compass veremos que o registro sumiu
+- Agora indo ao `mongoDB compass` veremos que o registro sumiu
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_43.png?raw=true)
 
-- Outro jeito de ver isso, é ir na request Index do insomnia e dar um send novamente, assim a listagem de itens do banco de dados não retornará o registro apagado
+- Outro jeito de ver isso, é ir na request `Index` do insomnia e dar um `send` novamente, assim a listagem de itens do banco de dados não retornará o registro apagado.
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_44.png?raw=true)
 
 # **13. CORS**
 
-O cors permite que a nossa aplicação seja acessada de outros lugares que não sejam a nossa maquina (localhost).
+O `cors` permite que a nossa aplicação seja acessada de outros lugares que não sejam a nossa máquina (`localhost`).
 
-Instale o cors:
+Primeriamente instale o `cors`:
 
 ```sh
 sudo npm install cors
 ```
 
-Para fazer isso, vá ao arquivo `server.js` e acrescente as linhas abaixo:
+Agora para efetuarmos a inserção do mesmo em nosso código, vá ao arquivo `server.js` e acrescente as linhas abaixo:
 
 ```JavaScript
 const cors = require("cors");
@@ -1611,7 +1602,7 @@ E pronto, agora a nossa api pode ser acessada publicamente, o aquivo todo está 
   app.listen(3001);
   ```
 
-> OBS.: É meio que obvio que não vai acontecer nada agora, porque você não tem nenhum servidor para colocar ela para rodar. Mas ela está pronta para isso.
+> OBS.: É meio que óbvio que não vai acontecer nada agora, porque você não tem nenhum servidor para colocar a aplicação no ar. Mas ela está pronta para isso. Tem como tornar o seu pc um servidor, mas eu não testei isso ainda, mas veja esse video [aqui](https://www.youtube.com/watch?v=0sTfIZvjYJk) do Filipe Deschamps em que ele ensina a como colocar a aplicação no ar, usando o seu pc como um servidor (essa parte vai estar lá pelo minuto 4:25 - Mas sério, veja a série inteira, desde o início, tá muito bom).
 
 # **14. RESUMO**
 
@@ -1666,12 +1657,6 @@ E pronto, agora a nossa api pode ser acessada publicamente, o aquivo todo está 
       "nodemon": "^1.19.1"
     }
   }
-  ```
-
-- Rode o comando no terminal
-
-  ```sh
-  npm run dev
   ```
 
 - Crie arquivos e diretórios para que a estrutura de arquivos fique igual a minha:
@@ -1788,8 +1773,8 @@ E pronto, agora a nossa api pode ser acessada publicamente, o aquivo todo está 
   routes.get("/products", ProductController.index); //pegar coisas
   routes.post("/products", ProductController.store); //adicionar coisas
   routes.get("/products/:id", ProductController.show); //ver coisas
-  routes.put("/products/:id", ProductController.update); //atualiza coisas
-  routes.delete("/products/:id", ProductController.destroy); //destri coisas
+  routes.put("/products/:id", ProductController.update); //atualizar coisas
+  routes.delete("/products/:id", ProductController.destroy); //destruir coisas
 
   module.exports = routes;
   ```
@@ -1820,4 +1805,10 @@ E pronto, agora a nossa api pode ser acessada publicamente, o aquivo todo está 
   );
 
   module.exports = model("Product", ProductSchema);
+  ```
+
+- Rode o comando no terminal
+
+  ```sh
+  npm run dev
   ```
