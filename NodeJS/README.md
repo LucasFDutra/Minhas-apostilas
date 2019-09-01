@@ -13,10 +13,10 @@ Autor: Lucas Felipe Dutra
 
 - [**1. INTRODUÇÃO**](#1-introdução)
 - [**2. INSTALAÇÃO**](#2-instalação)
-    - [**2.1 WINDOWS**](#21-windows)
-    - [**2.2 LINUX (UBUNTU E DERIVADOS)**](#22-linux-(ubuntu-e-derivados))
-    - [**2.3 LINUX (TODOS OS SISTEMAS)**](#23-linux-(todos-os-sistemas))
-    - [**2.4 CONFIGURANDO VSCODE**](#24-configurando-vscode)
+    - [2.1 WINDOWS](#21-windows)
+    - [2.2 LINUX (UBUNTU E DERIVADOS)](#22-linux-(ubuntu-e-derivados))
+    - [2.3 LINUX (TODOS OS SISTEMAS)](#23-linux-(todos-os-sistemas))
+    - [2.4 CONFIGURANDO VSCODE](#24-configurando-vscode)
 - [**3. INICIANDO APLICAÇÃO**](#3-iniciando-aplicação)
 - [**4. EXPRESS**](#4-express)
 - [**5. ROTAS**](#5-rotas)
@@ -64,11 +64,11 @@ O nodeJS é uma plataforma que utiliza a engine V8 do google chrome, assim permi
 
 Para trabalhar com o nodeJS no seu computador é preciso fazer a instalação do mesmo.
 
-## **2.1 WINDOWS**
+## 2.1 WINDOWS
 
 Vá no [site](https://nodejs.org/en/) do node e baixe o instalador e saia dando next
 
-## **2.2 LINUX (UBUNTU E DERIVADOS)**
+## 2.2 LINUX (UBUNTU E DERIVADOS)
 
 **Para sistemas da plataforma `deb` exceto linux mint 19.2.**
 
@@ -106,11 +106,11 @@ npm --version
 
 as respostas devem ser respectivametne `v10.16.3` e `6.9.0`
 
-## **2.3 LINUX (TODOS OS SISTEMAS)**
+## 2.3 LINUX (TODOS OS SISTEMAS)
 
 Veja maiores informações sobre o node para linux [aqui](https://github.com/nodesource/distributions/blob/master/README.md). Você encontra como instalar o node no seu pc (esse link veio a partir do site oficial do node na aba downloads)
 
-## **2.4 CONFIGURANDO [VSCODE](HTTPS://CODE.VISUALSTUDIO.COM/)**
+## 2.4 CONFIGURANDO [VSCODE](HTTPS://CODE.VISUALSTUDIO.COM/)
 
 Recomendo utilizar o Visual studio code para programar, porém sinta-se a vontade para utilizar o que preferir, mas caso escolha trabalhar com o vscode, então baixe as extensões
 
