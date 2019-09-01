@@ -71,7 +71,7 @@ Em mihas anotações referentes ao curso em video tem no material uma parte de m
     - [12.1 AJAX](#121-ajax)
     - [12.2 PROMISES](#122-promises)
     - [12.3 ASYNC/AWAIT](#123-asyncawait)
-    - [12.4 [AXIOS](https://github.com/axios/axios)](#124-axios)
+    - [12.4 AXIOS](#124-axios)
         - [**12.4.1 Axios com promises**](#1241-axios-com-promises)
         - [**12.4.2 Axios com async/await**](#1242-axios-com-asyncawait)
 
