@@ -24,8 +24,8 @@ Em mihas anotações referentes ao curso em video tem no material uma parte de m
 
 - [**1. INSTALAÇÃO**](#1-instalação)
     - [1.1 WINDOWS](#11-windows)
-    - [1.2 LINUX (UBUNTU E DERIVADOS)](#12-linux-(ubuntu-e-derivados))
-    - [1.3 LINUX (TODOS OS SISTEMAS)](#13-linux-(todos-os-sistemas))
+    - [1.2 LINUX (UBUNTU E DERIVADOS)](#12-linux-ubuntu-e-derivados)
+    - [1.3 LINUX (TODOS OS SISTEMAS)](#13-linux-todos-os-sistemas)
 - [**2. CONFIGURANDO VSCODE**](#2-configurando-vscode)
 - [**3. COMO CRIAR UM CÓDIGO JS**](#3-como-criar-um-código-js)
 - [**4. ESTRUTURANDO**](#4-estruturando)
