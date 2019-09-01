@@ -11,6 +11,54 @@ Autor: Lucas Felipe Dutra
 
 Todo o material que aqui estará será feito durante a execução do exemplo que se encontra na pasta `node-api` aqui dentro desse repositório.
 
+# Sumário
+
+- [**1. INTRODUÇÃO**](#1-introdução)
+- [**2. INSTALAÇÃO**](#2-instalação)
+    - [**2.1 WINDOWS**](#21-windows)
+    - [**2.2 LINUX (UBUNTU E DERIVADOS)**](#22-linux-(ubuntu-e-derivados))
+    - [**2.3 LINUX (TODOS OS SISTEMAS)**](#23-linux-(todos-os-sistemas))
+    - [**2.4 CONFIGURANDO VSCODE**](#24-configurando-vscode)
+- [**3. INICIANDO APLICAÇÃO**](#3-iniciando-aplicação)
+    - [3.1 INSTALANDO DEPENDÊNCIAS](#31-instalando-dependências)
+- [**4. EXPRESS**](#4-express)
+- [**5. ROTAS**](#5-rotas)
+- [**6. NODEMON**](#6-nodemon)
+- [**7. MONGODB**](#7-mongodb)
+    - [7.1 SEGURANÇA](#71-segurança)
+    - [7.2 MONGODB COMPASS](#72-mongodb-compass)
+- [**8. MODEL**](#8-model)
+        - [8.1 VÁRIOS MODELS](#81-vários-models)
+- [**9. COMUNICANDO COM BANCO DE DADOS**](#9-comunicando-com-banco-de-dados)
+    - [9.1 CONTROLLER](#91-controller)
+    - [9.2 ROUTES](#92-routes)
+    - [9.3 SERVER.JS](#93-serverjs)
+- [**10. REPASSANDO**](#10-repassando)
+- [**11. INSOMNIA**](#11-insomnia)
+    - [11.1 INSTALAÇÃO](#111-instalação)
+    - [11.2 UTILIZAÇÃO](#112-utilização)
+    - [11.3 OTIMIZANDO A UTILIZAÇÃO](#113-otimizando-a-utilização)
+- [**12. CRUD**](#12-crud)
+    - [12.1 CREATE](#121-create)
+        - [**12.1.1 Controller**](#1211-controller)
+        - [**12.1.2 Routes**](#1212-routes)
+        - [**12.1.3 Server**](#1213-server)
+        - [**12.1.4 Insomnia**](#1214-insomnia)
+    - [12.2 READ](#122-read)
+        - [**12.2.1 Controller**](#1221-controller)
+        - [**12.2.2 Routes**](#1222-routes)
+        - [**12.2.3 Insomnia**](#1223-insomnia)
+    - [12.3 UPDATE](#123-update)
+        - [**12.3.1 Controller**](#1231-controller)
+        - [**12.3.2 Routes**](#1232-routes)
+        - [**12.3.3 Insomnia**](#1233-insomnia)
+    - [12.4 DELETE](#124-delete)
+        - [**12.4.1 Controller**](#1241-controller)
+        - [**12.4.2 Routes**](#1242-routes)
+        - [**12.4.3 Insomnia**](#1243-insomnia)
+- [**13. CORS**](#13-cors)
+- [**14. RESUMO**](#14-resumo)
+
 # **1. INTRODUÇÃO**
 
 O nodeJS é uma plataforma que utiliza a engine V8 do google chrome, assim permitindo que utilizemos o JavaScript no backend.
@@ -304,7 +352,7 @@ Baixe a versão gratuita do banco de dados chamada mongoDB atlas, que pode ser e
 - Agora dentro da pasta backend adicione o mongoose com o comando
 
   ```sh
-  sudo npm i mongoose
+  sudo npm install mongoose
   ```
 
 O mongoose vai permitir que nos comuniquemos com o banco de dados utilizando apenas sintax javascrip. Isso faz com que não precisemos utilizar aqueles comando `INSERT, INTO..` que os bancos de dados precisam
@@ -1257,12 +1305,11 @@ app.listen(3001);
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_36.png?raw=true)
 
-
 ## 12.2 READ
 
 Apesar de já termos falado do método `get`, vamos agora colocar isso para funcionar dentro do nosso controller para que ele nos retorne somente um registro, diferente do que fizemos com o index, que nos retorna uma lista com tudo que temos no nosso banco de dados.
 
-E seguindo a mesma seguencia de raciocínio empregada anteriormente, vamos começar pelo controller, depois pelo routes. 
+E seguindo a mesma seguencia de raciocínio empregada anteriormente, vamos começar pelo controller, depois pelo routes.
 
 O arquivo `server.js` não precisa de modificação.
 
@@ -1347,11 +1394,12 @@ Como precisamos passar um id valido para o nosso método show, vamos utilizar a 
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_39.png?raw=true)
 
-
 ## 12.3 UPDATE
+
 Analogamente ao restante, irei fazer o controller primeiro, depois o routes e depois o insomnia. O server não requer mais mudanças.
 
 ### **12.3.1 Controller**
+
 Aqui estaremos construindo uma mescla do create e do read, afinal precisamos encontrar um registro especifico e depois inserir algo nele.
 
 Então a estrutura dessa modificação fica a seguinte:
@@ -1364,7 +1412,7 @@ async update(req, res) {
 }
 ```
 
-Basicamente o que estamos fazendo é encontrar um determinado registro com o `params.id` e depois fazer uma modificação que veio no `body` da nossa aplicação. E para fazer isso nos utilizamos a função chamada `find by id and update` (esse nome não tem como ser mais intuitivo do que isso). 
+Basicamente o que estamos fazendo é encontrar um determinado registro com o `params.id` e depois fazer uma modificação que veio no `body` da nossa aplicação. E para fazer isso nos utilizamos a função chamada `find by id and update` (esse nome não tem como ser mais intuitivo do que isso).
 
 Mas agora o que seria aquele `{new: true}`, bom, isso indica para nossa função que é para retornar algo para a constante `product` somente depois de atualizar, pq se não o retorno acontece antes de atualizar, assim o `product` recebe a versão antiga. Mas no banco de dados tudo foi atualizado.
 
@@ -1381,6 +1429,7 @@ routes.put("/products/:id", ProductController.update); //atualiza coisas
 Agora podemos ver o arquivo completo:
 
 - Arquivo `routes.js`
+
   ```JavaScript
   const express = require("express");
   const routes = express.Router();
@@ -1409,8 +1458,8 @@ Agora podemos ver o arquivo completo:
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_41.png?raw=true)
 
-  
 ## 12.4 DELETE
+
 Analogamente ao restante, irei fazer o controller primeiro, depois o routes e depois o insomnia. O server não requer mais mudanças.
 
 ### **12.4.1 Controller**
@@ -1432,6 +1481,7 @@ async destroy(req, res){
 O arquivo completo fica:
 
 - Arquivo `ProductController.js`
+
   ```JavaScript
   const Product = require("../models/Product");
 
@@ -1513,3 +1563,263 @@ routes.delete("/products/:id", ProductController.destroy) //destri coisas
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/NodeJS/Imagens/Figura_44.png?raw=true)
 
+# **13. CORS**
+
+O cors permite que a nossa aplicação seja acessada de outros lugares que não sejam a nossa maquina (localhost).
+
+Instale o cors:
+
+```sh
+sudo npm install cors
+```
+
+Para fazer isso, vá ao arquivo `server.js` e acrescente as linhas abaixo:
+
+```JavaScript
+const cors = require("cors");
+app.use(cors());
+```
+
+E pronto, agora a nossa api pode ser acessada publicamente, o aquivo todo está abaixo:
+
+- Arquivo `server.js`
+
+  ```JavaScript
+  const express = require("express");
+  const mongoose = require("mongoose");
+  const mongoUrl = require("./credentials.json");
+  const routes = require("./src/routes");
+  const cors = require("cors");
+
+  // Iniciando o APP
+  const app = express();
+
+  // app.use(express.json());
+
+  // Iniciando o DB
+  mongoose.connect(mongoUrl.mongoUrl, {
+    useNewUrlParser: true
+  });
+
+  // Criação
+  app.use(express.json());
+
+  // cors
+  app.use(cors());
+
+  // Rotas
+  app.use("/api", routes);
+
+  app.listen(3001);
+  ```
+
+> OBS: É meio que obvio que não vai acontecer nada agora, porque você não tem nenhum servidor para colocar ela para rodar. Mas ela está pronta para isso.
+
+# **14. RESUMO**
+
+- Instale o node:
+
+  ```sh
+  curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+
+  sudo apt-get install -y nodejs
+  ```
+
+- De o comando
+
+  ```sh
+  npm init -y
+  ```
+
+- Instale as dependências
+
+  ```sh
+  sudo npm install express
+
+  sudo npm install -D nodemon
+
+  sudo npm install mongoose
+
+  sudo npm install require-dir
+
+  sudo npm install cors
+  ```
+
+- Ajuste o arquivo package.json para ficar da seguinte forma:
+
+  ```JavaScript
+  {
+    "name": "node-api",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "dev": "nodemon server.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "express": "^4.17.1",
+      "require-dir": "^1.2.0"
+    },
+    "devDependencies": {
+      "nodemon": "^1.19.1"
+    }
+  }
+  ```
+
+- Rode o comando no terminal
+
+  ```sh
+  npm run dev
+  ```
+
+- Crie arquivos e diretórios para que a estrutura de arquivos fique igual a minha:
+
+  ```sh
+  ├── credentials.json
+  ├── .gitignore
+  ├── node_modules
+  ├── package.json
+  ├── package-lock.json
+  ├── server.js
+  └── src
+      ├── controllers
+      │   └── ProductController.js
+      ├── models
+      │   └── Product.js
+      └── routes.js
+  ```
+
+- Arquivo `.gitignore`
+
+  ```JavaScript
+  # credentials
+  credentials.json
+  ```
+
+- Arquivo `credentials.json`
+
+  ```JavaScript
+  {
+    "mongoUrl": "mongodb+srv://SEU_USUARIO:SUA_SENNHA@UM_LINK_QUE_O_MONGO_VAI_TE_DAR"
+  }
+  ```
+
+- Arquivo `server.js`
+
+  ```JavaScript
+  const express = require("express");
+  const mongoose = require("mongoose");
+  const mongoUrl = require("./credentials.json");
+  const routes = require("./src/routes");
+  const cors = require("cors");
+
+  // Iniciando o APP
+  const app = express();
+
+  // app.use(express.json());
+
+  // Iniciando o DB
+  mongoose.connect(mongoUrl.mongoUrl, {
+    useNewUrlParser: true
+  });
+
+  // Criação
+  app.use(express.json());
+
+  // cors
+  app.use(cors());
+
+  // Rotas
+  app.use("/api", routes);
+
+  app.listen(3001);
+  ```
+
+- Arquivo `ProductController.js`
+
+  ```JavaScript
+  const Product = require("../models/Product");
+
+  module.exports = {
+    async index(req, res) {
+      const products = await Product.find();
+
+      return res.json(products);
+    },
+
+    async store(req, res) {
+      const product = await Product.create(req.body);
+      return res.json(product);
+    },
+
+    async show(req, res) {
+      const product = await Product.findById(req.params.id);
+
+      return res.json(product);
+    },
+
+    async update(req, res) {
+      const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
+        new: true
+      });
+
+      return res.json(product);
+    },
+
+    async destroy(req, res) {
+      await Product.findByIdAndRemove(req.params.id);
+
+      return res.send(); // retorna somente se foi bem ou mal sucedido
+    }
+  };
+  ```
+
+- Arquivo `routes.js`
+
+  ```JavaScript
+  const express = require("express");
+  const routes = express.Router();
+
+  const ProductController = require("./controllers/ProductController");
+
+  // Minhas rotas
+  routes.get("/products", ProductController.index); //pegar coisas
+  routes.post("/products", ProductController.store); //adicionar coisas
+  routes.get("/products/:id", ProductController.show); //ver coisas
+  routes.put("/products/:id", ProductController.update); //atualiza coisas
+  routes.delete("/products/:id", ProductController.destroy); //destri coisas
+
+  module.exports = routes;
+  ```
+
+- Arquivo `Product.js`
+
+  ```JavaScript
+  const { Schema, model } = require("mongoose");
+
+  const ProductSchema = new Schema(
+    {
+      title: {
+        type: String,
+        required: true
+      },
+      description: {
+        type: String,
+        required: true
+      },
+      url: {
+        type: String,
+        required: true
+      }
+    },
+    {
+      timestamps: true
+    }
+  );
+
+  module.exports = model("Product", ProductSchema);
+  ```
