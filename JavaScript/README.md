@@ -15,7 +15,7 @@ Segue abaixo alguns links que posso indicar para auxiliarem em seus estudos. Mas
 - [DevMedia](https://www.devmedia.com.br/primeiros-passos-no-html5-javascript-e-css3/25647)
 - [DevMedia](https://www.devmedia.com.br/javascript-tutorial/37257)
 
-Em mihas anotações referentes ao curso em video tem no material uma parte de manipulação de dom, e outra de poo (não aborda no curso em video, mas eu estudei por fora). Porém, não escolhi não trazer esses temas para cá, isso se deve ao fato de que POO não é muito utilizada em JavaScript (não diretamente) e a manipulação de dom eu acho mais interessante utilizar algum framework ou então o react. Recomendo muito o react.
+Em mihas anotações referentes ao curso em video tem no material uma parte de manipulação de dom, e outra de poo (não aborda no curso em video, mas eu estudei por fora). Porém, escolhi não trazer esses temas para cá, isso se deve ao fato de que POO não é muito utilizada em JavaScript (não diretamente) e a manipulação de dom eu acho mais interessante utilizar algum framework ou então o react. Recomendo muito o react.
 
 - [Minhas notas do curso em video](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/JavaScript/Curso%20em%20Video);
 - [Meu material sobre react](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/React).
