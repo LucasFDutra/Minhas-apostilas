@@ -20,17 +20,70 @@ Em mihas anotações referentes ao curso em video tem no material uma parte de m
 - [Minhas notas do curso em video](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/JavaScript/Curso%20em%20Video);
 - [Meu material sobre react](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/React).
 
-Então quando acabar esse material, você pode seguir seus estudos em duas direções, ou o frontend (recomendo o react na web e react-native no mobile) ou então o backend (recomendo o nodeJS).
+# Sumário
 
-# Instalação
+- [**1. INSTALAÇÃO**](#1-instalação)
+    - [1.1 WINDOWS](#11-windows)
+    - [1.2 LINUX (UBUNTU E DERIVADOS)](#12-linux-(ubuntu-e-derivados))
+    - [1.3 LINUX (TODOS OS SISTEMAS)](#13-linux-(todos-os-sistemas))
+- [**2. CONFIGURANDO [VSCODE](https://code.visualstudio.com/)**](#2-configurando-vscode)
+- [**3. COMO CRIAR UM CÓDIGO JS**](#3-como-criar-um-código-js)
+- [**4. ESTRUTURANDO**](#4-estruturando)
+- [**5. VARIÁVEIS**](#5-variáveis)
+    - [5.1 CONVERSÃO DE VARIÁVEIS](#51-conversão-de-variáveis)
+    - [5.2 FORMATANDO STRINGS](#52-formatando-strings)
+    - [5.3 FORMATANDO NÚMEROS](#53-formatando-números)
+- [**6. CONDICIONAIS**](#6-condicionais)
+    - [6.1 OPERADORES](#61-operadores)
+    - [6.2 IF](#62-if)
+    - [6.3 SWITCH](#63-switch)
+    - [6.4 OPERADORES TERNÁRIOS](#64-operadores-ternários)
+- [**7. ESTRUTURAS DE REPETIÇÕES**](#7-estruturas-de-repetições)
+    - [7.1 FOR](#71-for)
+    - [7.2 WHILE](#72-while)
+    - [7.3 DO WHILE](#73-do-while)
+    - [7.4 BREAK](#74-break)
+- [**8. MÉTODOS/FUNÇÕES**](#8-métodosfunções)
+- [**9. INTERVALO E TIMEOUT**](#9-intervalo-e-timeout)
+- [**10. Arrays**](#10-arrays)
+    - [10.1 DECLARAÇÃO](#101-declaração)
+    - [10.2 INSERINDO NOVOS TERMOS](#102-inserindo-novos-termos)
+    - [10.3 ACESSAR UM TERMO](#103-acessar-um-termo)
+    - [10.4 MUDANDO UM TERMO](#104-mudando-um-termo)
+    - [10.5 REMOVE E RETORNAR O ULTIMO TERMO](#105-remove-e-retornar-o-ultimo-termo)
+    - [10.6 REMOVE E RETORNA O PRIMEIRO TERMO](#106-remove-e-retorna-o-primeiro-termo)
+    - [10.7 ADICIONA ELEMENTO AO INICIO](#107-adiciona-elemento-ao-inicio)
+    - [10.8 DELETANDO ELEMENTO](#108-deletando-elemento)
+    - [10.9 INSERIR ELEMENTOS](#109-inserir-elementos)
+    - [10.10 CONCATENANDO ARRAYS](#1010-concatenando-arrays)
+    - [10.11 ORDENANDO ARRAY](#1011-ordenando-array)
+    - [10.12 INVERTENDO ARRAY](#1012-invertendo-array)
+    - [10.13 MAIOR TERMO DO ARRAY](#1013-maior-termo-do-array)
+    - [10.14 MENOR TERMO DO ARRAY](#1014-menor-termo-do-array)
+    - [10.15 LIMPANDO ARRAY](#1015-limpando-array)
+    - [10.16 OBTER ÍNDICE DE UM ELEMENTO](#1016-obter-índice-de-um-elemento)
+    - [10.17 COPIANDO UM ARRAY](#1017-copiando-um-array)
+    - [10.18 RETORNAR O TAMANHO DE UM ARRAY](#1018-retornar-o-tamanho-de-um-array)
+    - [10.19 ARRAY COM FOR](#1019-array-com-for)
+    - [10.20 FOREACH](#1020-foreach)
+- [**11. JSON**](#11-json)
+- [**12. JAVASCRIPT ASSINCRONO**](#12-javascript-assincrono)
+    - [12.1 AJAX](#121-ajax)
+    - [12.2 PROMISES](#122-promises)
+    - [12.3 ASYNC/AWAIT](#123-asyncawait)
+    - [12.4 [AXIOS](https://github.com/axios/axios)](#124-axios)
+        - [**12.4.1 Axios com promises**](#1241-axios-com-promises)
+        - [**12.4.2 Axios com async/await**](#1242-axios-com-asyncawait)
+
+# **1. INSTALAÇÃO**
 
 Para trabalhar com o JavaScript no seu computador instale o nodejs primeiramente.
 
-## Windows
+## 1.1 WINDOWS
 
 Vá no [site](https://nodejs.org/en/) do node e baixe o instalador e saia dando next
 
-## Linux (ubuntu e derivados)
+## 1.2 LINUX (UBUNTU E DERIVADOS)
 
 **Para sistemas da plataforma `deb` exceto linux mint 19.2.**
 
@@ -68,11 +121,11 @@ npm --version
 
 as respostas devem ser respectivametne `v10.16.3` e `6.9.0`
 
-## Linux (Todos os sistemas)
+## 1.3 LINUX (TODOS OS SISTEMAS)
 
 Veja maiores informações sobre o node para linux [aqui](https://github.com/nodesource/distributions/blob/master/README.md). Você encontra como instalar o node no seu pc (esse link veio a partir do site oficial do node na aba downloads)
 
-## Configurando [VScode](https://code.visualstudio.com/)
+# **2. CONFIGURANDO [VSCODE](https://code.visualstudio.com/)**
 
 Recomendo utilizar o Visual studio code para programar, porém sinta-se a vontade para utilizar o que preferir, mas caso escolha trabalhar com o vscode, então baixe as extensões
 
@@ -83,60 +136,11 @@ Caso queira dar uma olhada nesse link [aqui](https://blog.rocketseat.com.br/ambi
 
 Lembrando que assim iremos executar os códigos js na forma de node e não de frontend (browser).
 
-## Como criar um código JS
+# **3. COMO CRIAR UM CÓDIGO JS**
 
 Você pode utilizar ele no meio do código html, como será indicado no tópico 1, ou então crie um novo arquivo no seu pc com a extensão `.js` e pronto, começe a programar nesse arquivo e mande ele rodar com o node, pode fazer isso via terminal ou caso tenha instalado a extensão `Node Exec` no vscode é só prescionar F8.
 
-# SUMÁRIO
-
-- [**1. ESTRUTURANDO**](#1-estruturando)
-- [**2. VARIÁVEIS**](#2-variáveis)
-  - [2.1 CONVERSÃO DE VARIÁVEIS](#21-conversão-de-variáveis)
-  - [2.2 FORMATANDO STRINGS](#22-formatando-strings)
-  - [2.3 FORMATANDO NÚMEROS](#23-formatando-números)
-- [**3. CONDICIONAIS**](#3-condicionais)
-  - [3.1 OPERADORES](#31-operadores)
-  - [3.2 IF](#32-if)
-  - [3.2 SWITCH](#32-switch)
-  - [3.3 OPERADORES TERNÁRIOS](#33-operadores-ternários)
-- [**4. ESTRUTURAS DE REPETIÇÕES**](#4-estruturas-de-repetições)
-  - [4.1 FOR](#41-for)
-  - [4.2 WHILE](#42-while)
-  - [4.3 DO WHILE](#43-do-while)
-  - [4.4 BREAK](#44-break)
-- [**5. MÉTODOS/FUNÇÕES**](#5-métodosfunções)
-- [**6. INTERVALO E TIMEOUT**](#6-intervalo-e-timeout)
-- [**7. Arrays**](#7-arrays)
-  - [7.1 DECLARAÇÃO](#71-declaração)
-  - [7.2 INSERINDO NOVOS TERMOS](#72-inserindo-novos-termos)
-  - [7.3 ACESSAR UM TERMO](#73-acessar-um-termo)
-  - [7.4 MUDANDO UM TERMO](#74-mudando-um-termo)
-  - [7.5 REMOVE E RETORNAR O ULTIMO TERMO](#75-remove-e-retornar-o-ultimo-termo)
-  - [7.6 REMOVE E RETORNA O PRIMEIRO TERMO](#76-remove-e-retorna-o-primeiro-termo)
-  - [7.7 ADICIONA ELEMENTO AO INICIO](#77-adiciona-elemento-ao-inicio)
-  - [7.8 DELETANDO ELEMENTO](#78-deletando-elemento)
-  - [7.9 INSERIR ELEMENTOS](#79-inserir-elementos)
-  - [7.10 CONCATENANDO ARRAYS](#710-concatenando-arrays)
-  - [7.11 ORDENANDO ARRAY](#711-ordenando-array)
-  - [7.12 INVERTENDO ARRAY](#712-invertendo-array)
-  - [7.13 MAIOR TERMO DO ARRAY](#713-maior-termo-do-array)
-  - [7.14 MENOR TERMO DO ARRAY](#714-menor-termo-do-array)
-  - [7.15 LIMPANDO ARRAY](#715-limpando-array)
-  - [7.16 OBTER ÍNDICE DE UM ELEMENTO](#716-obter-índice-de-um-elemento)
-  - [7.17 COPIANDO UM ARRAY](#717-copiando-um-array)
-  - [7.18 RETORNAR O TAMANHO DE UM ARRAY](#718-retornar-o-tamanho-de-um-array)
-  - [7.19 ARRAY COM FOR](#719-array-com-for)
-  - [7.20 FOREACH](#720-foreach)
-- [**8. JSON**](#8-json)
-- [**9. JAVASCRIPT ASSINCRONO**](#9-javascript-assincrono)
-  - [9.1 AJAX](#91-ajax)
-  - [9.2 PROMISES](#92-promises)
-  - [9.3 ASYNC/AWAIT](#93-asyncawait)
-  - [9.4 AXIOS](#94-axios)
-    - [**9.4.1 Axios com promises**](#941-axios-com-promises)
-    - [**9.4.2 Axios com async/await**](#942-axios-com-asyncawait)
-
-# **1. ESTRUTURANDO**
+# **4. ESTRUTURANDO**
 
 É possível colocar o código js em meio ao arquivo HTML. Basta adicioná-lo entre a tag `<script>`. Como mostrado abaixo.
 
@@ -174,7 +178,7 @@ Uma outra opção é colocar o arquivo js separado do arquivo html. Bastando ind
 
 Claro que estou supondo que você deixará o arquivo.js e o arquivo .html na mesma pasta, caso contrário você terá que indicar o endereço e o nome do arquivo dentro da tag `script`.
 
-# **2. VARIÁVEIS**
+# **5. VARIÁVEIS**
 
 O JS não possui variáveis estáticas, ou seja, elas não possuem tipos fixos (int, float, string). Uma variável é apenas uma variável que pode assumir um tipo conforme necessário. Ou seja, elas possuem tipo dinâmico (você entenderá isso melhor no exemplo).
 
@@ -338,7 +342,7 @@ O modo de fazer isso funcionar seria o seguinte:
 
 > OBS.: O JS não exige que coloquemos `;` no final de cada comando, mas acho que todo mundo acostumou com isso, e em certos lugares ele acaba sendo necessário, então é sempre bom colocar para não perder o costume.
 
-## 2.1 CONVERSÃO DE VARIÁVEIS
+## 5.1 CONVERSÃO DE VARIÁVEIS
 
 Sempre acabamos caindo no caso de que recebemos uma variável em um tipo, mas queremos trabalhar com ela em outro. Um exemplo disso é quando recebemos algo de um input html que vem em formato string, mas precisamos fazer uma soma com ele. Logo precisamos pegar esse valor e passar para float ou int.
 
@@ -357,7 +361,7 @@ Sempre acabamos caindo no caso de que recebemos uma variável em um tipo, mas qu
   variavel = String(variavel)
   ```
 
-## 2.2 FORMATANDO STRINGS
+## 5.2 FORMATANDO STRINGS
 
 ```JavaScript
 var s = 'JavaScript'
@@ -366,7 +370,7 @@ s.toUpperCase() // todo para maiúscula
 s.toLowerCase() // tudo para minúscula
 ```
 
-## 2.3 FORMATANDO NÚMEROS
+## 5.3 FORMATANDO NÚMEROS
 
 ```JavaScript
 var numero = 3.14
@@ -378,13 +382,13 @@ numero.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) // R$ 3,14
 numero.toLocaleString('pt-br', {style: 'currency', currency: 'USD'}) // US$ 3,14
 ```
 
-# **3. CONDICIONAIS**
+# **6. CONDICIONAIS**
 
 Condicionais basicamente irão controlar o fluxo do nosso programa, impondo condições para que o nosso código tome determinadas atitudes. Exemplo:
 
 Se `a` for maior do que `b` então faça `x`, se não faça `y`.
 
-## 3.1 OPERADORES
+## 6.1 OPERADORES
 
 Agora teremos 3 modos de fazer condicionais, mas em todos eles vamos utilizar os nossos operadores.
 
@@ -429,7 +433,7 @@ Agora teremos 3 modos de fazer condicionais, mas em todos eles vamos utilizar os
   5 !== 5 // false
   ```
 
-## 3.2 IF
+## 6.2 IF
 
 A condicional `if` pode ser dividida em 3 estágios:
 
@@ -502,7 +506,7 @@ Se colocarmos por exemplo:
 
 A saída será a mesma, porém no primeiro caso o teste (a > b) não foi rodado, pois o `if` antecessor já retornou `true`. Porém nesse segundo exemplo o teste é sim rodado, pois estamos usando outro `if`.
 
-## 3.2 SWITCH
+## 6.3 SWITCH
 
 O switch serve para quando acabamos verificando valores pontuais de uma variável, por exemplo:
 
@@ -553,7 +557,7 @@ Veja o exemplo abaixo:
   a = 3
   ```
 
-## 3.3 OPERADORES TERNÁRIOS
+## 6.4 OPERADORES TERNÁRIOS
 
 O operador ternário é um jeito mais rápido de fazer uma condicional, a declaração do mesmo é a seguinte:
 
@@ -582,7 +586,7 @@ Veja o exemplo:
   a é maior que dois
   ```
 
-# **4. ESTRUTURAS DE REPETIÇÕES**
+# **7. ESTRUTURAS DE REPETIÇÕES**
 
 Quando precisamos interar nosso código diversas vezes, então escolhemos as nossas estrutuas de repetição. São elas:
 
@@ -590,7 +594,7 @@ Quando precisamos interar nosso código diversas vezes, então escolhemos as nos
 - While: Para operações com o final incerto;
 - do While: Uma alternativa ao While, mas que garante ao menos uma execução.
 
-## 4.1 FOR
+## 7.1 FOR
 
 A sintax do for é dada da seguinte forma:
 
@@ -613,7 +617,7 @@ for(inicialização; condição; incremento){
   o valor de i após o for: 10
   ```
 
-## 4.2 WHILE
+## 7.2 WHILE
 
 ```JavaScript
 while(condição){
@@ -638,7 +642,7 @@ while(condição){
   O valor de i após o while: 10
   ```
 
-## 4.3 DO WHILE
+## 7.3 DO WHILE
 
 A diferença entre o `do while` e `while` é que no `do while` o código é executado primeiro e depois que a condição é verificada.
 
@@ -665,7 +669,7 @@ do{
   O valor de i após o do While: 10
   ```
 
-## 4.4 BREAK
+## 7.4 BREAK
 
 O comando `break` serve para interromper um loop caso alguma condição especial ocorra.
 
@@ -685,7 +689,7 @@ O comando `break` serve para interromper um loop caso alguma condição especial
   0, 1, 2, 3, 4, 5,
   ```
 
-# **5. MÉTODOS/FUNÇÕES**
+# **8. MÉTODOS/FUNÇÕES**
 
 - **Recomendados**
   - [Link 1](https://www.youtube.com/watch?v=zNimSYkrs6w): Funções em JavaScript `(Video)`
@@ -779,7 +783,7 @@ Vejamos um pouco mais sobre cada uma dessas formas
   3
   ```
 
-# **6. INTERVALO E TIMEOUT**
+# **9. INTERVALO E TIMEOUT**
 
 - `setTimeout`: Executa a ação apenas uma vez, mas demora um dado tempo até executá-la.
 - `setInterval`: Executa uma dada função seguidamente, mas em intervalos de tempo. Exemplo:
@@ -815,9 +819,9 @@ dentro do setInterval
 // continua indefinidamente
 ```
 
-# **7. Arrays**
+# **10. Arrays**
 
-## 7.1 DECLARAÇÃO
+## 10.1 DECLARAÇÃO
 
 ```JavaScript
 nome = []
@@ -840,7 +844,7 @@ nome = [valores]
   [ 1, 2, 3 ]
   ```
 
-## 7.2 INSERINDO NOVOS TERMOS
+## 10.2 INSERINDO NOVOS TERMOS
 
 ```JavaScript
 array[posição] = valor // insere onde quiser
@@ -883,7 +887,7 @@ array.push(valor) // insere no final
   [ 0, 1, 2 ]
   ```
 
-## 7.3 ACESSAR UM TERMO
+## 10.3 ACESSAR UM TERMO
 
 ```JavaScript
 array[posição]
@@ -901,7 +905,7 @@ array[posição]
   7.34
   ```
 
-## 7.4 MUDANDO UM TERMO
+## 10.4 MUDANDO UM TERMO
 
 ```JavaScript
 array[posição] = valor
@@ -920,7 +924,7 @@ array[posição] = valor
   [ 45, 15, 'teste', 4 ]
   ```
 
-## 7.5 REMOVE E RETORNAR O ULTIMO TERMO
+## 10.5 REMOVE E RETORNAR O ULTIMO TERMO
 
 ```JavaScript
 array.pop()
@@ -941,7 +945,7 @@ array.pop()
   7.34
   ```
 
-## 7.6 REMOVE E RETORNA O PRIMEIRO TERMO
+## 10.6 REMOVE E RETORNA O PRIMEIRO TERMO
 
 ```JavaScript
 array.shift()
@@ -962,7 +966,7 @@ array.shift()
   45
   ```
 
-## 7.7 ADICIONA ELEMENTO AO INICIO
+## 10.7 ADICIONA ELEMENTO AO INICIO
 
 ```JavaScript
 array.unshift(valor)
@@ -981,7 +985,7 @@ array.unshift(valor)
   [ 100, 45, 15, 'teste', 7.34 ]
   ```
 
-## 7.8 DELETANDO ELEMENTO
+## 10.8 DELETANDO ELEMENTO
 
 ```JavaScript
 delete a[posição] // deixa o espaço indefinido
@@ -1016,7 +1020,7 @@ a.splice(posição, 1)
   [ 45, 15, 7.34 ]
   ```
 
-## 7.9 INSERIR ELEMENTOS
+## 10.9 INSERIR ELEMENTOS
 
 ```JavaScript
 array.splice(posição, numero_de_elementos_a_serem_retirados, novos_elementos)
@@ -1050,7 +1054,7 @@ Retirando termos do array
   [1, 2, 15, 18]
   ```
 
-## 7.10 CONCATENANDO ARRAYS
+## 10.10 CONCATENANDO ARRAYS
 
 ```JavaScript
 array_3 = array_1.concat(array_2, array_n)
@@ -1080,7 +1084,7 @@ array_3 = array_1.concat(array_2, array_n)
   [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
   ```
 
-## 7.11 ORDENANDO ARRAY
+## 10.11 ORDENANDO ARRAY
 
 ```JavaScript
 array.sort(function(a, b){return a-b})
@@ -1099,7 +1103,7 @@ array.sort(function(a, b){return a-b})
   [ 7, 9, 42, 54 ]
   ```
 
-## 7.12 INVERTENDO ARRAY
+## 10.12 INVERTENDO ARRAY
 
 ```JavaScript
 array.reverse()
@@ -1118,7 +1122,7 @@ array.reverse()
   [ 9, 54, 7, 42 ]
   ```
 
-## 7.13 MAIOR TERMO DO ARRAY
+## 10.13 MAIOR TERMO DO ARRAY
 
 ```JavaScript
 Math.max.apply(null, array)
@@ -1137,7 +1141,7 @@ Math.max.apply(null, array)
   54
   ```
 
-## 7.14 MENOR TERMO DO ARRAY
+## 10.14 MENOR TERMO DO ARRAY
 
 ```JavaScript
 Math.min.apply(null, array)
@@ -1156,13 +1160,13 @@ Math.min.apply(null, array)
   7
   ```
 
-## 7.15 LIMPANDO ARRAY
+## 10.15 LIMPANDO ARRAY
 
 ```JavaScript
 array = []
 ```
 
-## 7.16 OBTER ÍNDICE DE UM ELEMENTO
+## 10.16 OBTER ÍNDICE DE UM ELEMENTO
 
 ```JavaScript
 array.indexOf(termo);
@@ -1181,7 +1185,7 @@ array.indexOf(termo);
   2
   ```
 
-## 7.17 COPIANDO UM ARRAY
+## 10.17 COPIANDO UM ARRAY
 
 ```JavaScript
 novo_array = array.slice() //meio na gambiarra
@@ -1221,7 +1225,7 @@ novo_array = array.concat() //meio na gambiarra
 
 > OBS.: Não utilize `array_2 = array_1` pois isso copia por referência, assim sempre que modificar algo em `array_1` também será modificado em `array_2` e vice e versa.
 
-## 7.18 RETORNAR O TAMANHO DE UM ARRAY
+## 10.18 RETORNAR O TAMANHO DE UM ARRAY
 
 ```JavaScript
 array.length;
@@ -1239,7 +1243,7 @@ array.length;
   4
   ```
 
-## 7.19 ARRAY COM FOR
+## 10.19 ARRAY COM FOR
 
 ```JavaScript
 array = [valores]
@@ -1292,7 +1296,7 @@ for (i of array){
   9
   ```
 
-## 7.20 FOREACH
+## 10.20 FOREACH
 
 O `forEach` irá passar por cada elemento de um array executando uma determinada função. Sendo que essa função pode conter até três parâmetros:
 
@@ -1328,7 +1332,7 @@ O `forEach` irá passar por cada elemento de um array executando uma determinada
 
 > OBS.: Veja que ele executa a função `fun` três vezes, pois o array possui três elementos, sendo assim ele executa a função uma vez para cada elemento.
 
-# **8. JSON**
+# **11. JSON**
 
 - **Recomendados**
   - [Link 1](https://www.youtube.com/watch?v=P81dE-tkaaA): JSON// Dicionário do programador `(Video)`
@@ -1401,9 +1405,9 @@ E claro que podemos ter arrays sendo o valor de um dado atributo. Por exemplo:
 {"pesos": [50, 80, 100]}
 ```
 
-# **9. JAVASCRIPT ASSINCRONO**
+# **12. JAVASCRIPT ASSINCRONO**
 
-## 9.1 AJAX
+## 12.1 AJAX
 
 O ajax é uma requisição assincrona que fazemos ao backend da nossa aplicação. Ou seja, nossa pagina pode ser atualizada sem precisar ficar recarregando ela.
 
@@ -1525,7 +1529,7 @@ url: "https://api.github.com/users/LucasFDutra"
 __proto__: Object
 ```
 
-## 9.2 PROMISES
+## 12.2 PROMISES
 
 > OBS.: Antes de iniciar, recicle o código html que utilizou no ajax, troque apenas o nome do arquivo js para condizer com o novo arquivo que você criará agora.
 
@@ -1618,7 +1622,7 @@ Se o código estiver correto, então o que vamos receber é a resposta que veio 
   erro na requisição
   ```
 
-## 9.3 ASYNC/AWAIT
+## 12.3 ASYNC/AWAIT
 
 O async/await é nada mais que uma promise, porém escrita de uma forma mais bonitinha.
 
@@ -1683,7 +1687,7 @@ promessa();
 
 Mude o código para ficar com essa forma, e troque o endereço da api e mande rodar, você vará que a mensagem que pré-configuramos irá aparecer.
 
-## 9.4 [AXIOS](https://github.com/axios/axios)
+## 12.4 [AXIOS](https://github.com/axios/axios)
 
 Agora sim, a biblioteca axios vai nos ajudar a fazer as requisições ajax de uma forma um pouco mais simples.
 
@@ -1704,7 +1708,7 @@ Deixando o body do código da seguinte forma:
 
 > OBS.: O axios tem que vir antes do arquivo js.
 
-### **9.4.1 Axios com promises**
+### **12.4.1 Axios com promises**
 
 Agora o arquivo js completo, fica da seguinte forma:
 
@@ -1747,7 +1751,7 @@ axios.get("https://api.github.com/users/LucasFDutra")
 
 Assim a resposta retornará apenas o que tiver em `data`, e como data é um objeto eu poderia colocar `response.data.login` para pegar apenas o login, e assim por diante.
 
-### **9.4.2 Axios com async/await**
+### **12.4.2 Axios com async/await**
 
 A chamada do axios acontece da seguinte forma:
 
