@@ -4,26 +4,92 @@ Autor: Lucas Felipe Dutra
 
 **ANTES DE QUALQUER COISA, VEJA ESSE VIDEO [AQUI](https://www.youtube.com/watch?v=ln6t3uyTveQ&list=PLVc5bWuiFQ8GgKm5m0cZE6E02amJho94o&index=9)**
 
-- Vamos a algumas recomendações:
-  - Sempre irei colocar algumas recomendações, como vídeos, posts e afins no inicio de algumas partes. Então se tiver dúvidas ao ver o que escrevi recomendo que veja esses links.
-  - Todos os exemplos serão escritos em pedaços picados, para diminuir e enfatizar as partes importantes aqui. Porém depois de citar tudo que preciso irei colocar o link para o código completo.
+# Dicas
 
-Veja como configurar o seu ambiente de desenvolvimento react [aqui](https://github.com/LucasFDutra/Ambiente-React-Com-ESlint-Airbnb)
+- [Documentação pt-br](https://pt-br.reactjs.org/)
+- [Configure seu ambiente de desenvolvimento](https://github.com/LucasFDutra/Ambiente-React-E-React-native-Com-ESlint-Airbnb)
+- [Material de JavaScript](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/JavaScript)
+- [Curso gratuito Rocketseat](https://skylab.rocketseat.com.br/node/curso-react-js)
+
+De uma olhada nesse site aqui [codebox](https://codesandbox.io/), isso é uma aplicação web que vai permitir que você crie aplicações react sem precisar instalar nada no seu pc, já vai estar tudo pronto, é otimo para um primeiro contato. Porém eu não farei nada com ela durante esse material, farei tudo no meu pc mesmo, porém se quiser utilizar essa ferramenta, fique a vontade.
 
 # **1. INTRODUÇÃO**
 
-- [Video recomendado](https://www.youtube.com/watch?v=cokAqzJMrZ8)
+## 1.1 INSTALAÇÃO E CONFIGURAÇÕES
 
-Tudo que será feito abaixo (até a seção 5) foi feito com a aplicação online chamada [codebox](https://codesandbox.io/), que permite a criação de códigos online, sem preciar instalar nada
+Para iniciar seus estudos com react, veja o material de configuração do ambiente de desenvolvimento que está [aqui](https://github.com/LucasFDutra/Ambiente-React-E-React-native-Com-ESlint-Airbnb), pois nesse material eu ensino desde a instalação do node, até como iniciar uma aplicação com react. No caso desse material aqui, o interessante são as seções 1 à 4. O restante é para react-native, que fica em outro material.
 
-O react é uma biblioteca do JavaScript, logo para poder aprender react tem que saber JavaScript.
+> OBS.: To falando sério, vê lá, se não vai ficar perdido aqui, as coisas não vão funcionar, lá eu ensino a instalar tudo que precisa.
 
-E para importar a mesma precisamos inserir as seguintes linhas de código.
+## 1.2 O QUE É REACT?
 
-```JavaScript
-import React from "react"
-import ReactDOM from "react-dom"
+Bom, o react é uma biblioteca para javaScript, criada e mantida pelo facebook (com apoio da comunidade).
+
+O react serve para trabalharmos no frontend de uma aplicação web.
+
+### 1.2.1 React e react-native
+
+E se em algum momento você ouviu falar de react-native, e ficou em duvida do que é isso, se é igual ao react. Bom, eu vou explicar aqui rapidinho: Não são a mesma coisa, o react e o react-native possuem semelhanças gigantescas, o que é otimo, pois de passar um código react para um react-native ou vice versa, se torna muito fácil, porém, elas possuem finalidades diferentes, o react serve para criar aplicações web, e o react-native serve para criar aplicações mobile (android e ios de uma vez só).
+
+# **2. INICIANDO ESTUDOS**
+
+Para irmos estudando react, eu vou criar um exemplo, e vou ir trabalhando em cima dele. Nesse caso, irei criar um exemplo chamado `huntweb`, que estará dentro desse repositório.
+
+Crie o projeto, escolhendo a pasta que ele deve estar, e de o comando no terminal
+
+```sh
+create-react-app huntweb
 ```
+
+> OBS.: Lembrando que se você não configurou o ambiente de desenvolvimente, esse comando vai dar errado, afinal de contas você não instalou o `create-react-app`... Eu falei que era pra ver o material de configuração.
+
+# **3. CONHECENDO ESTRUTURA DA APLICAÇÃO**
+
+A árvore de diretórios logo após a construção da aplicação é a seguitne:
+
+```sh
+├── node_modules
+├── package.json
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── manifest.json
+│   └── robots.txt
+├── README.md
+├── src
+│   ├── App.css
+│   ├── App.js
+│   ├── App.test.js
+│   ├── index.css
+│   ├── index.js
+│   ├── logo.svg
+│   └── serviceWorker.js
+└── yarn.lock
+```
+
+Vamos passar cada um dos diretorios e alguns arquivos mais importantes:
+
+- `node_modules`: Estão todas as dependencias (eu fiz elas não aparecerem aqui, pq são muitas, ia ficar muito ruim de ver na árvore).
+
+- `public`: Estão todos os arquivos que serão acessiveis pelo usuário final da aplicação
+
+- `src`: É onde ficarão os nossos códigos. No caso ele já vem com alguns arquivos padrões, que gerarão uma aplicação, a qual você vai ver daqui a pouco.
+
+- `package.json` É onde estarão listadas as dependencias do nosso projeto.
+
+- `README.md`: É o readme da documentação do `create-react-app` que pode ser deletado.
+
+- `yarn.lock`: É o cache das nossas dependências.
+
+Agora que você já conhece as pastas, pegue seu terminal, e com ele apontando para dentro da pasta `huntweb` rode o comando:
+
+```sh
+yarn start
+```
+
+Isso vai abrir uma aba no seu navegador, que é a aplicação padrão que vem com o `create-react-app`
 
 # **2. ELEMENTO REACT**
 
