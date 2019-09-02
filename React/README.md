@@ -91,6 +91,10 @@ yarn start
 
 Isso vai abrir uma aba no seu navegador, que é a aplicação padrão que vem com o `create-react-app`
 
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_01.png?raw=true)
+
+###########################################################################################################
+
 # **2. ELEMENTO REACT**
 
 Um elemento em react pode ser declarado de duas formas, a forma de JSX e a forma convencional do proprio react. Porém a forma convencional é muito ruim, se torma muito extensa e não é muito viável de ser utilizada.
