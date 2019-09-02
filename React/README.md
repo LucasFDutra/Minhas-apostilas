@@ -17,7 +17,7 @@ De uma olhada nesse site aqui [codebox](https://codesandbox.io/), isso é uma ap
 
 ## 1.1 INSTALAÇÃO E CONFIGURAÇÕES
 
-Para iniciar seus estudos com react, veja o material de configuração do ambiente de desenvolvimento que está [aqui](https://github.com/LucasFDutra/Ambiente-React-E-React-native-Com-ESlint-Airbnb), pois nesse material eu ensino desde a instalação do node, até como iniciar uma aplicação com react. No caso desse material aqui, o interessante são as seções 1 à 4. O restante é para react-native, que fica em outro material.
+Para iniciar seus estudos com react, veja o material de configuração do ambiente de desenvolvimento que está [aqui](https://github.com/LucasFDutra/Ambiente-React-E-React-native-Com-ESlint-Airbnb), pois nesse material eu ensino desde a instalação do node, até como iniciar uma aplicação com react. No caso desse material aqui, o interessante são as seções 1, 2, 3 e 6. O restante é para react-native, que fica em outro material.
 
 > OBS.: To falando sério, vê lá, se não vai ficar perdido aqui, as coisas não vão funcionar, lá eu ensino a instalar tudo que precisa.
 
