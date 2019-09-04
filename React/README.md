@@ -93,21 +93,112 @@ Isso vai abrir uma aba no seu navegador, que é a aplicação padrão que vem co
 
 ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_01.png?raw=true)
 
-###########################################################################################################
+# **4. ARRUMANDO OS ARQUIVOS**
 
-# **2. ELEMENTO REACT**
+Quando iniciar uma palicação, nem tudos os arquivos que o `create-react-app` gera são necessários, então vamos apagar alguns deles.
 
-Um elemento em react pode ser declarado de duas formas, a forma de JSX e a forma convencional do proprio react. Porém a forma convencional é muito ruim, se torma muito extensa e não é muito viável de ser utilizada.
+A árvore de diretórios nesse instante é:
 
-O que esse tal de JSX? Bem o formato jsx é basicamente escrever o elemento em html (bem parecido com isso). Veja o exemplo abaixo:
+```sh
+├── node_modules
+├── package.json
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── manifest.json
+│   └── robots.txt
+├── README.md
+├── src
+│   ├── App.css
+│   ├── App.js
+│   ├── App.test.js
+│   ├── index.css
+│   ├── index.js
+│   ├── logo.svg
+│   └── serviceWorker.js
+└── yarn.lock
+```
+
+Ela deve ficar da seguinte forma:
+
+```sh
+├── node_modules
+├── package.json
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── manifest.json
+│   └── robots.txt
+├── README.md
+├── src
+│   ├── App.js
+│   ├── index.js
+│   └── serviceWorker.js
+└── yarn.lock
+```
+
+Dentro do arquivo `index.js` você pode remover algumas linhas (que estavam fazendo importações dos arquivos que apagamos), fazendo ele ficar da seguinte forma:
+
+```JavaScript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
+
+ReactDOM.render(<App />, document.getElementById('root'));
+
+serviceWorker.unregister();
+```
+
+E o arquivo `App.js` deve ficar da seguinte forma:
+
+```JavaScript
+import React from "react";
+
+function App() {
+  return (
+    <div className="App">
+      <h1>Olá mundo!</h1>
+    </div>
+  );
+}
+
+export default App;
+```
+
+> OBS.: Você já deve ter imaginado que esse `<h1>Olá mundo<h1>` não é obrigatório, e ele vai sair dai depois.
+
+Agora digite em um terminal
+
+```sh
+yarn start
+```
+
+E aparecerá em seu navegador a menságem `Olá mundo!`
+
+# **5. ELEMENTO REACT**
+
+Um elemento em react pode ser declarado em forma de JSX.
+
+E o que esse tal de JSX? Bem o formato jsx é basicamente escrever o elemento em html (bem parecido com isso). Veja o exemplo abaixo:
 
 ```JavaScript
 const elemento = <div><h2>Olá mundo</h2></div>
 ```
 
-Assim quando utilizarmos o `elemento` no nosso código já sabemos que ele se refere à aquela linha html. Porém note que essa linha não foi declarada como uma string, e isso fica meio confuso para quem é um programador sem conhecimento nesses frameworks (que admito serem bem doidos), mas mesmo assim o react entende isso. Bom, isso acontece por conta que ele está preparado para trabalhar dessa forma, ou seja, o react entende esse formato jsx.
+Assim quando utilizarmos o `elemento` no nosso código já sabemos que ele se refere à aquela linha html.
 
-# **3. COMPONENTE**
+E como o jsx é entendido somente pelo react, em todo lugar que você utilizar essa sintax é necessário importar o react
+
+```JavaScript
+import React from 'react';
+```
+
+# **6. COMPONENTE**
 
 Um componente em react não é nada mais do que a união de vários elementos. E esse componente é dado dentro do retorno de uma função.
 
@@ -122,6 +213,8 @@ function App() {
   );
 }
 ```
+
+Mas uma coisa deve ser respeitada, uma função pode retornar apenas um componente, logo podemos colocar quantos elementos quisermos, desde que eles estejam contidos dentro de uma tag que sirva como "borda" da caixa do componente. No exemplo acima, utilizamos uma `div` como sendo esse conteiner, assim tudo que está dentro da `div` componhe um unico componente, e podemos retornar a `div` como um todo.
 
 Veja que esse componente possui elementos dentro dele, o h1 e h2, mas se quisermos, também podemos colocar o elemento que foi criado separadamente dentro do componente. Veja abaixo
 
@@ -138,151 +231,127 @@ function App() {
 }
 ```
 
-Depois de criar o componente, precisamos mandar o react mostrar ele na tela, para isso faremos o seguinte comando:
+# **7. HOOKS**
 
-```JavaScript
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
-```
+Hooks são coisas bem novas no react, e eles facilitam a nossa vida para trabalhar com estados. Ou seja, ele facilita para sabermos qual é o valor de uma dada variável em um dado instante, ou então se algo mudou na nossa variável (o valor dela, se um objeto recebeu um novo incremento).
 
-- Saída:
-  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_001.png?raw=true)
-
-Veja o código completo [aqui](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/React/C%C3%B3digos/ex001)
-
-# **4. HOOKS**
+Antes dos hooks era um pouco mais chato de fazer isso. Mas como agora temos eles, eu vou seguir tratando tudo com hooks.
 
 - [Recomendado](https://reactjs.org/docs/hooks-intro.html)
 
 Antes de inicar, saiba que hooks só podem ser utilizados em componentes funcionais, ou seja, componentes criados mediante a utilização de funções (sim, existe outro jeito de criar componentes, mediante classes ES6, mas não vem ao caso agora).
 
-Vamos supor que queremos dar dinamismo à nossa aplicação, ou seja, passar parametros para o nosso componente e atualizá-lo conforme queremos.
+## 7.1 EXEMPLO
 
-Vejamos como poderiamos implementar a primeira parte dessa ideia, ou seja, como faremos para passar parâmetros.
+Vamos criar uma pequena aplicação para entendermos melhor esse conceito de hooks.
 
-Primeiramente isso é bem simples, afinal nosso componente é uma função JS. Sendo assim fica da seguinte forma:
+Nossa aplicação terá a seguinte tarefa:
 
-```JavaScript
-function App(props) {
-  return (
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
-      {elemento}
-      <p>Meu nome é {props.name}</p>
-    </div>
-  );
-}
+- Mostrar um número
+- Acrescentar uma unidade nesse número ao clicar em um botão.
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App name="Lucas" />, rootElement);
-```
+Para começarmos isso vamos primeiro criar a interface.
 
-Veja que o que fizemos foi colocar um parâmetro `props` na nossa function e passar ele lá em baixo no ReactDOM logo apos a chamada do componente App, passando a string "Lucas" como sendo uma variável name.
+Como nosso index tem por função apenas retornar o que está dentro do nosso App, então tudo tem que ser criado dentro de `App.js`
 
-```JavaScript
-function App(props)
+E como jsx é bem parecido com html, mudando apenas alguns nomes de atributos, como por exemplo, `class` em jsx fica sendo `className`, isso porque `class` é uma palavra reservada no javaScript (Então fique atento à esses detalhes), então a criação dessa interface vai ser bem simples considerando que você sabe html.
 
-<p>Meu nome é {props.name}</p>
+Como eu falei, o arquivo `index.js` não deve ser modificado. Então vou mostar o como fica o arquivo `App.js`.
 
-ReactDOM.render(<App name="Lucas" />, rootElement);
-```
+- Arquivo `App.js`
 
-Veja que props não recebe `Lucas`, mas sim um objeto. Por isso precisamos colocar `props.name` quando queremos mostrar o conteúdo de name.
+  ```JavaScript
+  import React from "react";
 
-Agora vamos para a segunda parte, a parte interativa. Digamos que quero criar um botão que aumente um dado valor ao ser apertado e o atualiza na tela a cada incremento. Tal ideia deve ficar como mostrado abaixo:
+  function App() {
+    let i = 0;
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_002.gif?raw=true)
+    function click(i) {
+      console.log(i);
+      return (i += 1);
+    }
 
-Para isso podemos pensar em fazer o seguinte:
-
-```JavaScript
-function click(i) {
-  return (i += 1);
-}
-
-function App() {
-  var i = 0;
-  return (
-    <div className="App">
-      <h1>O valor de i é: {i}</h1>
-      <button onClick={click(i)}>Incrementar</button>
-    </div>
-  );
-}
-```
-
-Sendo que quando temos `onClick={click(i)}` estamos dizendo que quando clicarmos no botão ele irá chamar a função click e passar o valor de i para ela.
-
-Mas, isso não funciona.
-
-O porque não funciona? Bem, é simples. Quando criamos o componente ele não fica sendo chamado repetidas vezes, então quando clicamos no botão não existe função sendo chamada, pois simplesmete reenderizamos o componente na tela e depois ele não é reenderizado novamente.
-
-E veja que a variável i não é salva na memoria em momento algum, pois ela está dentro de um função, e assim que retornamos o seu valor ele é apagado. E isso é um problema, pois queremos que ele continue atualizando, mas como atualizar se ele sempre está valendo a mesma coisa?
-
-Então veja que mesmo que fizermos a função (componente) ser rodada varias e várias vezes o valor de i sempre será o mesmo.
-
-Mas como resolvemos isso? Utilizando hooks. Hooks são ancoras para os nossos valores, ancoras que fazem com que eles tenham seus valores salvos como se fossem variáveis globais.
-
-E o código?
-
-Primeiro precisamos pegar algumas coisas específicas na biblioteca do react. Que nesse caso são.
-
-```JavaScript
-import React, {useState} from "react";
-import ReactDOM from "react-dom";
-```
-
-Agora vamos criar a nossa variável `i` de acordo com os padrões do hook.
-
-```JavaScript
-function App() {
-  const [i, setI] = useState(0)
-  return (
-```
-
-O useState é um hook, que guadará o estado da nossa variáve. nesse caso ficaremos com a seguinte construção:
-
-```JavaScript
-const [variável, função_de_controle_da_variável] = useState(valor_inicial_da_variável)
-```
-
-Ou seja, a nossa variável i, é controlada pela função setI e de inicio vale 0. Uma observação valida aqui, é que não é obrigatório preencher o campo de valor inicial da variável.
-
-> **OBS.: Os hooks que forem adicionados devem sempre serem adicionados no inicio do componente.**
-
-Proximo passo é que a nossa função de modificação deve estar dentro do componente. E assim termos o código abaixo:
-
-```JavaScript
-// componente
-function App() {
-  const [i, setI] = useState(0);
-
-  function click() {
-    setI(i + 1);
+    return (
+      <div className="App">
+        <button onClick={() => (i = click(i))}>Incremento</button>
+        <p>O valor de i é: {i}</p>
+      </div>
+    );
   }
 
-  return (
-    <div className="App">
-      <h1>O valor de i é: {i}</h1>
-      <button onClick={click}>Incrementar</button>
-    </div>
-  );
-}
+  export default App;
+  ```
+
+- Saída:
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_02.png?raw=true)
+
+Veja que o valor de `i` mostrado no console indica que ele sofre alterações, porém o valor exibido na aplicação é sempre 0.
+
+Isso aconte pois o componente é reenderizado apenas uma vez. Ou seja, ele é sempre mostrado do jeito que foi construido no momento inicial.
+
+E é para resolver esse tipo de problema que os hooks servem. Eles fazem esse papel de entender que algo mudou e precisa ser reenderizado na tela.
+
+Agora vamos reformular o código utilizando hooks.
+
+Mas primeiro vamos importar um hook.
+
+Existem alguns hooks para podermos importar, mas os mais relevantes são:
+
+- `useState`: Para controlar o valor de uma variável;
+- `useEfect`: Monitora mudanças em alguma coisa.
+
+Para importar esses dois faremos:
+
+```JavaScript
+import React, {useState, useEffect} from "react";
 ```
 
-> OBS.: a função click poderia ter sido feito utilizando arrow function, seria melhor (veja mais sobre isso na apostila de JavaScript), mas por hora irei utilizar a function normal.
+No caso da aplicação, eu precisarei utilizar somente o `useState`
 
-Veja o código completo [aqui](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/React/C%C3%B3digos/ex002)
+A declaração para o `useState` é a seguinte:
 
-## 4.1 EXEMPLO
+```JavaScript
+const [nomeDaVariavel, setNomeDaVariavel] = useState(valorInicialDaVariavel);
+```
 
-O exemplo será composto por um jogo, em que o computador tentará adivinhar um número. Para que ele consiga adivinhar o número iremos colocar 3 botões na tela e falaremos para ele se o valor é maior ou menos ou se acertou.
+> Claro que não é obrigatório utilizar `setNomeDaVariavel`, pode ser qualquer coisa, mas assim é mais intuitivo.
 
-Veja abaixo o gif mostrando o jogo, e se quiser pode ver o código completo [aqui](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/React/C%C3%B3digos/ex003)
+- Explicando essa sintax:
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_003.gif?raw=true)
+  - `nomeDaVariavel`: é a variável que vamos trabalhar, no caso do exemplo `i`;
+  - `setNomeDaVariavel`: nome da função que vai colocar um valor na variável `nomeDaVariavel`;
+  - `valorInicialDaVariavel`: bem intuitivo, esse é o valor inicial da variável, pode ser desde um número, até um array vazio.
 
-# **5. PROXIMOS PASSOS**
+- Arquivo `App.js`
 
-Veja projetos mais recentes utilizando hooks e tente reproduzir o que está sendo feito. Eu mesmo tenho um [aqui](https://github.com/LucasFDutra/Minhas-Series) que foi desenvolvido com base no projeto que está [aqui](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/React/C%C3%B3digos/ex004/minhas-series) que foi desenvolvido juntamento com o canal devPleno durante o Hands-on de 2019. Porém, de preferência para projetos que alguém vai ensinando junto (youtube). Mas já deixo a dica de que pelo menos a parte visual é bom ir olhando o [bootstrap](https://getbootstrap.com/) e no [reactstrap](https://reactstrap.github.io/), pois é mais tranquilo utilizar eles para fazer as interfaces.
+  ```JavaScript
+  import React, { useState } from "react";
+
+  function App() {
+    const [i, setI] = useState(0);
+
+    function click(i) {
+      setI(i + 1);
+      console.log(i);
+    }
+
+    return (
+      <div className="App">
+        <button onClick={() => click(i)}>Incremento</button>
+        <p>O valor de i é: {i}</p>
+      </div>
+    );
+  }
+
+  export default App;
+  ```
+
+- Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_03.png?raw=true)
+
+Veja que agora a aplicação é sempre atualizada, e o valor de i no console bate com o da aplicação (o do console fica atrasado de uma unidade mesmo).
+
+> OBS.: Em `onClick` é importante utilizar uma arrow function, pois se utilizar direto o `click(i)` ele será executado constantemente, e isso vai gerar um erro.
+
+**Agora que já entendeu esses conceitos de componentes e hooks, vamos dar seguimento ao exemplo principal desse material (huntweb), e vamos aprender alguns conceitos no caminho.**
