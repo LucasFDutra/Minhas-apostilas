@@ -387,7 +387,7 @@ Seguindo o mesmo exemplo de um botão que incrementa valores, nos iremos fazer o
 
     useEffect(()=>{
       window.alert('O valor de i foi alterado');
-    }, [i])
+    }, [i]);
 
     function click(i) {
       setI(i + 1);
@@ -412,3 +412,182 @@ Seguindo o mesmo exemplo de um botão que incrementa valores, nos iremos fazer o
 > OBS.: podemos passar quantos parâmetros quisermos dentro do array do `useEffect`.
 
 **Agora que já entendeu esses conceitos de componentes e hooks, vamos dar seguimento ao exemplo principal desse material (huntweb), e vamos aprender alguns conceitos no caminho.**
+
+# **8. HUNTWEB**
+
+Para dar seguimento ao nosso exemplo, tenha os seus arquivos configurados da seguinte forma:
+
+- Arquivo `App.js`
+
+  ```JavaScript
+  import React from 'react';
+
+  function App() {
+    return <div className='App'>Hello World</div>;
+  }
+
+  export default App;
+  ```
+
+- Arquivo `index.js`
+
+  ```JavaScript
+  import React from 'react';
+  import ReactDOM from 'react-dom';
+  import App from './App';
+  import * as serviceWorker from './serviceWorker';
+
+  ReactDOM.render(<App />, document.getElementById('root'));
+
+  serviceWorker.unregister();
+  ```
+
+Agora como você já deve ter pensado, nós não vamos ficar utilizando o arquivo `App.js` para montar todos os nossos componentes. Nós vamos modularizar esse código.
+
+Então agora crie uma pasta dentro de `src` chamada `components` e dentro dessa pasta você pode criar os arquivos `.js` de cada componente, ou então fazer como eu, e criar uma pasta com o nome do componente, e um arquivo `index.js` dentro dela, e posteriormente um arquivo `styles.css` para esse componente. Fazendo a gente tem dentro de cada pasta um código `js` e um `css`, deixando tudo mais organizado.
+
+## 8.1 HEADER
+
+Primeiro componente que criarei será um componente chamado `Header`.
+
+- Estrutura de diretórios de `src`
+  ```sh
+  ├── App.js
+  ├── components
+  │   └── Header
+  │       └── index.js
+  ├── index.js
+  └── serviceWorker.js
+  ```
+
+Agora vamos trabalhar dentro do nosso arquivo `index.js`
+
+De início a estrutura fica assim;
+
+```JavaScript
+import React from 'react';
+
+const Header = () => {
+  return (
+    //código
+  )
+}
+
+export default Header;
+```
+
+Os arquivos ficam da seguinte forma:
+
+- Arquivo `Header/index.js`
+
+  ```JavaScript
+  import React from 'react';
+
+  const Header = () => <header id='main-header'>JSHuntWeb</header>;
+
+  export default Header;
+  ```
+
+- Arquivo `App.js`
+
+  ```JavaScript
+  import React from 'react';
+  import Header from './components/Header';
+
+  function App() {
+    return (
+      <div className='App'>
+        <Header />
+      </div>
+    );
+  }
+
+  export default App;
+  ```
+
+- Saída:
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_05.png?raw=true)
+
+Agora vamos para a estilização.
+
+Crie dentro da pasta `components/Header` o arquivo `styles.css`, que ficará da seguinte forma:
+
+- Arquivo `Header/styles.css`
+  ```CSS
+    header#main-header {
+    width: 100%;
+    height: 60px;
+    background: #da552f;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  ```
+
+O arquivo `index.js` precisa importar o `styles.css`, e isso é feito com uma linha apenas: `improt './styles.css'`
+
+- Arquivo `Header/index.js`
+
+  ```JavaScript
+  import React from 'react';
+
+  import './styles.css';
+
+  const Header = () => <header id='main-header'>JSHuntWeb</header>;
+
+  export default Header;
+  ```
+
+O resultado disso na nossa aplicação é o seguinte:
+
+- Saída:
+
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_06.png?raw=true)
+
+Mas ai você deve ter notado que ele não está exatamente do jeito que eu queria, isso é porque o html já possui algumas estilizações, e para acabar com elas, crie um arquivo `styles.css` dentro da pasta `src` e o importe para dentro de `App.js`.
+
+- Estrutura de diretórios de `src`
+
+  ```sh
+  ├── App.js
+  ├── components
+  │   └── Header
+  │       ├── index.js
+  │       └── styles.css
+  ├── index.js
+  ├── serviceWorker.js
+  └── styles.css
+  ```
+
+- Arquivo `src/styles.css`
+
+  ```CSS
+  * {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fafafa;
+    color: #333;
+  }
+  ```
+
+- Saída:
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_07.png?raw=true)
+
+## 8.2 API
+
+Iremos integrar nossa aplicação com uma api, e a api em questão é uma que criei durante o material de nodeJS, você consegue encontrar tal material [aqui](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/NodeJS).
+
+Mas eu vou utilizar a api montada pelo pessoal da rocketseat, pois eles possuem um dominio para ela, assim facilita minha vida (sem falar que a minha corre mais risco de dar bug do que a deles kkkkk), e também caso você não tenha feito todo o material de node será mais fácil para você pegar essa aqui, e começar a trabalhar em cima dela. O enderaço dessa api é: `https://rocketseat-node.herokuapp.com/api`
+
+Coloque isso como `base_url` do seu insomnia e vamos começar dai.
+
+> OBS.: Caso não saiba o que é o insomnia, vá no material de node e veja por lá. Pois é muito importante daqui para frente. A parte especifica em que falo dele está [aqui](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/NodeJS#11-insomnia).
