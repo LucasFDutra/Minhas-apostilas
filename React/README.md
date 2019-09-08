@@ -411,9 +411,159 @@ Seguindo o mesmo exemplo de um botão que incrementa valores, nos iremos fazer o
 
 > OBS.: podemos passar quantos parâmetros quisermos dentro do array do `useEffect`.
 
-**Agora que já entendeu esses conceitos de componentes e hooks, vamos dar seguimento ao exemplo principal desse material (huntweb), e vamos aprender alguns conceitos no caminho.**
+# **8. CICLOS DE VIDA**
 
-# **8. HUNTWEB**
+A outra forma de fazer esse esquema de controlar estados de um componente, é utilizando ciclos de vida de um componente, porém esse é o jeito antigo, e tudo fica mais fácil com hooks.
+
+> OBS.: É importante frisar que os hooks e os ciclos de vida são coisas diferentes, não é que os hooks sejam iguais aos ciclos de vida, eles apenas cumpre os mesmos serviços, porém de formas diferentes. Então é um pouco errado dizer que "coisa x em hooks é igual a coisa y em ciclos de vida". O correto seria dizer que "coisa x em hooks se faz assim, em ciclos de vida fazemos o mesmo do jeito y". É a mesma coisa que comparar um lápis e uma lapiseira, ambos escrevem, mas cada um faz isso a sua maneira e funcionam de formas totalmetne diferentes, mas no final cumprem a mesma função.
+
+Então porque mostrar essa ideia de ciclos de vida?
+
+O motivo de fazer isso é bem simples. Muitos materiais na internet, incluindo a documentação do react, ainda mostra como fazer as coisas desse jeito, então é bom que eu também faça isso para facilitar as suas pesquisas.
+
+Porém, Meu objetivo nessa seção é mais de mostrar como converter um códico com essa implementação para um código utilizando hooks, do que ensinar ciclos de vida propriamente dito.
+
+Para utilizar esse tipo de implementação, o nosso código deve possuir uma estrutura básica:
+
+```JavaScript
+import React, { Component } from 'react';
+
+export default class Main extends Component {
+  render() {
+    return (
+      <h1>Hello World</h1>
+    );
+  }
+}
+```
+
+Ou seja, nos importamos um componente e extendemos ele, e todos os métodos de ciclo de vida que utilizaremos serão métodos desse componente.
+
+E dentro da classe do componente, iremos sempre chamar o método `render` e dentro dele teremos o retorno do nosso código `jsx`, seguindo aquela mesma regra de retornar um único componente apenas.
+
+Agora vem um detalhe muito importante, quando for criar funções dentro de uma classe, faça elas no modelo de arrow functions. Caso contrário vai dar problema. O motivo pode ser visto nesse video [aqui](https://www.youtube.com/watch?v=AgOwGKB8D2M).
+
+Então caso precise criar uma função dentro da classe, siga o modelo abaixo:
+
+```JavaScript
+import React, { Component } from 'react';
+
+export default class Main extends Component {
+
+  myFunction = () => {
+    // código...
+  }
+
+  render() {
+    return (
+      <h1>Hello World</h1>
+    );
+  }
+}
+```
+
+> OBS.: Os métodos que são do componente não precisam estar como arrow function.
+
+## 8.1 STATE
+
+Como vimos em hooks, é meio complicado modificar o valor de uma variável com o react e isso ser mostrado na tela, e como você deve imaginar, aqui nos não temos um `useState` para fazer esse serviço para nós. Aqui temos um objeto chamado `state` que conterá todas as variáveis que necessitem desse controle de estados.
+
+Veja abaixo como devemos criar esse objeto.
+
+```JavaScript
+import React, { Component } from 'react';
+
+export default class Main extends Component {
+  state = {
+    nomeDaVariavel_1: valorDeInicioDaVariavel_1,
+    nomeDaVariavel_2: valorDeInicioDaVariavel_2,
+    nomeDaVariavel_n: valorDeInicioDaVariavel_n,
+  };
+
+  render() {
+    return (
+      <h1>Hello World</h1>
+    );
+  }
+}
+```
+
+Como você viu acima até que não é tão diferente de um hook, então se eu quiser posso inicializar a variável com um array, com um outro objeto, enfim, da forma que eu quiser.
+
+```JavaScript
+state = {
+  data: [],
+  contador: 0,
+};
+```
+
+Porém na hora de ver essas variáveis devemos lembrar que elas são elementos da classe, logo elas devem ser referenciadas com o `this` ([estude poo para entender essa parte](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/POO)). E é justamente esse `this` o motivo pelo qual utilizamos arrow functions (sério, vê aquele vídeo para entender melhor o mótivo de utilizar arrow functions).
+
+Um pequeno exemplo seria:
+
+```JavaScript
+state = {
+  contador: 0,
+};
+
+render(){
+  return (
+    <h1>mostrar contador: {this.state.contador}</h1>
+  );
+}
+```
+
+Claro que esse mini exemplo não faz absolutamente nada, mas ele ta ai somente para você ver a sintaxe.
+
+Agora se quisermos adicionar valor a essas variáveis. Nós não faremos simplesmente `this.state.contador = 20`, nós iremos utilizar o método `setState` (e daqui você já deve ter imaginado de onde vem aquele negocio dos hooks de colocar [var, setVar]).
+
+O jeito de utilizar isso é da seguinte forma:
+
+```JavaScript
+this.setState({ nomeDaVariavel_1: valor });
+```
+
+**_###################################---------------------------------------------###################################_**
+
+### **8.1.1 Exemplo**
+
+Diferente dos proximos itens, esse eu não colocarei a versão utilizando hooks, pois será exatemente o mesmo exemplo que utilizei para explicar o `useState`.
+
+## 8.2 COMPONENT DID MOUNT
+
+É o método que executa assim que o componente for mostrado em tela. Ou seja, se precisarmos fazer alguma coisa assim que o componente for mostrado em tela, iremos utilizar esse método.
+
+A implementação desse método é feita da seguinte forma:
+
+```JavaScript
+import React, { Component } from 'react';
+
+export default class Main extends Component {
+  componentDidMount() {
+    // Código..
+  }
+
+  render() {
+    return <h1>Hello World</h1>;
+  }
+}
+```
+
+O código que ficar entre dentro do ComponentDidMount irá executar assim que o nosso componente for carregado na tela.
+
+**_###################################---------------------------------------------###################################_**
+
+### 8.2.1 Equivalente com hooks
+
+### 8.2.2 Exemplo
+
+### 8.2.3 Exemplo com hooks
+
+## 8.3
+
+**Agora que já entendeu esses conceitos de componentes, hooks e ciclos de vida, vamos dar seguimento ao exemplo principal desse material (huntweb), e vamos aprender alguns conceitos no caminho.**
+
+# **9. HUNTWEB**
 
 Para dar seguimento ao nosso exemplo, tenha os seus arquivos configurados da seguinte forma:
 
@@ -446,7 +596,7 @@ Agora como você já deve ter pensado, nós não vamos ficar utilizando o arquiv
 
 Então agora crie uma pasta dentro de `src` chamada `components` e dentro dessa pasta você pode criar os arquivos `.js` de cada componente, ou então fazer como eu, e criar uma pasta com o nome do componente, e um arquivo `index.js` dentro dela, e posteriormente um arquivo `styles.css` para esse componente. Fazendo a gente tem dentro de cada pasta um código `js` e um `css`, deixando tudo mais organizado.
 
-## 8.1 HEADER
+## 9.1 HEADER
 
 Primeiro componente que criarei será um componente chamado `Header`.
 
@@ -582,7 +732,7 @@ Mas ai você deve ter notado que ele não está exatamente do jeito que eu queri
 - Saída:
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_07.png?raw=true)
 
-## 8.2 API
+## 9.2 API
 
 Iremos integrar nossa aplicação com uma api, e a api em questão é uma que criei durante o material de nodeJS, você consegue encontrar tal material [aqui](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/NodeJS).
 
@@ -591,3 +741,369 @@ Mas eu vou utilizar a api montada pelo pessoal da rocketseat, pois eles possuem 
 Coloque isso como `base_url` do seu insomnia e vamos começar dai.
 
 > OBS.: Caso não saiba o que é o insomnia, vá no material de node e veja por lá. Pois é muito importante daqui para frente. A parte especifica em que falo dele está [aqui](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/NodeJS#11-insomnia).
+
+## **9.2.1 Axios**
+
+Se você viu meu material de javaScript você viu sobre esse biblioteca, e como utilizá-la. Mas se não viu, corre lá, o link está [aqui](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/JavaScript#124-axios)
+
+Mas aqui nos vamos colocar ele na nossa aplicação de um jeito diferente, nos vamos adicionar o pacote do axios com o yarn.
+
+```sh
+yarn add axios
+```
+
+Agora crie uma pasta chamada `services` dentro da pasta `src` e dentro dessa pasta crie o arquivo `api.js`
+
+- A estrutura de diretórios de `src` fica:
+
+  ```sh
+  ├── App.js
+  ├── components
+  │   └── Header
+  │       ├── index.js
+  │       └── styles.css
+  ├── index.js
+  ├── services
+  │   └── api.js
+  ├── serviceWorker.js
+  └── styles.css
+  ```
+
+O motivo de colocar isso dentro da pasta `services` é pq assim podemos padronizar uma pasta que ficará responsável por tudo aquilo que for referente a conexões com servidor.
+
+por hora, esse arquivo ficará da seguinte forma:
+
+- Arquivo `services/api.js`
+
+  ```JavaScript
+  import axios from 'axios';
+
+  const api = axios.create({
+    baseURL: 'https://rocketseat-node.herokuapp.com/api',
+  });
+
+  export default api;
+  ```
+
+## 9.3 PAGES
+
+E agora vamos criar nossas paginas, então dentro de `src` crie uma pasta chamada `pages`. E todas as nossas páginas receberão duas implementações, uma utilizando ciclos de vida, e outra utilizando hooks. Então é extremamente importante que você veja as seções 7 e 8.
+
+### **9.3.1 Main**
+
+Dentro da pasta `pages` crie uma chamada `main` e dentro dela crie um arquivo chamado `index.js`. Basicamente estaremos criando a pagina principal da nossa aplicação.
+
+- A estrutura de diretórios da pasta `src`
+  ```sh
+  ├── App.js
+  ├── components
+  │   └── Header
+  │       ├── index.js
+  │       └── styles.css
+  ├── index.js
+  ├── pages
+  │   └── main
+  │       └── index.js
+  ├── services
+  │   └── api.js
+  ├── serviceWorker.js
+  └── styles.css
+  ```
+
+Efetue a importação da página `main` para dentro do seu arquivo `App.js` e mande mostrá-la.
+
+- Arquivo `App.js`
+
+  ```JavaScript
+  import React from 'react';
+  import Header from './components/Header';
+  import Main from './pages/main';
+  import './styles.css';
+
+  function App() {
+    return (
+      <div className='App'>
+        <Header />
+        <Main />
+      </div>
+    );
+  }
+
+  export default App;
+  ```
+
+#### 9.3.1.1 Ciclos de vida
+
+- **Vamos começar puxando as informações da nossa api.**
+
+E como queremos puxar as informações assim que página for carregada, iremos então utilizar o `componenteDidMount` para pegar esses dados para nós.
+
+- Arquivo `src/pages/main/index.js`
+
+  ```JavaScript
+  import React, { Component } from 'react';
+  import api from '../../services/api';
+
+  export default class Main extends Component {
+    componentDidMount() {
+      this.loadProducts();
+    }
+
+    loadProducts = async () => {
+      const response = await api.get('/products');
+
+      console.log(response);
+    };
+
+    render() {
+      return <h1>Hello World</h1>;
+    }
+  }
+  ```
+
+- Saída:
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_08.png?raw=true)
+
+Veja que o retorno do nosso log indica que os dados retornam dentro de `response.data.docs`, então faça faça a seguinte troca:
+
+```JavaScript
+console.log(response);
+```
+
+Irá virar:
+
+```JavaScript
+console.log(response.data.docs);
+```
+
+- **Agora vamos salvar essas informações em uma variável de estado**
+
+Como visto na seção 8 precisamos utilizar um objeto state e o método setState para podermos armazenar os dados dentro dessa variável, e como o retorno será um array, então vamos criar essa variável como sendo um array vazio.
+
+Vamos também carregar ela dentro do componentDidMount e exibir essa informação no render.
+
+- Arquivo `src/pages/main/index.js`
+
+  ```JavaScript
+  import React, { Component } from 'react';
+  import api from '../../services/api';
+
+  export default class Main extends Component {
+    state = {
+      products: [],
+    };
+
+    componentDidMount() {
+      this.loadProducts();
+    }
+
+    loadProducts = async () => {
+      const response = await api.get('/products');
+
+      this.setState({ products: response.data.docs });
+    };
+
+    render() {
+      return <h1>Contagem de produtos: {this.state.products.length}</h1>
+    }
+  }
+  ```
+
+- Saída:
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_09.png?raw=true)
+
+- **Agora vamos mostrar os dados retornados no formato de lista**
+
+Vamos utilizar o método `map` para poder percorrer o nosso array de produtos, e mostraremos eles no formato de titulo (h2).
+
+> OBS.: Caso não saiba como funciona o comando map, indico que veja [aqui](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/map).
+
+- Arquivo `src/pages/main/index.js`
+
+  ```JavaScript
+  import React, { Component } from 'react';
+  import api from '../../services/api';
+
+  export default class Main extends Component {
+    state = {
+      products: [],
+    };
+
+    componentDidMount() {
+      this.loadProducts();
+    }
+
+    loadProducts = async () => {
+      const response = await api.get('/products');
+
+      this.setState({ products: response.data.docs });
+    };
+
+    render() {
+      return (
+        <div className="product-list">
+          {this.state.products.map(product => {
+            return (
+              <h2 key={product._id}>{product.title}</h2>
+            );
+          })}
+        </div>
+      );
+    }
+  }
+  ```
+
+> OBS.: O atributo `key` em `h2` está ali pois o `react` pede que o elemento seguinte ao `map` receba uma `key` única para cada interação do `map`. E nesse caso nos retiramos a `key` do id do nosso produto (quando demos o `console.log` esse `_id` estava lá).
+>
+> > OBS.: O elemento que precisa da `key` é somente o proximo elemento afrente do map, se esse elemento possuir sub-elementos, os sub-elementos não precisam de uma `key`.
+
+- Saída:
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_10.png?raw=true)
+
+Mas você viu que assim nós mostramos somente os titulos, e quero mostrar tudo. Então vamos dar uma melhorada nisso aqui.
+
+Para isso vamos colocar tudo em formato de `artigo` (nenhum motivo especial, é só porque eu quis) e vamos deixar um botão `Acessar`, que futuramente nos levará à uma outra página (mas no momento ele não fará nada).
+
+- Arquivo `src/pages/main/index.js`
+
+  ```JavaScript
+  import React, { Component } from 'react';
+  import api from '../../services/api';
+
+  export default class Main extends Component {
+    state = {
+      products: [],
+    };
+
+    componentDidMount() {
+      this.loadProducts();
+    }
+
+    loadProducts = async () => {
+      const response = await api.get('/products');
+
+      this.setState({ products: response.data.docs });
+    };
+
+    render() {
+      return (
+        <div className='product-list'>
+          {this.state.products.map((product) => (
+            <article key={product._id}>
+              <strong>{product.title}</strong>
+              <p>{product.description}</p>
+              <a href=''>Acessar</a>
+            </article>
+          ))}
+        </div>
+      );
+    }
+  }
+  ```
+
+- Saída:
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_11.png?raw=true)
+
+O código funciona bem, mas vamos deixar ele um pouco menos verboso (sem muita coisa escrita) e vamos diminuir isso aqui: `this.state.products.map`. Até para facilitar em futuras chamadas. Vamos fazer o seguinte: Declare uma constante chamada `products` que receberá o `this.state`, assim podemos utilizar somento o `products` deixando método `render` da seguinte forma:
+
+- método `render`
+
+  ```JavaScript
+  render() {
+    const { products } = this.state;
+
+    return (
+      <div className='product-list'>
+        {products.map((product) => (
+          <article key={product._id}>
+            <strong>{product.title}</strong>
+            <p>{product.description}</p>
+            <a href=''>Acessar</a>
+          </article>
+        ))}
+      </div>
+    );
+  }
+  ```
+
+- **Agora vamos estilizar a nossa página**
+
+Como você deve ter visto, a nossa `div` pertence a uma classe, isso é porque eu quero dar uma estilização para ela, e farei isso com o arquivo `styles.css` que ficará na mesma pasta que o arquivo `index.js`
+
+- Árvore de diretórios de `src`
+
+  ```sh
+  ├── App.js
+  ├── components
+  │   └── Header
+  │       ├── index.js
+  │       └── styles.css
+  ├── index.js
+  ├── pages
+  │   └── main
+  │       ├── index.js
+  │       └── styles.css
+  ├── services
+  │   └── api.js
+  ├── serviceWorker.js
+  └── styles.css
+  ```
+
+Lembresse de importar os estilos para dentro do `index.js` com o comando `import './styles.css';`
+
+- Arquivo `src/pages/main/styles.css`
+
+  ```CSS
+  .product-list {
+    max-width: 700px;
+    margin: 20px auto 0;
+    padding: 0 20px;
+  }
+
+  .product-list article {
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .product-list article p {
+    font-size: 16px;
+    color: #999999;
+    margin-top: 5px;
+    line-height: 24px;
+  }
+
+  .product-list article a {
+    height: 42px;
+    border-radius: 5px;
+    border: 2px solid #da552f;
+    background: none;
+    margin-top: 10px;
+    color: #da552f;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: none; /*retira o traço embaixo da palavra */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s; /*tudo que acontecer no botão terá um efeito de transição de 0.2s*/
+  }
+
+  /* hover: quando o usuário passar o mouse sobre o botão */
+
+  .product-list article a:hover {
+    background: #da552f;
+    color: #ffffff;
+  }
+  ```
+
+Depois de aplicar todos esses estilos, nos temos o seguinte resultado:
+
+- Saída:
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_12.png?raw=true)
