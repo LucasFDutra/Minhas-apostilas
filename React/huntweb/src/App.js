@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function App() {
   const [i, setI] = useState(0);
+
+  useEffect(()=>{
+    window.alert('O valor de i foi alterado');
+  }, [i])
 
   function click(i) {
     setI(i + 1);

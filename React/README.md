@@ -306,7 +306,9 @@ Para importar esses dois faremos:
 import React, {useState, useEffect} from "react";
 ```
 
-No caso da aplicação, eu precisarei utilizar somente o `useState`
+### **7.1.1 useState**
+
+Vamos efetuar o exemplo utilizando apenas o `useState`.
 
 A declaração para o `useState` é a seguinte:
 
@@ -353,5 +355,60 @@ const [nomeDaVariavel, setNomeDaVariavel] = useState(valorInicialDaVariavel);
 Veja que agora a aplicação é sempre atualizada, e o valor de i no console bate com o da aplicação (o do console fica atrasado de uma unidade mesmo).
 
 > OBS.: Em `onClick` é importante utilizar uma arrow function, pois se utilizar direto o `click(i)` ele será executado constantemente, e isso vai gerar um erro.
+
+### 7.1.2 useEfect
+
+Vamos efetuar o exemplo utilizando o `useEffect`. Porém, irei também utilizar o `useState` para auxiliar.
+
+O exemplo que irei construir será o mesmo de antes, mas eu farei o seguinte, toda vez que o valor de i for modificado, uma mensagem irá aparecer na tela.
+
+A declaração para o `useEffect` é a seguinte:
+
+```JavaScript
+useState( () => {}, [])
+```
+
+- Explicando essa sintax:
+
+  - `() => {}`: uma função, no formato de arrow function, em que estará o código do que deve ser feito quando o `useEffect` for disparado.
+  - `[]`: É um array com as dependências do `useEffect`. Ou seja, tudo aquilo que ele ficará olhando se possui ou não modificação, e caso ocorra ele será ativado.
+    - Se deixarmos o array do `useEffect` vazio (`[]`), ele irá executar apenas uma vez.
+    - Se eu colocar uma variável, a função irá executar sempre que essa variável for modificada.
+
+Seguindo o mesmo exemplo de um botão que incrementa valores, nos iremos fazer o seguinte:
+
+- Arquivo `App.js`
+
+  ```JavaScript
+  import React, { useState, useEffect } from "react";
+
+  function App() {
+    const [i, setI] = useState(0);
+
+    useEffect(()=>{
+      window.alert('O valor de i foi alterado');
+    }, [i])
+
+    function click(i) {
+      setI(i + 1);
+      console.log(i);
+    }
+
+    return (
+      <div className="App">
+        <button onClick={() => click(i)}>Incremento</button>
+        <p>O valor de i é: {i}</p>
+      </div>
+    );
+  }
+
+  export default App;
+  ```
+
+* Saída
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_04.png?raw=true)
+
+> OBS.: podemos passar quantos parâmetros quisermos dentro do array do `useEffect`.
 
 **Agora que já entendeu esses conceitos de componentes e hooks, vamos dar seguimento ao exemplo principal desse material (huntweb), e vamos aprender alguns conceitos no caminho.**
