@@ -45,31 +45,31 @@ create-react-app huntweb
 
 # **3. CONHECENDO ESTRUTURA DA APLICAÇÃO**
 
-A árvore de diretórios logo após a construção da aplicação é a seguitne:
+- A árvore de diretórios logo após a construção da aplicação é a seguinte:
 
-```sh
-├── node_modules
-├── package.json
-├── public
-│   ├── favicon.ico
-│   ├── index.html
-│   ├── logo192.png
-│   ├── logo512.png
-│   ├── manifest.json
-│   └── robots.txt
-├── README.md
-├── src
-│   ├── App.css
-│   ├── App.js
-│   ├── App.test.js
-│   ├── index.css
-│   ├── index.js
-│   ├── logo.svg
-│   └── serviceWorker.js
-└── yarn.lock
-```
+  ```sh
+  ├── node_modules
+  ├── package.json
+  ├── public
+  │   ├── favicon.ico
+  │   ├── index.html
+  │   ├── logo192.png
+  │   ├── logo512.png
+  │   ├── manifest.json
+  │   └── robots.txt
+  ├── README.md
+  ├── src
+  │   ├── App.css
+  │   ├── App.js
+  │   ├── App.test.js
+  │   ├── index.css
+  │   ├── index.js
+  │   ├── logo.svg
+  │   └── serviceWorker.js
+  └── yarn.lock
+  ```
 
-Vamos passar cada um dos diretorios e alguns arquivos mais importantes:
+Vamos passar cada um dos diretórios e alguns arquivos mais importantes:
 
 - `node_modules`: Estão todas as dependencias (eu fiz elas não aparecerem aqui, pq são muitas, ia ficar muito ruim de ver na árvore).
 
@@ -97,78 +97,82 @@ Isso vai abrir uma aba no seu navegador, que é a aplicação padrão que vem co
 
 Quando iniciar uma palicação, nem tudos os arquivos que o `create-react-app` gera são necessários, então vamos apagar alguns deles.
 
-A árvore de diretórios nesse instante é:
+- A árvore de diretórios nesse instante é:
 
-```sh
-├── node_modules
-├── package.json
-├── public
-│   ├── favicon.ico
-│   ├── index.html
-│   ├── logo192.png
-│   ├── logo512.png
-│   ├── manifest.json
-│   └── robots.txt
-├── README.md
-├── src
-│   ├── App.css
-│   ├── App.js
-│   ├── App.test.js
-│   ├── index.css
-│   ├── index.js
-│   ├── logo.svg
-│   └── serviceWorker.js
-└── yarn.lock
-```
+  ```sh
+  ├── node_modules
+  ├── package.json
+  ├── public
+  │   ├── favicon.ico
+  │   ├── index.html
+  │   ├── logo192.png
+  │   ├── logo512.png
+  │   ├── manifest.json
+  │   └── robots.txt
+  ├── README.md
+  ├── src
+  │   ├── App.css
+  │   ├── App.js
+  │   ├── App.test.js
+  │   ├── index.css
+  │   ├── index.js
+  │   ├── logo.svg
+  │   └── serviceWorker.js
+  └── yarn.lock
+  ```
 
-Ela deve ficar da seguinte forma:
+- A árvore deve ficar da seguinte forma:
 
-```sh
-├── node_modules
-├── package.json
-├── public
-│   ├── favicon.ico
-│   ├── index.html
-│   ├── logo192.png
-│   ├── logo512.png
-│   ├── manifest.json
-│   └── robots.txt
-├── README.md
-├── src
-│   ├── App.js
-│   ├── index.js
-│   └── serviceWorker.js
-└── yarn.lock
-```
+  ```sh
+  ├── node_modules
+  ├── package.json
+  ├── public
+  │   ├── favicon.ico
+  │   ├── index.html
+  │   ├── logo192.png
+  │   ├── logo512.png
+  │   ├── manifest.json
+  │   └── robots.txt
+  ├── README.md
+  ├── src
+  │   ├── App.js
+  │   ├── index.js
+  │   └── serviceWorker.js
+  └── yarn.lock
+  ```
 
 Dentro do arquivo `index.js` você pode remover algumas linhas (que estavam fazendo importações dos arquivos que apagamos), fazendo ele ficar da seguinte forma:
 
-```JavaScript
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+- Arquivo `src/index.js`
 
-ReactDOM.render(<App />, document.getElementById('root'));
+  ```JavaScript
+  import React from 'react';
+  import ReactDOM from 'react-dom';
+  import App from './App';
+  import * as serviceWorker from './serviceWorker';
 
-serviceWorker.unregister();
-```
+  ReactDOM.render(<App />, document.getElementById('root'));
+
+  serviceWorker.unregister();
+  ```
 
 E o arquivo `App.js` deve ficar da seguinte forma:
 
-```JavaScript
-import React from "react";
+- Arquivo `src/App.js`
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Olá mundo!</h1>
-    </div>
-  );
-}
+  ```JavaScript
+  import React from "react";
 
-export default App;
-```
+  function App() {
+    return (
+      <div className="App">
+        <h1>Olá mundo!</h1>
+      </div>
+    );
+  }
+
+  export default App;
+  ```
 
 > OBS.: Você já deve ter imaginado que esse `<h1>Olá mundo<h1>` não é obrigatório, e ele vai sair dai depois.
 
@@ -258,7 +262,7 @@ E como jsx é bem parecido com html, mudando apenas alguns nomes de atributos, c
 
 Como eu falei, o arquivo `index.js` não deve ser modificado. Então vou mostar o como fica o arquivo `App.js`.
 
-- Arquivo `App.js`
+- Arquivo `src/App.js`
 
   ```JavaScript
   import React from "react";
@@ -283,6 +287,7 @@ Como eu falei, o arquivo `index.js` não deve ser modificado. Então vou mostar 
   ```
 
 - Saída:
+
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_02.png?raw=true)
 
 Veja que o valor de `i` mostrado no console indica que ele sofre alterações, porém o valor exibido na aplicação é sempre 0.
@@ -324,7 +329,7 @@ const [nomeDaVariavel, setNomeDaVariavel] = useState(valorInicialDaVariavel);
   - `setNomeDaVariavel`: nome da função que vai colocar um valor na variável `nomeDaVariavel`;
   - `valorInicialDaVariavel`: bem intuitivo, esse é o valor inicial da variável, pode ser desde um número, até um array vazio.
 
-- Arquivo `App.js`
+- Arquivo `src/App.js`
 
   ```JavaScript
   import React, { useState } from "react";
@@ -348,7 +353,7 @@ const [nomeDaVariavel, setNomeDaVariavel] = useState(valorInicialDaVariavel);
   export default App;
   ```
 
-- Saída
+- Saída:
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_03.png?raw=true)
 
@@ -375,9 +380,9 @@ useState( () => {}, [])
     - Se deixarmos o array do `useEffect` vazio (`[]`), ele irá executar apenas uma vez.
     - Se eu colocar uma variável, a função irá executar sempre que essa variável for modificada.
 
-Seguindo o mesmo exemplo de um botão que incrementa valores, nos iremos fazer o seguinte:
+Seguindo o mesmo exemplo de um botão que incrementa valores, nós iremos fazer o seguinte:
 
-- Arquivo `App.js`
+- Arquivo `src/App.js`
 
   ```JavaScript
   import React, { useState, useEffect } from "react";
@@ -405,13 +410,15 @@ Seguindo o mesmo exemplo de um botão que incrementa valores, nos iremos fazer o
   export default App;
   ```
 
-* Saída
+- Saída:
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_04.png?raw=true)
 
 > OBS.: podemos passar quantos parâmetros quisermos dentro do array do `useEffect`.
 
 # **8. CICLOS DE VIDA**
+
+> Recomendo a leitura desse artigo [aqui](https://medium.com/creditas-tech/m%C3%A9todos-do-ciclo-de-vida-de-componentes-reactjs-um-mergulho-profundo-332ed7b3b782)
 
 A outra forma de fazer esse esquema de controlar estados de um componente, é utilizando ciclos de vida de um componente, porém esse é o jeito antigo, e tudo fica mais fácil com hooks.
 
@@ -437,7 +444,7 @@ export default class Main extends Component {
 }
 ```
 
-Ou seja, nos importamos um componente e extendemos ele, e todos os métodos de ciclo de vida que utilizaremos serão métodos desse componente.
+Ou seja, nós importamos um componente e extendemos ele, e todos os métodos de ciclo de vida que utilizaremos serão métodos desse componente.
 
 E dentro da classe do componente, iremos sempre chamar o método `render` e dentro dele teremos o retorno do nosso código `jsx`, seguindo aquela mesma regra de retornar um único componente apenas.
 
@@ -466,7 +473,7 @@ export default class Main extends Component {
 
 ## 8.1 STATE
 
-Como vimos em hooks, é meio complicado modificar o valor de uma variável com o react e isso ser mostrado na tela, e como você deve imaginar, aqui nos não temos um `useState` para fazer esse serviço para nós. Aqui temos um objeto chamado `state` que conterá todas as variáveis que necessitem desse controle de estados.
+Como vimos em hooks, é meio complicado modificar o valor de uma variável com o react e isso ser mostrado na tela, e como você deve imaginar, aqui nós não temos um `useState` para fazer esse serviço para nós. Aqui temos um objeto chamado `state` que conterá todas as variáveis que necessitem desse controle de estados.
 
 Veja abaixo como devemos criar esse objeto.
 
@@ -523,11 +530,16 @@ O jeito de utilizar isso é da seguinte forma:
 this.setState({ nomeDaVariavel_1: valor });
 ```
 
+> OBS.: No caso do state, fica bem obvio que o respectivo à ele com hooks seria o `useState`.
+
 **_###################################---------------------------------------------###################################_**
 
 ### **8.1.1 Exemplo**
+PRECISO FAZER UM EXEMPLO COM STATE E FAZER UM EXEMPLO DISSO COM HOOKS
+#### 8.1.1.1 Utilizando ciclos de vida
+#### 8.1.1.2 Utilizando hooks
 
-Diferente dos proximos itens, esse eu não colocarei a versão utilizando hooks, pois será exatemente o mesmo exemplo que utilizei para explicar o `useState`.
+**_###################################---------------------------------------------###################################_**
 
 ## 8.2 COMPONENT DID MOUNT
 
@@ -553,13 +565,16 @@ O código que ficar entre dentro do ComponentDidMount irá executar assim que o 
 
 **_###################################---------------------------------------------###################################_**
 
-### 8.2.1 Equivalente com hooks
+### **8.2.1 Equivalente com hooks**
 
-### 8.2.2 Exemplo
+### **8.2.2 Exemplo**
 
-### 8.2.3 Exemplo com hooks
+#### 8.2.2.1 Utilizando ciclos de vida
+#### 8.2.2.2 Utilizando hooks
 
-## 8.3
+PRECISO COLOCAR OS OUTROS MÉTODOS DE CICLO DE VIDA
+
+**_###################################---------------------------------------------###################################_**
 
 **Agora que já entendeu esses conceitos de componentes, hooks e ciclos de vida, vamos dar seguimento ao exemplo principal desse material (huntweb), e vamos aprender alguns conceitos no caminho.**
 
@@ -567,7 +582,7 @@ O código que ficar entre dentro do ComponentDidMount irá executar assim que o 
 
 Para dar seguimento ao nosso exemplo, tenha os seus arquivos configurados da seguinte forma:
 
-- Arquivo `App.js`
+- Arquivo `src/App.js`
 
   ```JavaScript
   import React from 'react';
@@ -579,7 +594,7 @@ Para dar seguimento ao nosso exemplo, tenha os seus arquivos configurados da seg
   export default App;
   ```
 
-- Arquivo `index.js`
+- Arquivo `src/index.js`
 
   ```JavaScript
   import React from 'react';
@@ -600,7 +615,8 @@ Então agora crie uma pasta dentro de `src` chamada `components` e dentro dessa 
 
 Primeiro componente que criarei será um componente chamado `Header`.
 
-- Estrutura de diretórios de `src`
+- A árvore de diretórios de `src`
+
   ```sh
   ├── App.js
   ├── components
@@ -628,7 +644,7 @@ export default Header;
 
 Os arquivos ficam da seguinte forma:
 
-- Arquivo `Header/index.js`
+- Arquivo `src/components/Header/index.js`
 
   ```JavaScript
   import React from 'react';
@@ -638,7 +654,7 @@ Os arquivos ficam da seguinte forma:
   export default Header;
   ```
 
-- Arquivo `App.js`
+- Arquivo `src/App.js`
 
   ```JavaScript
   import React from 'react';
@@ -656,6 +672,7 @@ Os arquivos ficam da seguinte forma:
   ```
 
 - Saída:
+
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_05.png?raw=true)
 
 Agora vamos para a estilização.
@@ -679,7 +696,7 @@ Crie dentro da pasta `components/Header` o arquivo `styles.css`, que ficará da 
 
 O arquivo `index.js` precisa importar o `styles.css`, e isso é feito com uma linha apenas: `improt './styles.css'`
 
-- Arquivo `Header/index.js`
+- Arquivo `src/components/Header/index.js`
 
   ```JavaScript
   import React from 'react';
@@ -695,11 +712,11 @@ O resultado disso na nossa aplicação é o seguinte:
 
 - Saída:
 
-![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_06.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_06.png?raw=true)
 
 Mas ai você deve ter notado que ele não está exatamente do jeito que eu queria, isso é porque o html já possui algumas estilizações, e para acabar com elas, crie um arquivo `styles.css` dentro da pasta `src` e o importe para dentro de `App.js`.
 
-- Estrutura de diretórios de `src`
+- A árvore de diretórios de `src`
 
   ```sh
   ├── App.js
@@ -730,6 +747,7 @@ Mas ai você deve ter notado que ele não está exatamente do jeito que eu queri
   ```
 
 - Saída:
+
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_07.png?raw=true)
 
 ## 9.2 API
@@ -742,11 +760,11 @@ Coloque isso como `base_url` do seu insomnia e vamos começar dai.
 
 > OBS.: Caso não saiba o que é o insomnia, vá no material de node e veja por lá. Pois é muito importante daqui para frente. A parte especifica em que falo dele está [aqui](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/NodeJS#11-insomnia).
 
-## **9.2.1 Axios**
+### **9.2.1 Axios**
 
 Se você viu meu material de javaScript você viu sobre esse biblioteca, e como utilizá-la. Mas se não viu, corre lá, o link está [aqui](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/JavaScript#124-axios)
 
-Mas aqui nos vamos colocar ele na nossa aplicação de um jeito diferente, nos vamos adicionar o pacote do axios com o yarn.
+Mas aqui nós vamos colocar ele na nossa aplicação de um jeito diferente, nós vamos adicionar o pacote do axios com o yarn.
 
 ```sh
 yarn add axios
@@ -754,7 +772,7 @@ yarn add axios
 
 Agora crie uma pasta chamada `services` dentro da pasta `src` e dentro dessa pasta crie o arquivo `api.js`
 
-- A estrutura de diretórios de `src` fica:
+- A árvore de diretórios de `src`
 
   ```sh
   ├── App.js
@@ -773,7 +791,7 @@ O motivo de colocar isso dentro da pasta `services` é pq assim podemos padroniz
 
 por hora, esse arquivo ficará da seguinte forma:
 
-- Arquivo `services/api.js`
+- Arquivo `src/services/api.js`
 
   ```JavaScript
   import axios from 'axios';
@@ -787,13 +805,20 @@ por hora, esse arquivo ficará da seguinte forma:
 
 ## 9.3 PAGES
 
-E agora vamos criar nossas paginas, então dentro de `src` crie uma pasta chamada `pages`. E todas as nossas páginas receberão duas implementações, uma utilizando ciclos de vida, e outra utilizando hooks. Então é extremamente importante que você veja as seções 7 e 8.
+E agora vamos criar nossas páginas. Então dentro de `src` crie uma pasta chamada `pages`. 
 
-### **9.3.1 Main**
+Agora vamos definir dois caminhos a serem tomados, um criando toda a aplicação utilizando o conceito de ciclos de vida e outro o de hooks. Eu irei implementar das duas formas. Sendo que primeiro irei fazer com ciclos de vida.
 
-Dentro da pasta `pages` crie uma chamada `main` e dentro dela crie um arquivo chamado `index.js`. Basicamente estaremos criando a pagina principal da nossa aplicação.
+E como não pretendo perder muito tempo explicando todo o passo a passo de criação e lógicas das páginas, eu vou explicar tudo certinho durante a implementação com ciclos de vida, e depois vou fazer algo mais direto na implementação com hooks. Logo eu recomendo que você veja ambas, pois uma ficará com a explicação melhor (ciclos de vida) e a outra é um jeito mais fácil de fazer (hooks).
 
-- A estrutura de diretórios da pasta `src`
+### **9.3.1 Ciclos de vida**
+
+#### 9.3.1.1 Main
+
+Dentro da pasta `pages` crie uma chamada `main` e dentro dela crie um arquivo chamado `index.js`. Basicamente estaremos criando a página principal da nossa aplicação.
+
+- A árvore de diretórios de `src`
+
   ```sh
   ├── App.js
   ├── components
@@ -812,7 +837,7 @@ Dentro da pasta `pages` crie uma chamada `main` e dentro dela crie um arquivo ch
 
 Efetue a importação da página `main` para dentro do seu arquivo `App.js` e mande mostrá-la.
 
-- Arquivo `App.js`
+- Arquivo `src/App.js`
 
   ```JavaScript
   import React from 'react';
@@ -831,8 +856,6 @@ Efetue a importação da página `main` para dentro do seu arquivo `App.js` e ma
 
   export default App;
   ```
-
-#### 9.3.1.1 Ciclos de vida
 
 #### **Vamos começar puxando as informações da nossa api.**
 
@@ -955,7 +978,7 @@ Vamos utilizar o método `map` para poder percorrer o nosso array de produtos, e
   }
   ```
 
-> OBS.: O atributo `key` em `h2` está ali pois o `react` pede que o elemento seguinte ao `map` receba uma `key` única para cada interação do `map`. E nesse caso nos retiramos a `key` do id do nosso produto (quando demos o `console.log` esse `_id` estava lá).
+> OBS.: O atributo `key` em `h2` está ali pois o `react` pede que o elemento seguinte ao `map` receba uma `key` única para cada interação do `map`. E nesse caso nós retiramos a `key` do id do nosso produto (quando demos o `console.log` esse `_id` estava lá).
 >
 > > OBS.: O elemento que precisa da `key` é somente o proximo elemento afrente do map, se esse elemento possuir sub-elementos, os sub-elementos não precisam de uma `key`.
 
@@ -1034,7 +1057,7 @@ O código funciona bem, mas vamos deixar ele um pouco menos verboso (sem muita c
 
 Como você deve ter visto, a nossa `div` pertence a uma classe, isso é porque eu quero dar uma estilização para ela, e farei isso com o arquivo `styles.css` que ficará na mesma pasta que o arquivo `index.js`
 
-- Árvore de diretórios de `src`
+- A árvore de diretórios de `src`
 
   ```sh
   ├── App.js
@@ -1103,16 +1126,13 @@ Lembresse de importar os estilos para dentro do `index.js` com o comando `import
   }
   ```
 
-Depois de aplicar todos esses estilos, nos temos o seguinte resultado:
+Depois de aplicar todos esses estilos, nós temos o seguinte resultado:
 
 - Saída:
+
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_12.png?raw=true)
 
-**_###################################---------------------------------------------###################################_**
-
-#### 9.3.1.2 Hooks
-
-### **9.3.2 Página anterior/proxima**
+#### **9.3.1.2 Página anterior/proxima**
 
 Se você notou bem quando puxamos os dados no nosso console, tinha marcado lá que tinhamos duas páginas, isso porque na implementação do servidor foi feito esse esquema de dividir os conteúdos em páginas com no máximo 10 itens em cada.
 
@@ -1197,6 +1217,7 @@ O problema aqui é que o return não pode retornar duas `div`, então precisamos
 O resultado disso é:
 
 - Saída:
+
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_15.png?raw=true)
 
 #### **Agora vamos fazer esses botões funcionarem**
@@ -1206,6 +1227,7 @@ Vamos primeiro indicar para nossos botões o que eles devem fazer ao serem clica
 > OBS.: Como criaremos essas duas funções dentro da classe, temos que referênciá-las com o `this`
 
 - onClick
+
   ```JavaScript
   <div className='actions'>
     <button onClick={this.prevPage}>Anterior</button>
@@ -1218,6 +1240,7 @@ Agora eu poderia já sair criando as funções, mas não iria adiantar de nada, 
 Para isso vamos criar uma nova varável dentro do objeto state, que terá essa função. Chamarei ela de `productInfo` que será um objeto vazio, que receberá não somente as informações de página, mas também doas as informações extras que vem da nossa api (com extras eu quero dizer o que não são dados).
 
 - Informações a serem salvas
+
   ```JavaScript
   {
     "total": 13,
@@ -1316,7 +1339,7 @@ Uma explicação desse método é que ele avalia em que página estamos, e se el
 
 > OBS.: O valor da página em `productInfo` é retornado com uma string, por isso eu precisei converter para inteiro, para que pudesse fazer a comparação com `pages` (que é um inteiro) e para somar 1 ao valor da página.
 
-Ai agora, como você já deve imaginar, o código para página anterior será muito parecido, basta verificarmos se estamos na primeira página, e caso não estejamos, vamos mandar para o load products a pagina atual menos 1.
+Ai agora, como você já deve imaginar, o código para página anterior será muito parecido, basta verificarmos se estamos na primeira página, e caso não estejamos, vamos mandar para o load products a página atual menos 1.
 
 - prevPage
 
@@ -1335,11 +1358,12 @@ Ai agora, como você já deve imaginar, o código para página anterior será mu
 Fazendo o teste aqui o resultado foi esse:
 
 - Saída:
+
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_16.gif?raw=true)
 
 Uma coisa que podemos fazer é desabilitar os botões de anterior e próximo quando estivermos respectivamente na primeira e última página. Para isso vamos adicionar a propriedade `disabled` nos nossos botões, com essas condições dentro.
 
-### **9.3.3 Navegação**
+#### 9.3.1.3 Navegação
 
 Agora estamos encaminhando para criarmos a página que irá exibir os detalhes do produto (botão `Acessar`). Mas primeiro vamos configurar a navegação.
 
@@ -1351,7 +1375,7 @@ yarn add react-router-dom
 
 Agora vamos criar dentro da pasta `src` um arquivo chamado `routes.js`
 
-- Árvore de diretórios de `src`
+- A árvore de diretórios de `src`
   ```sh
   ├── App.js
   ├── components
@@ -1373,6 +1397,7 @@ Agora vamos criar dentro da pasta `src` um arquivo chamado `routes.js`
 O arquivo de rotas serve para trabalharmos as rotas da barra de url do nosso navegador, ou seja. É aqui que iremos definir aqueles urls tipo: /home, /products, entre outros. E esse arquivo fica da seguinte forma:
 
 - Arquivo `src/routes.js`
+
   ```JavaScript
   import React from 'react';
   import { BrowserRouter, Switch, Route } from 'react-router-dom';
@@ -1400,6 +1425,7 @@ Então se tivermos mais rotas, que levam a outros componentes, vamos ter que adi
 Mas para fazer a nossa aplicação reconhecer esse arquivo como o "gestor de rotas", precisamos adicioná-lo ao nosso `App.js`, sendo assim:
 
 - Arquivo `src/App.js`
+
   ```JavaScript
   import React from 'react';
   import Header from './components/Header';
@@ -1420,7 +1446,7 @@ Mas para fazer a nossa aplicação reconhecer esse arquivo como o "gestor de rot
 
 Veja que ao em vez de exibir o `Main` dentro da div, eu mandei exibir `Routes`. Agora pronto, sempre que adicionarmos uma página ela deve ser indicada dentro do arquivo `routes.js` com o respectivo caminho para ela.
 
-### **9.3.4 Product**
+#### 9.3.1.4 Product
 
 Agora vamos criar a página product, que conterá as informações do produto, e será exibida assim que clicarmos no botão `Acessar` na página main.
 
@@ -1428,7 +1454,8 @@ Para começar, vamos criar dentro de `src` a pasta da página, ou seja, uma past
 
 E por hora vamos trabalhar com o `index.js`, e depois com o `styles.js`, mas já pode criá-lo ai.
 
-- Árvore de diretórios de `src`
+- A árvore de diretórios de `src`
+
   ```sh
   ├── App.js
   ├── components
@@ -1450,11 +1477,12 @@ E por hora vamos trabalhar com o `index.js`, e depois com o `styles.js`, mas já
   └── styles.css
   ```
 
-#### 9.3.4.1 Arquivo pages/product/index.js
+#### Arquivo pages/product/index.js
 
 Para fazer um teste inicial se está tudo funcionando, vamos colocar o seguinte código em `product/index.js`
 
-- Arquivo `src/product/index.js`
+- Arquivo `src/pages/product/index.js`
+
   ```JavaScript
   import React, { Component } from 'react';
 
@@ -1469,11 +1497,12 @@ Para fazer um teste inicial se está tudo funcionando, vamos colocar o seguinte 
 
 > OBS.: Vamos voltar nesse arquivo posteriormente, por hora ele ficará com essa cara somente para fazermos o teste das rotas.
 
-#### 9.3.4.2 Arquivo src/routes.js
+#### Arquivo src/routes.js
 
 E vamos adicionar essa rota ao arquivo `routes.js`, sendo que essa rota será `http://localhost:3000/product`
 
 - Arquivo `src/routes.js`
+
   ```JavaScript
   import React from 'react';
   import { BrowserRouter, Switch, Route } from 'react-router-dom';
@@ -1503,7 +1532,7 @@ Deixa eu explicar o que está acontecendo em:
 
 Uma dica aqui seria jogar no seu navegador o endereço `http://localhost:3000/products/3` (pode ser qualquer número de id) com e sem o `exact`, você vai ver que com ele aparecerá a mensagem `Hello world`, e sem ele vamos cair na página `main`.
 
-#### 9.3.4.3 Arquivo pages/main/routes.js
+#### Arquivo pages/main/routes.js
 
 Continuando com as nossas modificações de arquivos, vamos agora para dentro do arquivo da página `main`, e lá devemos configurar o botão `Acessar` para nos levar para a rota `/products/:id`.
 
@@ -1512,6 +1541,7 @@ Para isso vamos primeiramente importar um componente chamado `Link` que vem do `
 Para melhorar o entendimento sobre isso, vou mostar essa parte do código antes e como ela deve ficar:
 
 - Antes:
+
   ```JavaScript
   render() {
     //Codigos...
@@ -1519,6 +1549,7 @@ Para melhorar o entendimento sobre isso, vou mostar essa parte do código antes 
   }
   ```
 - Depois:
+
   ```JavaScript
   import { Link } from 'react-router-dom';
   //Codigos...
@@ -1531,6 +1562,7 @@ Para melhorar o entendimento sobre isso, vou mostar essa parte do código antes 
 O arquivo `index.js` da página `main` fica da seguinte forma
 
 - Arquivo `src/pages/main/index.js`
+
   ```JavaScript
   import React, { Component } from 'react';
   import { Link } from 'react-router-dom';
@@ -1607,15 +1639,16 @@ Veja na imagem abaixo que quando clicamos no botão a url muda de acordo com o i
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_17.gif?raw=true)
 
-#### 9.3.4.4 Arquivo pages/product/index.js
+#### Arquivo pages/product/index.js
 
-Agora vamos voltar a pagina dos produtos, e vamos colocar as informações que queremos mostrar dentro dela.
+Agora vamos voltar a página dos produtos, e vamos colocar as informações que queremos mostrar dentro dela.
 
 A lógica aqui não é muito diferente do que já fizemos na página main. Vamos carregar um componente assim que ele inicializar (componentDidMount) e vamos colocar isso dentro de uma variável objeto (state). E iremos mostrar isso na tela.
 
 A diferença é que não criarei uma função `loadProducts` (poderia, mas não vou) e carregarei tudo direto no `componentDidMount`, porém como utilizarei o método `get` dentro dele, e o `get` é assincrono, eu preciso indicar isso para o `componentDidMount`, logo eu preciso escrever `async componentDidMount() {...}`.
 
 - Arquivo `src/pages/products/index.js`
+
   ```JavaScript
   import React, { Component } from 'react';
   import api from '../../services/api';
@@ -1653,6 +1686,7 @@ A diferença é que não criarei uma função `loadProducts` (poderia, mas não 
 > OBS.: `this.props.match.params` retorna um objeto (faça um console.log nisso ai que você vai ver), e dentre os itens desse objeto o id.
 
 - Saída:
+
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_18.png?raw=true)
 
 Agora aplicando a estilização com o arquivo `styles.css` teremos:
@@ -1684,4 +1718,10 @@ Agora aplicando a estilização com o arquivo `styles.css` teremos:
   ```
 
 - Saída:
+
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_19.png?raw=true)
+
+### **9.3.2 Hooks**
+**_###################################---------------------------------------------###################################_**
+
+FAZER TODA A IMPLEMENTAÇÃO UTILIZANDO HOOKS
