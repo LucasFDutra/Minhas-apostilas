@@ -1605,9 +1605,83 @@ Veja na imagem abaixo que quando clicamos no botão a url muda de acordo com o i
 
 - Saída:
 
-  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_17.png?raw=true)
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_17.gif?raw=true)
 
 #### 9.3.4.4 Arquivo pages/product/index.js
 
 Agora vamos voltar a pagina dos produtos, e vamos colocar as informações que queremos mostrar dentro dela.
 
+A lógica aqui não é muito diferente do que já fizemos na página main. Vamos carregar um componente assim que ele inicializar (componentDidMount) e vamos colocar isso dentro de uma variável objeto (state). E iremos mostrar isso na tela.
+
+A diferença é que não criarei uma função `loadProducts` (poderia, mas não vou) e carregarei tudo direto no `componentDidMount`, porém como utilizarei o método `get` dentro dele, e o `get` é assincrono, eu preciso indicar isso para o `componentDidMount`, logo eu preciso escrever `async componentDidMount() {...}`.
+
+- Arquivo `src/pages/products/index.js`
+  ```JavaScript
+  import React, { Component } from 'react';
+  import api from '../../services/api';
+  import './styles.css';
+
+  export default class Product extends Component {
+    state = {
+      product: {}
+    };
+
+    async componentDidMount() {
+      const { id } = this.props.match.params;
+
+      const response = await api.get(`/products/${id}`);
+
+      this.setState({ product: response.data });
+    }
+
+    render() {
+      const { product } = this.state;
+
+      return (
+        <div className="product-info">
+          <h1>{product.title}</h1>
+          <p>{product.description}</p>
+          <p>
+            URL: <a href={product.url}>{product.url}</a>
+          </p>
+        </div>
+      );
+    }
+  }
+  ```
+
+> OBS.: `this.props.match.params` retorna um objeto (faça um console.log nisso ai que você vai ver), e dentre os itens desse objeto o id.
+
+- Saída:
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_18.png?raw=true)
+
+Agora aplicando a estilização com o arquivo `styles.css` teremos:
+
+- Arquivo `src/pages/products/styles.css`
+  ```CSS
+  .product-info {
+    max-width: 700px;
+    margin: 20px auto 0;
+    background: #ffffff;
+    border-radius: 5px;
+    border: 1px solid #dddddd;
+    padding: 20px;
+  }
+
+  .product-info h1 {
+    font-size: 32px;
+  }
+
+  .product-info p {
+    color: #666666;
+    line-height: 24px;
+    margin-top: 5px;
+  }
+
+  .product-info p a {
+    color: #069;
+  }
+  ```
+
+- Saída:
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_19.png?raw=true)
