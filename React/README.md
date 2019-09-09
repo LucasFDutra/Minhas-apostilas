@@ -834,7 +834,7 @@ Efetue a importação da página `main` para dentro do seu arquivo `App.js` e ma
 
 #### 9.3.1.1 Ciclos de vida
 
-- **Vamos começar puxando as informações da nossa api.**
+#### **Vamos começar puxando as informações da nossa api.**
 
 E como queremos puxar as informações assim que página for carregada, iremos então utilizar o `componenteDidMount` para pegar esses dados para nós.
 
@@ -877,7 +877,7 @@ Irá virar:
 console.log(response.data.docs);
 ```
 
-- **Agora vamos salvar essas informações em uma variável de estado**
+#### **Agora vamos salvar essas informações em uma variável de estado**
 
 Como visto na seção 8 precisamos utilizar um objeto state e o método setState para podermos armazenar os dados dentro dessa variável, e como o retorno será um array, então vamos criar essa variável como sendo um array vazio.
 
@@ -914,7 +914,7 @@ Vamos também carregar ela dentro do componentDidMount e exibir essa informaçã
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_09.png?raw=true)
 
-- **Agora vamos mostrar os dados retornados no formato de lista**
+#### **Agora vamos mostrar os dados retornados no formato de lista**
 
 Vamos utilizar o método `map` para poder percorrer o nosso array de produtos, e mostraremos eles no formato de titulo (h2).
 
@@ -1030,7 +1030,7 @@ O código funciona bem, mas vamos deixar ele um pouco menos verboso (sem muita c
   }
   ```
 
-- **Agora vamos estilizar a nossa página**
+#### **Agora vamos estilizar a nossa página**
 
 Como você deve ter visto, a nossa `div` pertence a uma classe, isso é porque eu quero dar uma estilização para ela, e farei isso com o arquivo `styles.css` que ficará na mesma pasta que o arquivo `index.js`
 
@@ -1107,3 +1107,507 @@ Depois de aplicar todos esses estilos, nos temos o seguinte resultado:
 
 - Saída:
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_12.png?raw=true)
+
+**_###################################---------------------------------------------###################################_**
+
+#### 9.3.1.2 Hooks
+
+### **9.3.2 Página anterior/proxima**
+
+Se você notou bem quando puxamos os dados no nosso console, tinha marcado lá que tinhamos duas páginas, isso porque na implementação do servidor foi feito esse esquema de dividir os conteúdos em páginas com no máximo 10 itens em cada.
+
+O resultado disso é que nossa aplicação não fica carregando toda a base de dados de uma só vez, então precisamos mandar ela ficar trocando de página. Basicamente é esse esquema ai da imagem que temos nas pesquisas do google.
+
+![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_13.png?raw=true)
+
+#### **Agora vamos inserir os botões**
+
+Para fazermos isso vamos criar dois botões, um de anterior e um de próximo. O código para isso é extremamente simples. Vamos adicionar uma div logo após o final da página, contendo dois botões.
+
+- Inserir botões:
+
+  ```JavaScript
+  <div className='actions'>
+    <button>Anterior</button>
+    <button>Próximo</button>
+  </div>
+  ```
+
+O problema aqui é que o return não pode retornar duas `div`, então precisamos colocar tudo dentro de uma única `div`. No final das contas o código final fica assim:
+
+- Arquivo `src/pages/main/index.js`
+
+  ```JavaScript
+  render() {
+    const { products } = this.state;
+
+    return (
+      <div className='product-list'>
+        {products.map((product) => (
+          <article key={product._id}>
+            <strong>{product.title}</strong>
+            <p>{product.description}</p>
+            <a href=''>Acessar</a>
+          </article>
+        ))}
+        <div className='actions'>
+          <button>Anterior</button>
+          <button>Próximo</button>
+        </div>
+      </div>
+    );
+  }
+  ```
+
+  > OBS.: Eu preferi mostrar apenas o render, para não ficar colocando códigos muito extensos aqui.
+
+- Saída:
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_14.png?raw=true)
+
+#### **Agora vamos partir para o css e fazer esse negocio ficar bonitão.**
+
+> OBS.: Como o arquivo css já está grande, eu vou colocar abaixo somente a parte nova. Mas o arquivo como um todo ficará com tudo o que tinha antes, mais esse trecho.
+
+- Arquivo `src/pages/main/styles.css`
+
+  ```CSS
+  .product-list .actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .product-list .actions button {
+    padding: 10px;
+    border-radius: 5px;
+    border: 0;
+    background: #da552f;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .product-list .actions button:hover {
+    opacity: 0.7;
+  }
+  ```
+
+O resultado disso é:
+
+- Saída:
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_15.png?raw=true)
+
+#### **Agora vamos fazer esses botões funcionarem**
+
+Vamos primeiro indicar para nossos botões o que eles devem fazer ao serem clicados: Que no caso é ir para as funções `prevPage` e `nextPage`.
+
+> OBS.: Como criaremos essas duas funções dentro da classe, temos que referênciá-las com o `this`
+
+- onClick
+  ```JavaScript
+  <div className='actions'>
+    <button onClick={this.prevPage}>Anterior</button>
+    <button onClick={this.nextPage}>Próximo</button>
+  </div>
+  ```
+
+Agora eu poderia já sair criando as funções, mas não iria adiantar de nada, pois nós não temos salvo a informação de qual página estamos. Então primeiro precisamos fazer com que essa informação chegue até nós.
+
+Para isso vamos criar uma nova varável dentro do objeto state, que terá essa função. Chamarei ela de `productInfo` que será um objeto vazio, que receberá não somente as informações de página, mas também doas as informações extras que vem da nossa api (com extras eu quero dizer o que não são dados).
+
+- Informações a serem salvas
+  ```JavaScript
+  {
+    "total": 13,
+    "limit": 10,
+    "page": 1,
+    "pages": 2
+  }
+  ```
+
+Então vamos lá. Se o `response.data` retorna tudo isso mais o `docs`, então nós precisamos fazer com que `productInfo` receba os dados vindos de `response.data` exceto o `data.docs`.
+
+Primeiro vamos adicionar essa variável ao state.
+
+- State
+
+  ```JavaScript
+  state = {
+    products: [],
+    productInfo: {},
+  };
+  ```
+
+E precisamos agora fazer uma modificação no `loadProducts` adicionando a linha
+
+```JavaScript
+const { docs, ...productInfo } = response.data;
+```
+
+Essa sintaxe estranha está igualando o objeto criado na esquerda com o objeto da direita, sendo que o objeto da esquerda possui dois campos: `docs`, e `productInfo`. Mas do jeito que está ali está acontecendo o seguinte: Pega tudo que vier de `response.data` o que for `docs` ficará dentro de `docs`, e o restante ficará dentro de `productInfo`.
+
+E modificar a linha de `setState`
+
+```JavaScript
+this.setState({ products: response.data.docs, productInfo: productInfo });
+```
+
+Apesar dessa sintaxe estar correta, ela é um tanto quanto feia, e podemos reduzir ela da seguinte forma (coisas do javaScript):
+
+Se `const { docs, ...productInfo } = response.data;` então `response.data.docs = docs`, logo podemos fazer `products: docs`.
+
+Se `productInfo` escreve igual a `productInfo` e nós estamos atribuindo `productInfo` à `productInfo`, então faz sentido utilizarmos apenas `productInfo`.
+
+E o nome disso é `Destructuring assignment`. E essa essa explicação toda estranha foi proposital, pois esse negocio é esquesito de mais, mas no final das contas é bem simples: Se algo for atribuido a algo com mesmo nome, então podemos abreviar tudo utilizando somente o nome desse algo. Em resumo, para o nosso caso `productInfo: productInfo` é equivalente a `productInfo`.
+
+Mas para aprender mais sobre `Destructuring assignment` clique [aqui](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Atribuicao_via_desestruturacao).
+
+E agora também preciso modificar a linha
+
+```JavaScript
+loadProducts = async () => {
+  const response = await api.get('/products');
+  //...
+```
+
+para:
+
+```JavaScript
+loadProducts = async (page = 1) => {
+  const response = await api.get(`/products?page=${page}`);
+  //...
+```
+
+Esse endereço é valido apenas para essa nossa api, e isso acontece por conta do modo como ela foi construida para navegar entre páginas. Então se quiser entender melhor como isso funciona, você precisará ver o material de nodeJS.
+
+Mas basicamente o método `loadProducts` está recebendo qual página ele deve carregar, sendo que por default ele vai para a página 1.
+
+- Assim nosso `loadProducts` ficará da seguinte forma:
+
+  ```JavaScript
+  loadProducts = async (page = 1) => {
+    const response = await api.get(`/products?page=${page}`);
+
+    const { docs, ...productInfo } = response.data;
+
+    this.setState({ products: docs, productInfo });
+  };
+  ```
+
+Agora sim, agora iremos criar as duas funções de referentes as mudanças de páginas:
+
+- nextPage
+
+  ```JavaScript
+  nextPage = () => {
+    const page = parseInt(this.state.productInfo.page);
+
+    if (page === this.state.productInfo.pages) return;
+
+    const pageNumber = page + 1;
+
+    this.loadProducts(pageNumber);
+  };
+  ```
+
+Uma explicação desse método é que ele avalia em que página estamos, e se ela é igual a ultima página, e se for igual, ele retorna nada e para por aqui mesmo. Mas se não for, ele vai passar para o método `loadProducts` a página atual mais 1.
+
+> OBS.: O valor da página em `productInfo` é retornado com uma string, por isso eu precisei converter para inteiro, para que pudesse fazer a comparação com `pages` (que é um inteiro) e para somar 1 ao valor da página.
+
+Ai agora, como você já deve imaginar, o código para página anterior será muito parecido, basta verificarmos se estamos na primeira página, e caso não estejamos, vamos mandar para o load products a pagina atual menos 1.
+
+- prevPage
+
+  ```JavaScript
+  prevPage = () => {
+    const page = parseInt(this.state.productInfo.page);
+
+    if (page === 1) return;
+
+    const pageNumber = page - 1;
+
+    this.loadProducts(pageNumber);
+  };
+  ```
+
+Fazendo o teste aqui o resultado foi esse:
+
+- Saída:
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_16.gif?raw=true)
+
+Uma coisa que podemos fazer é desabilitar os botões de anterior e próximo quando estivermos respectivamente na primeira e última página. Para isso vamos adicionar a propriedade `disabled` nos nossos botões, com essas condições dentro.
+
+### **9.3.3 Navegação**
+
+Agora estamos encaminhando para criarmos a página que irá exibir os detalhes do produto (botão `Acessar`). Mas primeiro vamos configurar a navegação.
+
+Primeiro instale a biblioteca que fará esse esquema de navegação para nós:
+
+```sh
+yarn add react-router-dom
+```
+
+Agora vamos criar dentro da pasta `src` um arquivo chamado `routes.js`
+
+- Árvore de diretórios de `src`
+  ```sh
+  ├── App.js
+  ├── components
+  │   └── Header
+  │       ├── index.js
+  │       └── styles.css
+  ├── index.js
+  ├── pages
+  │   └── main
+  │       ├── index.js
+  │       └── styles.css
+  ├── routes.js
+  ├── services
+  │   └── api.js
+  ├── serviceWorker.js
+  └── styles.css
+  ```
+
+O arquivo de rotas serve para trabalharmos as rotas da barra de url do nosso navegador, ou seja. É aqui que iremos definir aqueles urls tipo: /home, /products, entre outros. E esse arquivo fica da seguinte forma:
+
+- Arquivo `src/routes.js`
+  ```JavaScript
+  import React from 'react';
+  import { BrowserRouter, Switch, Route } from 'react-router-dom';
+  import Main from './pages/main';
+
+  const Routes = () => (
+    <BrowserRouter>
+      <Switch>
+        <Route path='/' component={Main} />
+      </Switch>
+    </BrowserRouter>
+  );
+
+  export default Routes;
+  ```
+
+- `BrowserRouter`: Utilizaremos as rotas através de um browser.
+- `Switch`: Vai permitir que apenas uma única rota seja chamada ao mesmo tempo. Ou seja, com o react-router-dom nós podemos fazer com que duas páginas sejam acessadas ao mesmo tempo, mas o Switch evita isso.
+- `Route`: Define uma rota.
+
+No caso, o que estamos fazendo aqui é dizer que quando nosso navegador estiver no endereço `http://localhost:3000/` vamos executar o componente `Main`.
+
+Então se tivermos mais rotas, que levam a outros componentes, vamos ter que adicioná-las aqui.
+
+Mas para fazer a nossa aplicação reconhecer esse arquivo como o "gestor de rotas", precisamos adicioná-lo ao nosso `App.js`, sendo assim:
+
+- Arquivo `src/App.js`
+  ```JavaScript
+  import React from 'react';
+  import Header from './components/Header';
+  import './styles.css';
+  import Routes from './routes';
+
+  function App() {
+    return (
+      <div className='App'>
+        <Header />
+        <Routes />
+      </div>
+    );
+  }
+
+  export default App;
+  ```
+
+Veja que ao em vez de exibir o `Main` dentro da div, eu mandei exibir `Routes`. Agora pronto, sempre que adicionarmos uma página ela deve ser indicada dentro do arquivo `routes.js` com o respectivo caminho para ela.
+
+### **9.3.4 Product**
+
+Agora vamos criar a página product, que conterá as informações do produto, e será exibida assim que clicarmos no botão `Acessar` na página main.
+
+Para começar, vamos criar dentro de `src` a pasta da página, ou seja, uma pasta chamada `product` contendo os arquivos `index.js` e `styles.js`.
+
+E por hora vamos trabalhar com o `index.js`, e depois com o `styles.js`, mas já pode criá-lo ai.
+
+- Árvore de diretórios de `src`
+  ```sh
+  ├── App.js
+  ├── components
+  │   └── Header
+  │       ├── index.js
+  │       └── styles.css
+  ├── index.js
+  ├── pages
+  │   ├── main
+  │   │   ├── index.js
+  │   │   └── styles.css
+  │   └── product
+  │       ├── index.js
+  │       └── styles.css
+  ├── routes.js
+  ├── services
+  │   └── api.js
+  ├── serviceWorker.js
+  └── styles.css
+  ```
+
+#### 9.3.4.1 Arquivo pages/product/index.js
+
+Para fazer um teste inicial se está tudo funcionando, vamos colocar o seguinte código em `product/index.js`
+
+- Arquivo `src/product/index.js`
+  ```JavaScript
+  import React, { Component } from 'react';
+
+  export default class Product extends Component {
+    render() {
+      return (
+        <div>Hello World</div>
+      );
+    }
+  }
+  ```
+
+> OBS.: Vamos voltar nesse arquivo posteriormente, por hora ele ficará com essa cara somente para fazermos o teste das rotas.
+
+#### 9.3.4.2 Arquivo src/routes.js
+
+E vamos adicionar essa rota ao arquivo `routes.js`, sendo que essa rota será `http://localhost:3000/product`
+
+- Arquivo `src/routes.js`
+  ```JavaScript
+  import React from 'react';
+  import { BrowserRouter, Switch, Route } from 'react-router-dom';
+  import Main from './pages/main';
+  import Product from './pages/product';
+
+  const Routes = () => (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path='/' component={Main} />
+        <Route path='/products/:id' component={Product} />
+      </Switch>
+    </BrowserRouter>
+  );
+
+  export default Routes;
+  ```
+
+> OBS.: Esse arquivo de rotas não vai mudar
+
+Deixa eu explicar o que está acontecendo em:
+
+- `/products/:id`: A rota precisa receber um parâmetro chamado id, pois eu preciso mostrar apenas as informações do produto que eu cliquei para saber mais. Logo eu preciso identificar esse produto. E essa identificação será passada pela rota, assim eu posso mostrar a página com as informações daquele produto em específico.
+- `exact`: O `react-router-dom` faz um comparativo entre a url que está no browser e a url que está dentro do `path`, e caso ela seja correspondente ele para de olhar as proximas rotas e mostra a primeira que encontrou. De forma exemplificada: Suponha que temos dois nomes: João e João Antonio. Se mandarmos o `react-router-dom` procurar por `João Antonio` ele vai primeiro olhar para `João` (já que é o primeiro item da lista) e vai falar "uhm.. não é que parece, deve ser isso... nem vou procurar mais". Ou seja, ele não vai mostrar `João Antonio`, vai mostar `João`. Se colocarmos o comando `exect` antes de `João` ele vai entender que se for pra ser `João`, o temo de pesquisa tem que ser exatametente `João`, e como não é ele vai para o proximo.
+
+> OBS.: Como o segundo item (`'/products/:id'`) é o ultimo, não faz sentido ele receber o `exact`, pois o `react-router-dom` vai parar a pesquisa nele de um jeito ou de outro.
+
+Uma dica aqui seria jogar no seu navegador o endereço `http://localhost:3000/products/3` (pode ser qualquer número de id) com e sem o `exact`, você vai ver que com ele aparecerá a mensagem `Hello world`, e sem ele vamos cair na página `main`.
+
+#### 9.3.4.3 Arquivo pages/main/routes.js
+
+Continuando com as nossas modificações de arquivos, vamos agora para dentro do arquivo da página `main`, e lá devemos configurar o botão `Acessar` para nos levar para a rota `/products/:id`.
+
+Para isso vamos primeiramente importar um componente chamado `Link` que vem do `react-router-dom`, onde estamos utilizando a tag `<a>` vamos trocar pelo `<Link>` e trocaremos o `href` por `to`, e o link de redirecionamento será "/products/id". Sendo que esse id é o id referente ao produto em que esse elemento será criado.
+
+Para melhorar o entendimento sobre isso, vou mostar essa parte do código antes e como ela deve ficar:
+
+- Antes:
+  ```JavaScript
+  render() {
+    //Codigos...
+    <a href="">Acessar</a>
+  }
+  ```
+- Depois:
+  ```JavaScript
+  import { Link } from 'react-router-dom';
+  //Codigos...
+  render(){
+    //Codigos...
+    <Link to={`/products/${products._id}`}>Acessar</Link>
+  }
+  ```
+
+O arquivo `index.js` da página `main` fica da seguinte forma
+
+- Arquivo `src/pages/main/index.js`
+  ```JavaScript
+  import React, { Component } from 'react';
+  import { Link } from 'react-router-dom';
+  import api from '../../services/api';
+  import './styles.css';
+
+  export default class Main extends Component {
+    state = {
+      products: [],
+      productInfo: {},
+    };
+
+    componentDidMount() {
+      this.loadProducts();
+    }
+
+    loadProducts = async (page = 1) => {
+      const response = await api.get(`/products?page=${page}`);
+
+      const { docs, ...productInfo } = response.data;
+
+      this.setState({ products: docs, productInfo });
+    };
+
+    prevPage = () => {
+      const page = parseInt(this.state.productInfo.page);
+
+      if (page === 1) return;
+
+      const pageNumber = page - 1;
+
+      this.loadProducts(pageNumber);
+    };
+
+    nextPage = () => {
+      const page = parseInt(this.state.productInfo.page);
+
+      if (page === this.state.productInfo.pages) return;
+
+      const pageNumber = page + 1;
+
+      this.loadProducts(pageNumber);
+    };
+
+    render() {
+      const { products } = this.state;
+
+      return (
+        <div className='product-list'>
+          {products.map((product) => (
+            <article key={product._id}>
+              <strong>{product.title}</strong>
+              <p>{product.description}</p>
+              <Link to={`/products/${product._id}`}>Acessar</Link>
+            </article>
+          ))}
+          <div className='actions'>
+            <button onClick={this.prevPage}>Anterior</button>
+            <button onClick={this.nextPage}>Próximo</button>
+          </div>
+        </div>
+      );
+    }
+  }
+  ```
+
+> OBS.: Esse arquivo não sofrerá mais nenhuma alteração.
+
+Agora se você clicar em qual um dos botões de acesso você irá cair na página de produtos, que atualmente irá exibir sempre a mensagem `Hello World`.
+
+Veja na imagem abaixo que quando clicamos no botão a url muda de acordo com o id daquele produto, e isso já indica que está tudo funcionando.
+
+- Saída:
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_17.png?raw=true)
+
+#### 9.3.4.4 Arquivo pages/product/index.js
+
+Agora vamos voltar a pagina dos produtos, e vamos colocar as informações que queremos mostrar dentro dela.
+
