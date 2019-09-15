@@ -532,14 +532,39 @@ this.setState({ nomeDaVariavel_1: valor });
 
 > OBS.: No caso do state, fica bem obvio que o respectivo à ele com hooks seria o `useState`.
 
-**_###################################---------------------------------------------###################################_**
-
 ### **8.1.1 Exemplo**
-PRECISO FAZER UM EXEMPLO COM STATE E FAZER UM EXEMPLO DISSO COM HOOKS
-#### 8.1.1.1 Utilizando ciclos de vida
-#### 8.1.1.2 Utilizando hooks
+Vamos replicar o exemplo de adicionar uma unidade ao valor de i quando precionamos um botão:
 
-**_###################################---------------------------------------------###################################_**
+- Exemplo:
+
+  ```JavaScript
+  import React, { Component } from 'react';
+
+  export default class Main extends Component {
+    state = {
+      i: 0
+    };
+
+    render() {
+      return (
+        <div>
+          <p>O valor de i é: {this.state.i}</p>
+          <button
+            onClick={() => {
+              this.setState({ i: this.state.i + 1 });
+            }}
+          >
+            Adicionar
+          </button>
+        </div>
+      );
+    }
+  }
+  ```
+
+- Saída:
+
+    ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_20.gif?raw=true)
 
 ## 8.2 COMPONENT DID MOUNT
 
@@ -563,18 +588,339 @@ export default class Main extends Component {
 
 O código que ficar entre dentro do ComponentDidMount irá executar assim que o nosso componente for carregado na tela.
 
-**_###################################---------------------------------------------###################################_**
-
 ### **8.2.1 Equivalente com hooks**
 
+```JavaScript
+import React, { useEffect } from 'react';
+
+const Main = () => {
+  useEffect(() => {
+    // código...
+  }, []);
+
+  return <div>Hello World</div>;
+};
+
+export default Main;
+```
+
 ### **8.2.2 Exemplo**
+Emitindo um alerta quando inicia o componete.
 
 #### 8.2.2.1 Utilizando ciclos de vida
+
+- Exemplo:
+
+  ```JavaScript
+  import React, { Component } from 'react';
+
+  export default class Main extends Component {
+    componentDidMount() {
+      window.alert('Iniciando componente');
+    }
+
+    render() {
+      return <div>Hello World</div>;
+    }
+  }
+  ```
+
+- Saída:
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_22.png?raw=true)
+
 #### 8.2.2.2 Utilizando hooks
 
-PRECISO COLOCAR OS OUTROS MÉTODOS DE CICLO DE VIDA
+- Exemplo:
 
-**_###################################---------------------------------------------###################################_**
+  ```JavaScript
+  import React, { useEffect } from 'react';
+
+  const MainHooks = () => {
+    useEffect(() => {
+      window.alert('Iniciando componente');
+    }, []);
+
+    return <div>Hello World</div>;
+  };
+
+  export default MainHooks;
+  ```
+
+- Saída:
+
+    ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_21.png?raw=true)
+
+OBS.: Veja que dos dois jeitos tivemos o mesmo resultado, ou nem tanto, pois utilizando `componentDidMount` o componente apareceu somente depois de clicar em `OK` na caixa de alerta, já com hooks ele apareceu junto.
+
+## 8.3 COMPONENT DID UPDATE
+
+Sempre que o componente sofrer alguma alteração será chamado o método `componentDidUpdate`, para ele é possivel passar três parâmetros (já são passados automaticamente pelo método `render`):
+- `prevProps`: As propriedades do componente antes dele ser modificado
+- `prevState`: O valor das variáveis de estado antes da modificação do componente
+- `snapshot`: Esse parametro recebe o retorno da função `getSnapshotBeforeUpdate`, que também é chamada pelo método render.
+
+  ```JavaScript
+  //..
+  getSnapshotBeforeUpdate(prevProps, prevState){
+    // Código...
+    return //alguma coisa
+  }
+  //...
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    // Código...
+  }
+  //...
+  render(){
+    //...
+  }
+  ```
+
+Um exemplo rápido com o snapshot seria:
+
+```JavaScript
+getSnapshotBeforeUpdate(prevProps, prevState){
+  return 'Hello World';
+}
+//...
+componentDidUpdate(prevProps, prevState, snapshot) {
+  console.log(snapshot)
+}
+//...
+render(){
+  //...
+}
+```
+
+Esse código iria mostrar um `Hello World` no console assim que algo no componente fosse modificado.
+
+### **8.3.1 Equivalente com hooks**
+Com hooks nós temos uma boa diferença, aqui não iremos vigiar o componente todo, somente partes específicas dele. E para isso iremos utilizar o `useEffect`.
+
+```JavaScript
+import React, { useEffect } from 'react';
+
+const Main = () => {
+  useEffect(() => {
+    // Código...
+  }, [/* o que estamos vigiando */]);
+
+  return <div>Hello World</div>;
+};
+
+export default Main;
+```
+
+Isso vai fazer com que o código que está dentro da função execute assim que o que estivermos vigiando seja modificado.
+
+### **8.3.2 Exemplo**
+Vamos mostrar um alerta assim que o valor de i for modificado.
+
+#### 8.3.2.1 Utilizando ciclos de vida
+
+- Exemplo:
+
+  ```JavaScript
+  import React, { Component } from 'react';
+
+  export default class Main extends Component {
+    state = {
+      i: 0,
+    };
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+      window.alert('O valor de i foi alterado');
+    }
+
+    render() {
+      return (
+        <div>
+          <p>O valor de i é: {this.state.i}</p>
+          <button
+            onClick={() => {
+              this.setState({ i: this.state.i + 1 });
+            }}
+          >
+            Adicionar
+          </button>
+        </div>
+      );
+    }
+  }
+  ```
+
+- Saida:
+
+    ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_23.gif?raw=true)
+
+#### 8.3.2.2 Utilizando hooks
+
+- Exemplo: 
+
+  ```JavaScript
+  import React, { useState, useEffect } from 'react';
+
+  const Main = () => {
+    const [i, setI] = useState(0);
+
+    useEffect(() => {
+      window.alert('O valor de i foi alterado');
+    }, [i]);
+
+    return (
+      <div>
+        <p>O Valor de i é: {i}</p>
+        <button
+          onClick={() => {
+            setI(i + 1);
+          }}
+        >
+          Alterar
+        </button>
+      </div>
+    );
+  };
+
+  export default Main;
+  ```
+
+- Saída:
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_24.gif?raw=true)
+
+## 8.4 COMPONENT DID UNMOUNT
+Executa assim que o componente é desmontado.
+
+```JavaScript
+//...
+componentWillUnmount() {
+  // Código...
+}
+//...
+render() {
+  //...
+}
+```
+
+### **8.4.1 Equivalente com hooks**
+O equivalente seria deixar um `return` dentro do `useEffect`
+
+```JavaScript
+useEffect(() => {
+  return () => {
+    window.alert("componente desmontado");
+  };
+}, [i]);
+```
+
+
+### **8.4.2 Exemplo**
+
+Vamos fazer com que uma mensagem seja exibida assim que o componente for desmontado, para isso vamos fazer uma modificação no arquivo `App.js`, em que ele vai desmontar o componente após 5 segundos (vou utilizar hooks para fazer a mudança de estado da variável `visible`).
+
+- Arquivo `App.js`
+
+  ```JavaScript
+  import React, { useState } from 'react';
+  import Main from './Main.js';
+  import MainHooks from './MainHooks.js';
+
+  function App() {
+    const [visible, setVisible] = useState(true);
+
+    setTimeout(() => {
+      setVisible(false);
+    }, 5000);
+
+    return (
+      <div className='App'>
+        {visible && <Main />}
+      </div>
+    );
+  }
+
+  export default App;
+  ```
+
+#### 8.4.2.1 Utilizando ciclos de vida
+
+- Exemplo:
+
+  ```JavaScript
+  import React, { Component } from 'react';
+
+  export default class Main extends Component {
+    state = {
+      i: 0,
+    };
+
+    componentWillUnmount() {
+      window.alert('componente sendo desmontado');
+    }
+
+    render() {
+      return (
+        <div>
+          <p>
+            O valor de i é:
+            {this.state.i}
+          </p>
+          <button
+            onClick={() => {
+              this.setState({ i: this.state.i + 1 });
+            }}
+          >
+            Adicionar
+          </button>
+        </div>
+      );
+    }
+  }
+  ```
+
+- Saída:
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_25.gif?raw=true)
+
+#### 8.4.2.2 Utilizando hooks
+
+- Exemplo:
+
+  ```JavaScript
+  import React, { useState, useEffect } from "react";
+
+  const Main = () => {
+    const [i, setI] = useState(0);
+
+    useEffect(() => {
+      return () => {
+        window.alert("componente desmontado");
+      };
+    }, [i]);
+
+    return (
+      <div>
+        <p>
+          O Valor de i é:
+          {i}
+        </p>
+        <button
+          onClick={() => {
+            setI(i + 1);
+          }}
+        >
+          Alterar
+        </button>
+      </div>
+    );
+  };
+
+  export default Main;
+  ```
+
+- Saída: 
+
+  ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_26.gif?raw=true)
 
 **Agora que já entendeu esses conceitos de componentes, hooks e ciclos de vida, vamos dar seguimento ao exemplo principal desse material (huntweb), e vamos aprender alguns conceitos no caminho.**
 
@@ -1722,6 +2068,3 @@ Agora aplicando a estilização com o arquivo `styles.css` teremos:
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_19.png?raw=true)
 
 ### **9.3.2 Hooks**
-**_###################################---------------------------------------------###################################_**
-
-FAZER TODA A IMPLEMENTAÇÃO UTILIZANDO HOOKS

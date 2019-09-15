@@ -12,6 +12,7 @@ while (i < 10) {
   console.log(i);
   i++;
 }
+
 console.log(`o valor de i após o while: ${i}`);
 
 // do while
