@@ -13,6 +13,51 @@ Autor: Lucas Felipe Dutra
 
 De uma olhada nesse site aqui [codebox](https://codesandbox.io/), isso é uma aplicação web que vai permitir que você crie aplicações react sem precisar instalar nada no seu pc, já vai estar tudo pronto, é otimo para um primeiro contato. Porém eu não farei nada com ela durante esse material, farei tudo no meu pc mesmo, porém se quiser utilizar essa ferramenta, fique a vontade.
 
+# Sumário
+
+- [**1. INTRODUÇÃO**](#1-introdução)
+  - [1.1 INSTALAÇÃO E CONFIGURAÇÕES](#11-instalação-e-configurações)
+  - [1.2 O QUE É REACT?](#12-o-que-é-react)
+    - [**1.2.1 React e react-native**](#121-react-e-react-native)
+- [**2. INICIANDO ESTUDOS**](#2-iniciando-estudos)
+- [**3. CONHECENDO ESTRUTURA DA APLICAÇÃO**](#3-conhecendo-estrutura-da-aplicação)
+- [**4. ARRUMANDO OS ARQUIVOS**](#4-arrumando-os-arquivos)
+- [**5. ELEMENTO REACT**](#5-elemento-react)
+- [**6. COMPONENTE**](#6-componente)
+- [**7. HOOKS**](#7-hooks)
+  - [7.1 EXEMPLO](#71-exemplo)
+    - [**7.1.1 useState**](#711-usestate)
+    - [**7.1.2 useEfect**](#712-useefect)
+- [**8. CICLOS DE VIDA**](#8-ciclos-de-vida)
+  - [8.1 STATE](#81-state)
+    - [**8.1.1 Exemplo**](#811-exemplo)
+  - [8.2 COMPONENT DID MOUNT](#82-component-did-mount)
+    - [**8.2.1 Equivalente com hooks**](#821-equivalente-com-hooks)
+    - [**8.2.2 Exemplo**](#822-exemplo)
+      - [8.2.2.1 Utilizando ciclos de vida](#8221-utilizando-ciclos-de-vida)
+      - [8.2.2.2 Utilizando hooks](#8222-utilizando-hooks)
+  - [8.3 COMPONENT DID UPDATE](#83-component-did-update)
+    - [**8.3.1 Equivalente com hooks**](#831-equivalente-com-hooks)
+    - [**8.3.2 Exemplo**](#832-exemplo)
+      - [8.3.2.1 Utilizando ciclos de vida](#8321-utilizando-ciclos-de-vida)
+      - [8.3.2.2 Utilizando hooks](#8322-utilizando-hooks)
+  - [8.4 COMPONENT DID UNMOUNT](#84-component-did-unmount)
+    - [**8.4.1 Equivalente com hooks**](#841-equivalente-com-hooks)
+    - [**8.4.2 Exemplo**](#842-exemplo)
+      - [8.4.2.1 Utilizando ciclos de vida](#8421-utilizando-ciclos-de-vida)
+      - [8.4.2.2 Utilizando hooks](#8422-utilizando-hooks)
+- [**9. HUNTWEB**](#9-huntweb)
+  - [9.1 HEADER](#91-header)
+  - [9.2 API](#92-api)
+    - [**9.2.1 Axios**](#921-axios)
+  - [9.3 PAGES](#93-pages)
+    - [**9.3.1 Ciclos de vida**](#931-ciclos-de-vida)
+      - [9.3.1.1 Main](#9311-main)
+      - [9.3.1.2 Página anterior/proxima](#9312-página-anteriorproxima)
+      - [9.3.1.3 Navegação](#9313-navegação)
+      - [9.3.1.4 Product](#9314-product)
+    - [**9.3.2 Hooks**](#932-hooks)
+
 # **1. INTRODUÇÃO**
 
 ## 1.1 INSTALAÇÃO E CONFIGURAÇÕES
@@ -27,7 +72,7 @@ Bom, o react é uma biblioteca para javaScript, criada e mantida pelo facebook (
 
 O react serve para trabalharmos no frontend de uma aplicação web.
 
-### 1.2.1 React e react-native
+### **1.2.1 React e react-native**
 
 E se em algum momento você ouviu falar de react-native, e ficou em duvida do que é isso, se é igual ao react. Bom, eu vou explicar aqui rapidinho: Não são a mesma coisa, o react e o react-native possuem semelhanças gigantescas, o que é otimo, pois de passar um código react para um react-native ou vice versa, se torna muito fácil, porém, elas possuem finalidades diferentes, o react serve para criar aplicações web, e o react-native serve para criar aplicações mobile (android e ios de uma vez só).
 
@@ -361,7 +406,7 @@ Veja que agora a aplicação é sempre atualizada, e o valor de i no console bat
 
 > OBS.: Em `onClick` é importante utilizar uma arrow function, pois se utilizar direto o `click(i)` ele será executado constantemente, e isso vai gerar um erro.
 
-### 7.1.2 useEfect
+### **7.1.2 useEfect**
 
 Vamos efetuar o exemplo utilizando o `useEffect`. Porém, irei também utilizar o `useState` para auxiliar.
 
@@ -1478,7 +1523,7 @@ Depois de aplicar todos esses estilos, nós temos o seguinte resultado:
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_12.png?raw=true)
 
-#### **9.3.1.2 Página anterior/proxima**
+#### 9.3.1.2 Página anterior/proxima
 
 Se você notou bem quando puxamos os dados no nosso console, tinha marcado lá que tinhamos duas páginas, isso porque na implementação do servidor foi feito esse esquema de dividir os conteúdos em páginas com no máximo 10 itens em cada.
 
