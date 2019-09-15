@@ -2068,3 +2068,317 @@ Agora aplicando a estilização com o arquivo `styles.css` teremos:
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React/Imagens/Figura_19.png?raw=true)
 
 ### **9.3.2 Hooks**
+
+- Árvore de diretórios
+
+  ```sh
+  ├── src
+  │   ├── App.js
+  │   ├── components
+  │   │   └── Header
+  │   │       ├── index.js
+  │   │       └── styles.css
+  │   ├── index.js
+  │   ├── pages
+  │   │   ├── main
+  │   │   │   ├── index.js
+  │   │   │   └── styles.css
+  │   │   └── product
+  │   │       ├── index.js
+  │   │       └── styles.css
+  │   ├── routes.js
+  │   ├── services
+  │   │   └── api.js
+  │   ├── serviceWorker.js
+  │   └── styles.css
+  ├── yarn-error.log
+  └── yarn.lock
+  ```
+
+- Arquivo `/src/App.js`
+
+  ```JavaScript
+  import React from 'react';
+  import Header from './components/Header';
+  import './styles.css';
+  import Routes from './routes';
+
+  function App() {
+    return (
+      <div className='App'>
+        <Header />
+        <Routes />
+      </div>
+    );
+  }
+
+  export default App;
+  ```
+
+- Arquivo `/src/index.js`
+
+  ```JavaScript
+  import React from 'react';
+  import ReactDOM from 'react-dom';
+  import App from './App';
+  import * as serviceWorker from './serviceWorker';
+
+  ReactDOM.render(<App />, document.getElementById('root'));
+
+  serviceWorker.unregister();
+  ```
+
+- Arquivo `/src/routes.js`
+
+  ```JavaScript
+  import React from 'react';
+  import { BrowserRouter, Switch, Route } from 'react-router-dom';
+  import Main from './pages/main';
+  import Product from './pages/product';
+
+  const Routes = () => (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path='/' component={Main} />
+        <Route path='/products/:id' component={Product} />
+      </Switch>
+    </BrowserRouter>
+  );
+
+  export default Routes;
+  ```
+
+- Arquivo `/src/components/Header/index.js`
+
+  ```JavaScript
+  import React from 'react';
+
+  import './styles.css';
+
+  const Header = () => <header id='main-header'>JSHuntWeb</header>;
+
+  export default Header;
+  ```
+
+- Arquivo `/src/components/Header/styles.css`
+
+  ```CSS
+  header#main-header {
+    width: 100%;
+    height: 60px;
+    background: #da552f;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  ```
+
+- Arquivo `/src/pages/main/index.js`
+
+  ```JavaScript
+  import React, { useState, useEffect } from 'react';
+  import { Link } from 'react-router-dom';
+  import api from '../../services/api';
+  import './styles.css';
+
+  const Main = () => {
+    const [products, setProducts] = useState([]);
+    const [productInfo, setProductInfo] = useState({});
+
+    useEffect(() => {
+      loadProducts();
+    }, []);
+
+    const loadProducts = async (page = 1) => {
+      const response = await api.get(`/products?page=${page}`);
+
+      const { docs, ...productInfo } = response.data;
+      setProducts(docs);
+      setProductInfo(productInfo);
+    };
+
+    const prevPage = () => {
+      const page = parseInt(productInfo.page);
+
+      if (page === 1) return;
+
+      const pageNumber = page - 1;
+
+      loadProducts(pageNumber);
+    };
+
+    const nextPage = () => {
+      const page = parseInt(productInfo.page);
+      if (page === productInfo.pages) {
+        return;
+      }
+
+      const pageNumber = page + 1;
+      loadProducts(pageNumber);
+    };
+
+    return (
+      <div className='product-list'>
+        {products.map((product) => (
+          <article key={product._id}>
+            <strong>{product.title}</strong>
+            <p>{product.description}</p>
+            <Link to={`/products/${product._id}`}>Acessar</Link>
+          </article>
+        ))}
+        <div className='actions'>
+          <button onClick={prevPage}>Anterior</button>
+          <button onClick={nextPage}>Próximo</button>
+        </div>
+      </div>
+    );
+  };
+
+  export default Main;
+  ```
+
+- Arquivo `/src/pages/main/styles.css`
+
+  ```CSS
+  .product-list {
+    max-width: 700px;
+    margin: 20px auto 0;
+    padding: 0 20px;
+  }
+
+  .product-list article {
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .product-list article p {
+    font-size: 16px;
+    color: #999999;
+    margin-top: 5px;
+    line-height: 24px;
+  }
+
+  .product-list article a {
+    height: 42px;
+    border-radius: 5px;
+    border: 2px solid #da552f;
+    background: none;
+    margin-top: 10px;
+    color: #da552f;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: none; /*retira o traço embaixo da palavra */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s; /*tudo que acontecer no botão terá um efeito de transição de 0.2s*/
+  }
+
+  /* hover: quando o usuário passar o mouse sobre o botão */
+
+  .product-list article a:hover {
+    background: #da552f;
+    color: #ffffff;
+  }
+
+  .product-list .actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .product-list .actions button {
+    padding: 10px;
+    border-radius: 5px;
+    border: 0;
+    background: #da552f;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .product-list .actions button:hover {
+    opacity: 0.7;
+  }
+  ```
+
+- Arquivo `/src/pages/product/index.js`
+
+  ```JavaScript
+  import React, { useState, useEffect } from "react";
+  import api from "../../services/api";
+  import "./styles.css";
+
+  const Product = props => {
+    const [product, setProduct] = useState({});
+
+    useEffect(() => {
+      const loadProduct = async () => {
+        const { id } = props.match.params;
+
+        const response = await api.get(`/products/${id}`);
+
+        setProduct(response.data);
+      };
+      loadProduct();
+    }, []);
+
+    return (
+      <div className="product-info">
+        <h1>{product.title}</h1>
+        <p>{product.description}</p>
+        <p>
+          URL: <a href={product.url}>{product.url}</a>
+        </p>
+      </div>
+    );
+  };
+
+  export default Product;
+  ```
+
+- Arquivo `/src/pages/product/styles.css`
+
+  ```CSS
+  .product-info {
+    max-width: 700px;
+    margin: 20px auto 0;
+    background: #ffffff;
+    border-radius: 5px;
+    border: 1px solid #dddddd;
+    padding: 20px;
+  }
+
+  .product-info h1 {
+    font-size: 32px;
+  }
+
+  .product-info p {
+    color: #666666;
+    line-height: 24px;
+    margin-top: 5px;
+  }
+
+  .product-info p a {
+    color: #069;
+  }
+  ```
+
+- Arquivo `/src/services/api.js`
+
+  ```JavaScript
+  import axios from 'axios';
+
+  const api = axios.create({
+    baseURL: 'https://rocketseat-node.herokuapp.com/api',
+  });
+
+  export default api;
+  ```

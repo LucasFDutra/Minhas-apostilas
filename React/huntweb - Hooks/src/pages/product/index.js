@@ -1,32 +1,31 @@
-import React, { Component } from 'react';
-import api from '../../services/api';
-import './styles.css';
+import React, { useState, useEffect } from "react";
+import api from "../../services/api";
+import "./styles.css";
 
-export default class Product extends Component {
-  state = {
-    product: {},
-  };
+const Product = props => {
+  const [product, setProduct] = useState({});
 
-  async componentDidMount() {
-    const { id } = this.props.match.params;
+  useEffect(() => {
+    const loadProduct = async () => {
+      const { id } = props.match.params;
 
-    const response = await api.get(`/products/${id}`);
+      const response = await api.get(`/products/${id}`);
 
-    this.setState({ product: response.data });
-  }
+      setProduct(response.data);
+    };
+    loadProduct();
+  }, []);
 
-  render() {
-    const { product } = this.state;
+  return (
+    <div className="product-info">
+      <h1>{product.title}</h1>
+      <p>{product.description}</p>
+      <p>
+        {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
+        URL: <a href={product.url}>{product.url}</a>
+      </p>
+    </div>
+  );
+};
 
-    return (
-      <div className='product-info'>
-        <h1>{product.title}</h1>
-        <p>{product.description}</p>
-        <p>
-          {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
-          URL: <a href={product.url}>{product.url}</a>
-        </p>
-      </div>
-    );
-  }
-}
+export default Product;
