@@ -220,6 +220,7 @@ Abaixo podemos ver como ficaria um código desses.
   ```
 
 - Saída
+
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React-Native/Imagens/Figura_02.png?raw=true)
 
 # **5. EXEMPLO**
@@ -847,7 +848,7 @@ O bom do react-navigation é que ele já possui uma propriedade que nos permite 
   });
   ```
 
-- Saída:
+- Saída
 
   ![](https://github.com/LucasFDutra/Minhas-apostilas/blob/master/React-Native/Imagens/Figura_06.gif?raw=true)
 
