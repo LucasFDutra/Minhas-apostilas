@@ -37,7 +37,7 @@ Então antes de iniciar seus estudos aqui com react-native, estude react, pois a
 
 Para o que é igual ao react deverá ser estudado pelo material de react, disponível [aqui](https://github.com/LucasFDutra/Minhas-apostilas/tree/master/React).
 
-Já o que for diferente irei abordar aqui, seguindo um exemplo (O qual é exatamente igual ao exemplo criado no material de react).
+Já o que for diferente irei abordar aqui, seguindo um exemplo (O qual é exatamente igual ao exemplo criado no material de react). Uma boa observação sobre o exemplo que utilizarei, é que vou dar preferencia por programar com ciclos de vida, não tem nenhum motivo específico, é só porque quero seguir mais a risca o tutorial da rocketseat.
 
 ## Iniciando um projeto
 
@@ -51,17 +51,17 @@ Um detalhe importante, é que no react-native jamais poderemos colocar um texto 
 
 - react
 
-      	```JavaScript
-      	<button>press</button>
-      	```
+  ```JavaScript
+  <button>press</button>
+  ```
 
 - react-native
 
-      	```JavaScript
-      	<button>
-      		<Text>press</Text>
-      	</button>
-      	```
+  ```JavaScript
+  <button>
+    <Text>press</Text>
+  </button>
+  ```
 
 # Rotas
 
@@ -69,47 +69,84 @@ Para facilitar a navegação entre páginas vamos ter sempre um arquivo de rotas
 
 A transição pode acontecer clicando um botão, arrastando para o lado, através de um menu lateral, enfim, temos diversas formas de fazer isso. Para ver como fazer cada uma delas, consulte a documentação nesse ponto [aqui](https://facebook.github.io/react-native/docs/navigation).
 
-Vamos começar criando esse gerenciamento de rotas dividindo nosso programa em páginas e criando o arquivo de rotas. Para isso crie uma pasta `src` que é onde ficarão todos os nossos códigos. Dentro dela crie oaosrquivos `routes.js`, `index.js`, a pasta pages com o arquivo `main.js`. E também pague o arquivo `App.js`.
+Vamos começar criando esse gerenciamento de rotas dividindo nosso programa em páginas e criando o arquivo de rotas. Para isso crie uma pasta `src` que é onde ficarão todos os nossos códigos. Dentro dela crie os arquivos `routes.js`, `index.js`, a pasta pages com o arquivo `main.js`. E também apague o arquivo `App.js`.
 
 - Árvore de diretórios do programa
+  ```sh
+  ├── android
+  ├── app.json
+  ├── babel.config.js
+  ├── index.js
+  ├── ios
+  ├── metro.config.js
+  ├── node_modules
+  ├── package.json
+  ├── src
+  │   ├── index.js
+  │   ├── pages
+  │   │   └── main.js
+  │   └── routes.js
+  ├── __tests__
+  │   └── App-test.js
+  └── yarn.lock
+  ```
 
-      	```sh
-      	// arvore
-      	```
+Para que as rotas funcionem, precisamos adicionar uma lib ao projeto. Digite no terminal
+
+```sh
+yarn add react-navigation@2.18.3
+```
 
 Agora vamos mostrar as modificações necessárias em cada código já existente e o que colocar em cada um dos criados
 
-- Arquivo `App.js`
-
-      	```JavaScript
-      	// código js
-      	```
-
-Aqui nós mandamos o código iniciar por `App` que está dentro de `src`. Agora vamos criar esse `App`.
-
 - Arquivo `Index.js`
 
-      	```JavaScript
-      	// código js
-      	```
+  ```JavaScript
+  import { AppRegistry } from 'react-native';
+  import App from './src';
+  import { name as appName } from './app.json';
+
+  AppRegistry.registerComponent(appName, () => App);
+  ```
 
 - Arquivo `/src/index.js`
 
-      	```JavaScript
-      	// código js
-      	```
+  ```JavaScript
+  import React from 'react';
+  import Routes from './routes';
+
+  const App = () => <Routes />;
+
+  export default App;
+  ```
 
 - Arquivo `/src/pages/main.js`
 
-      	```JavaScript
-      	// código js
-      	```
+  ```JavaScript
+  import React, { Component } from 'react';
+  import { View, Text } from 'react-native';
+
+  export default class Main extends Component {
+    render() {
+      return (
+        <View>
+          <Text>Hello World</Text>
+        </View>
+      );
+    }
+  }
+  ```
 
 - Arquivo `/src/routes.js`
 
-      	```JavaScript
-      	// código js
-      	```
+  ```JavaScript
+  import { createStackNavigator } from 'react-navigation';
+  import Main from './pages/main';
+
+  export default createStackNavigator({
+    Main,
+  });
+  ```
 
 Então nossa aplicação começa em `index.js`, que procura por um `App` dentro da pasta `src`, e esse `App` foi exportado de dentro de `/src/index.js`, que nos levou para as rotas em `/src/routes.js`, que agora controla a navegação entre as páginas, mas que por hora nos leva somente para a página `main` dentro de `/src/pages/main.js`.
 
@@ -133,9 +170,9 @@ Abaixo podemos ver como ficaria um código desses.
 
 - Exemplo
 
-      	```JavaScript
-      	// código js
-      	```
+  ```JavaScript
+  //codigo
+  ```
 
 - Saída
 
@@ -163,9 +200,9 @@ Para pegar a resposta de uma Api não tem absolutamente nada de diferente do que
 
 - Arquivo `/src/services/api.js`
 
-      	```JavaScript
-      	// código
-      	```
+  ```JavaScript
+  //codigo
+  ```
 
 - Saída
 
@@ -177,9 +214,9 @@ Para exibir os componentes de uma lista podemos utilizar o comando `map`, mas o 
 
 - Arquivo `/src/pages/main.js`
 
-      	```JavaScript
-      	// código js
-      	```
+  ```JavaScript
+  //codigo
+  ```
 
 - Saída
 
@@ -197,9 +234,9 @@ Isso fará com que o arquivo fique da seguinte forma
 
 - Arquivo `/src/pages/main.js`
 
-      	```JavaScript
-      	// código js
-      	```
+  ```JavaScript
+  //codigo
+  ```
 
 - Saída
 
@@ -211,9 +248,9 @@ Como você pode ver pelo gif, quando chegamos ao final da página o programa sim
 
 - Arquivo `/src/pages/main.js`
 
-      	```JavaScript
-      	// código js
-      	```
+  ```JavaScript
+  //codigo
+  ```
 
 - Saída
 
@@ -227,27 +264,27 @@ Para isso crie dentro da pasta `pages` o arquivo `product.js` (pode ser qualquer
 
 - Árvore de diretórios de `src`
 
-      	```sh
-      	// arvore
-      	```
+  ```sh
+  //arvore
+  ```
 
 - Arquivo `/src/pages/products.js`
 
-      	```JavaScript
-      	// código js
-      	```
+  ```JavaScript
+  //codigo
+  ```
 
 - Arquivo `/src/routes.js`
 
-      	```JavaScript
-      	// código js
-      	```
+  ```JavaScript
+  //codigo
+  ```
 
 - Arquivo `/src/pages/main.js`
 
-      	```JavaScript
-      	// código js
-      	```
+  ```JavaScript
+  //codigo
+  ```
 
 ## Estilização da nova página
 
@@ -255,50 +292,50 @@ A nova página contará com a seguinte estilização
 
 - Arquivo `/src/pages/products.js`
 
-      	```JavaScript
-      	// código js
-      	```
+  ```JavaScript
+  //codigo
+  ```
 
 # Resumindo
 
 - Árvore de diretórios do programa
 
-      	```sh
-      	// arvore
-      	```
+  ```sh
+  // arvore
+  ```
 
 - Arquivo `Index.js`
 
-      	```JavaScript
-      	// código js
-      	```
+  ```JavaScript
+  //codigo
+  ```
 
 - Arquivo `/src/index.js`
 
-      	```JavaScript
-      	// código js
-      	```
+  ```JavaScript
+  //codigo
+  ```
 
 - Arquivo `/src/routes.js`
 
-      	```JavaScript
-      	// código js
-      	```
+  ```JavaScript
+  //codigo
+  ```
 
 - Arquivo `/src/services/api.js`
 
-      	```JavaScript
-      	// código js
-      	```
+  ```JavaScript
+  //codigo
+  ```
 
 - Arquivo `/src/pages/main.js`
 
-      	```JavaScript
-      	// código js
-      	```
+  ```JavaScript
+  //codigo
+  ```
 
 - Arquivo `/src/pages/products.js`
 
-      	```JavaScript
-      	// código js
-      	```
+  ```JavaScript
+  //codigo
+  ```
